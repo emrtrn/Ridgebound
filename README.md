@@ -1,5 +1,7 @@
 # Ridgebound
 
+VS Code'da **Terminal > Run Build Task** (`Ctrl+Shift+B`), Forge'daki gibi geliştirme sunucusunu başlatıp editörü tarayıcıda açar. Oyun için **Terminal > Run Task > Open Game** seç. Sunucu zaten çalışıyorsa aynı sunucu kullanılır; bu görevlerin açtığı sunucu arka planda çalışmaya devam eder. Başlatma günlükleri `.forge/dev-server/` altındadır.
+
 Forge ortak kaynağını kullanan bağımsız oyun projesi. P2 kabulü tamamlandı. M0 için Landscape/Gaz52 saha bağlantısı ve saf görev kuralları hazır; nakliye runtime döngüsü henüz bağlı değil. Güncel sıra: [M0 kontrol listesi](docs/M0_CHECKLIST.md).
 
 ## Çalıştırma

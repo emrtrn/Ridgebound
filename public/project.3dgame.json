@@ -13,7 +13,11 @@
     "defaultScene": "assets/Maps/Landscape.level.json",
     "assetManifest": "assets/manifest.json",
     "gridSize": 0.5,
-    "gridEnabled": true
+    "gridEnabled": true,
+    "snapRotationDeg": 15,
+    "snapRotationEnabled": true,
+    "snapScale": 0.1,
+    "snapScaleEnabled": true
   },
   "scripts": {
     "preview": "npm run dev",
