@@ -315,6 +315,9 @@
             -35
           ],
           "name": "M0 — İş Panosu (graybox)",
+          "behavior": {
+            "script": "ridgebound-contract-board"
+          },
           "scale": [
             4.8,
             4,

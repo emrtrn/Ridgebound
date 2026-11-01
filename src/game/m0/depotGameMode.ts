@@ -8,12 +8,14 @@ import { PlayerCameraManager } from "@/game/playerCameraManager";
 import type { GameModeContext, GameModeDefinition, GameModeSession } from "@/scene/gameModeTypes";
 import type { RuntimeUiPresenter } from "@/scene/capabilities/runtimeServiceKeys";
 import { depotEntryStatus, INITIAL_DEPOT_VIEW, limitDepotView, DEPOT_LIMITS, type DepotConfig, type DepotView } from "./depotRules";
+import { CONTRACT_WIDGET_ID, type BoardAction } from "./contractBoard";
 
 export const DEPOT_WIDGET_ID = "ridgebound-depot";
 export interface DepotModeHost {
   config(): DepotConfig | null;
   presenter(): RuntimeUiPresenter | undefined;
   publish(fields: Record<string, string | number | boolean>): void;
+  contractAction?(action: BoardAction): boolean;
 }
 
 /** The existing Forge driving session remains the sole driving implementation. */
@@ -39,6 +41,7 @@ class DepotSession implements GameModeSession {
   private releaseControls = false;
   private unsubscribe: (() => void) | undefined;
   private disposed = false;
+  private contractOpen = false;
 
   constructor(private readonly context: GameModeContext, private readonly driving: GameModeSession, private readonly host: DepotModeHost) {
     this.playerState = driving.playerState;
@@ -54,9 +57,26 @@ class DepotSession implements GameModeSession {
     this.unsubscribe = this.context.onScriptMessage?.("ui-action", (event) => {
       if (this.disposed || !this.depot || !this.parkedVehicleId) return;
       const message = event.payload?.message;
+      if (typeof message === "string" && message.startsWith("ridgebound:contract:")) {
+        const action = message.slice("ridgebound:contract:".length);
+        if (!this.contractOpen || this.host.presenter()?.screenDepth() !== 2
+          || !["accept", "cancel", "reason", "terms"].includes(action)) return;
+        if (this.readyForBoard()) this.host.contractAction?.(action as BoardAction);
+        return;
+      }
       if (typeof message !== "string" || !message.startsWith("ridgebound:depot:")) return;
       const action = message.slice("ridgebound:depot:".length);
       if (action === "return") { this.leaveDepot(); return; }
+      if (action === "board") {
+        if (this.contractOpen || this.host.presenter()?.screenDepth() !== 1 || !this.readyForBoard()) return;
+        if (!this.host.contractAction?.("open")) {
+          this.host.publish({ "depot.notice": "İş panosu veya görev noktaları hazır değil." });
+          return;
+        }
+        this.contractOpen = this.host.presenter()?.pushWidget(CONTRACT_WIDGET_ID) ?? false;
+        if (!this.contractOpen) this.host.publish({ "depot.notice": "Sözleşme ekranı açılamadı." });
+        return;
+      }
       if (action === "center") this.view = INITIAL_DEPOT_VIEW;
       if (action === "left" || action === "right") this.view = { ...this.view, yawDeg: this.view.yawDeg + (action === "left" ? -10 : 10) };
       if (action === "near" || action === "far") this.view = { ...this.view, distance: zoomDistance(this.view.distance, action === "near" ? -1 : 1, { ...DEFAULT_RTS_CAMERA_SETTINGS, minDistance: DEPOT_LIMITS.distanceMin, maxDistance: DEPOT_LIMITS.distanceMax }) };
@@ -67,6 +87,16 @@ class DepotSession implements GameModeSession {
       }
       this.view = limitDepotView(this.view);
     });
+  }
+
+  private readyForBoard(): boolean {
+    const id = this.parkedVehicleId;
+    const object = id ? this.context.vehicles?.object(id) : null;
+    const status = depotEntryStatus(this.host.config(), object ? object.getWorldPosition(this.position).toArray() : null,
+      Math.max(this.planarSpeed, Math.abs(id ? this.context.vehicles?.state(id)?.forwardSpeed ?? Infinity : Infinity)));
+    if (status === "ready") return true;
+    this.host.publish({ "depot.notice": "Pano işlemi için araç depo alanında ve durmuş olmalı." });
+    return false;
   }
 
   private park(id: string): void {
@@ -112,6 +142,7 @@ class DepotSession implements GameModeSession {
     }
     this.host.presenter()?.clearScreens();
     this.parkedVehicleId = null;
+    this.contractOpen = false;
     this.depot = null;
     this.releaseControls = true;
     this.driving.possess(); // Same session and pawn: never re-spawn/select a car.
@@ -128,6 +159,7 @@ class DepotSession implements GameModeSession {
       this.lastPosition = this.position.clone();
     } else { this.planarSpeed = 0; this.lastPosition = null; }
     if (this.depot) {
+      if (this.host.presenter()?.screenDepth() !== 2) this.contractOpen = false;
       // Escape is the existing screen-stack Back action, labelled in the panel.
       if (this.host.presenter()?.screenDepth() === 0) this.leaveDepot();
       if (this.depot) {

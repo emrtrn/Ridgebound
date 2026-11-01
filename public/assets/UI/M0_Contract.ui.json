@@ -1,0 +1,283 @@
+{
+  "schema": 1,
+  "type": "ui",
+  "name": "Ridgebound — İş Panosu ve Sözleşme",
+  "preview": {
+    "width": 1280,
+    "height": 720
+  },
+  "root": {
+    "id": "root",
+    "widget": "Canvas",
+    "props": {
+      "align": "center",
+      "justify": "center",
+      "padding": 20
+    },
+    "children": [
+      {
+        "id": "contract-panel",
+        "widget": "Panel",
+        "props": {
+          "width": 820,
+          "padding": 18,
+          "gap": 8,
+          "background": "rgba(18,32,26,0.98)",
+          "radius": 8
+        },
+        "children": [
+          {
+            "id": "contract-title",
+            "widget": "Text",
+            "props": {
+              "text": "İş panosu — Nakliye sözleşmesi",
+              "fontSize": 22,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-summary",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.summary"
+              },
+              "fontSize": 17,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-points",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.points"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-fee",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.fee"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-risk",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.risk"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-status",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.status"
+              },
+              "fontSize": 16,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-reason-toggle",
+            "widget": "Button",
+            "props": {
+              "text": {
+                "bind": "contract.reasonLabel"
+              },
+              "onClick": {
+                "type": "message",
+                "message": "ridgebound:contract:reason"
+              },
+              "padding": 9,
+              "background": "#33483e",
+              "color": "#ffffff",
+              "radius": 5
+            }
+          },
+          {
+            "id": "contract-reason",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.reason"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-terms-toggle",
+            "widget": "Button",
+            "props": {
+              "text": {
+                "bind": "contract.termsLabel"
+              },
+              "onClick": {
+                "type": "message",
+                "message": "ridgebound:contract:terms"
+              },
+              "padding": 9,
+              "background": "#33483e",
+              "color": "#ffffff",
+              "radius": 5
+            }
+          },
+          {
+            "id": "contract-terms",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.terms"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-optional",
+            "widget": "Text",
+            "props": {
+              "text": "Ayrıntılar isteğe bağlıdır; okumadan da kabul edebilirsiniz.",
+              "fontSize": 12,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-actions",
+            "widget": "Stack",
+            "props": {
+              "direction": "row",
+              "gap": 10
+            },
+            "children": [
+              {
+                "id": "contract-accept",
+                "widget": "Button",
+                "props": {
+                  "text": {
+                    "bind": "contract.acceptLabel"
+                  },
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:contract:accept"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "contract-cancel",
+                "widget": "Button",
+                "props": {
+                  "text": {
+                    "bind": "contract.cancelLabel"
+                  },
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:contract:cancel"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              }
+            ]
+          },
+          {
+            "id": "contract-notice",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.notice"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "contract-save-actions",
+            "widget": "Stack",
+            "props": {
+              "direction": "row",
+              "gap": 10
+            },
+            "children": [
+              {
+                "id": "contract-save",
+                "widget": "Button",
+                "props": {
+                  "text": "Hızlı kaydet",
+                  "onClick": {
+                    "type": "message",
+                    "message": "save:write:quick"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "contract-load",
+                "widget": "Button",
+                "props": {
+                  "text": "Hızlı kaydı yükle",
+                  "onClick": {
+                    "type": "message",
+                    "message": "save:load:quick"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "contract-back",
+                "widget": "Button",
+                "props": {
+                  "text": "Depoya dön (Esc)",
+                  "onClick": {
+                    "type": "back"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              }
+            ]
+          },
+          {
+            "id": "contract-save-status",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.saveStatus"
+              },
+              "fontSize": 12,
+              "color": "#f2eee5"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "initialFocus": "contract-reason-toggle"
+}

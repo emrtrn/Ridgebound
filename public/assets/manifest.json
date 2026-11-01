@@ -478,7 +478,7 @@
         "castShadow": false,
         "receiveShadow": false,
         "collision": false,
-        "bytes": 7221
+        "bytes": 7946
       },
       "source": {
         "origin": "Ridgebound"
@@ -538,7 +538,7 @@
         "castShadow": false,
         "receiveShadow": false,
         "collision": false,
-        "bytes": 712
+        "bytes": 716
       },
       "source": {
         "origin": "Ridgebound"
@@ -569,6 +569,36 @@
         "receiveShadow": false,
         "collision": false,
         "bytes": 727
+      },
+      "source": {
+        "origin": "Ridgebound"
+      },
+      "license": "Project-local",
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      }
+    },
+    {
+      "id": "ridgebound-contract",
+      "name": "Ridgebound — İş Panosu ve Sözleşme",
+      "assetType": "ui",
+      "category": "UI",
+      "path": "assets/UI/M0_Contract.ui.json",
+      "tags": [
+        "ridgebound",
+        "m0",
+        "contract"
+      ],
+      "placeable": false,
+      "runtime": {
+        "loadGroup": "ridgebound-ui",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 7868
       },
       "source": {
         "origin": "Ridgebound"

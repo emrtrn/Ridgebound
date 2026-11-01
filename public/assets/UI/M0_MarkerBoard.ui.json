@@ -29,7 +29,7 @@
         "id": "hint",
         "widget": "Text",
         "props": {
-          "text": "Henüz etkin değil",
+          "text": "Depoda sözleşmeyi aç",
           "fontSize": 30,
           "color": "#f2eee5"
         }

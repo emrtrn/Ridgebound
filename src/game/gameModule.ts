@@ -1,32 +1,63 @@
 import { createGameModule as createCommonGameModule } from "@/game/gameModule";
 import type { ForgeGameModule } from "@/scene/ForgeGameModule";
-import { gameModeProviderService, uiPresenterService, uiViewModelService } from "@/scene/capabilities/runtimeServiceKeys";
+import type { RuntimeServiceKey } from "@/scene/capabilities/RuntimeServices";
+import type { BehaviorRegistryFactory } from "@/scene/capabilities/runtimeServiceKeys";
+import { behaviorRegistryFactoryService, gameModeProviderService, saveGameCommandsService, uiPresenterService, uiViewModelService } from "@/scene/capabilities/runtimeServiceKeys";
 import { createDepotGameMode } from "./m0/depotGameMode";
 import type { DepotConfig } from "./m0/depotRules";
+import { BOARD_SCRIPT, createContractBoard } from "./m0/contractBoard";
 
-/** M0 content preview; contract rules are not connected to the runtime yet. */
+/** Compose Forge runtime systems with Ridgebound's depot and contract rules. */
 export function createGameModule(): ForgeGameModule {
   const common = createCommonGameModule();
   let status: HTMLElement | null = null;
   let depot: DepotConfig | null = null;
+  let boardReady = false;
+  let board: ReturnType<typeof createContractBoard> | null = null;
   const removeStatus = () => { status?.remove(); status = null; };
   return {
     ...common,
     id: "ridgebound.prototype",
     register(runtime) {
-      common.register?.(runtime);
+      common.register?.({ ...runtime, services: {
+        ...runtime.services,
+        provide<T>(key: RuntimeServiceKey<T>, value: T): void {
+          if (key.id === behaviorRegistryFactoryService.id) {
+            const factory = value as unknown as BehaviorRegistryFactory;
+            runtime.services.provide(behaviorRegistryFactoryService, (host) => {
+              const registry = factory(host);
+              return { get: (id) => id === BOARD_SCRIPT ? board?.tick : registry.get(id) };
+            });
+          } else runtime.services.provide(key, value);
+        },
+      } });
+      const publish = (fields: Record<string, string | number | boolean>) => {
+        if (status && typeof fields["depot.active"] === "boolean") status.hidden = fields["depot.active"];
+        const store = runtime.services.resolve(uiViewModelService);
+        store?.setFields(fields);
+        store?.flush();
+      };
+      const saveStatus = () => {
+        if (!runtime.services.resolve(saveGameCommandsService)) return "Kayıt kullanılamıyor; ilerleme yalnız bu oturumda.";
+        const value = runtime.services.resolve(uiViewModelService)?.getField("save.slots.quick.status");
+        if (typeof value !== "string") return "Kayıt kullanılamıyor.";
+        if (value.startsWith("Saved")) return "Hızlı kayıt mevcut.";
+        if (value === "Empty") return "Henüz hızlı kayıt yok.";
+        if (value === "Save failed") return "Kayıt alınamadı; ilerleme yalnız bu oturumda. Tekrar kaydetmeyi deneyin.";
+        if (value === "Load failed") return "Kayıt yüklenemedi.";
+        return "Kayıt kullanılamıyor.";
+      };
+      board = createContractBoard({ publish, saveStatus, save() {
+        runtime.services.resolve(saveGameCommandsService)?.handleUiMessage("save:write:quick");
+      } });
       const provider = runtime.services.resolve(gameModeProviderService);
       if (!provider) throw new Error("Common Forge game mode catalog unavailable");
       const resolveCommonMode = provider.resolve.bind(provider);
       const truckMode = createDepotGameMode({
         config: () => depot,
         presenter: () => runtime.services.resolve(uiPresenterService),
-        publish(fields) {
-          if (status && typeof fields["depot.active"] === "boolean") status.hidden = fields["depot.active"];
-          const store = runtime.services.resolve(uiViewModelService);
-          store?.setFields(fields);
-          store?.flush();
-        },
+        publish,
+        contractAction: (action) => boardReady ? board?.action(action) ?? false : false,
       });
       provider.resolve = async (request) => request.gameModeId === "forge.vehicle"
         ? truckMode
@@ -37,6 +68,9 @@ export function createGameModule(): ForgeGameModule {
       const placements = context.layout.instances.flatMap((group) => group.placements);
       const entry = placements.find((placement) => placement.role === "logistics.pickup");
       const center = placements.find((placement) => placement.role === "building.transport.depot");
+      boardReady = placements.some((placement) => placement.role === "logistics.board" && placement.behavior?.script === BOARD_SCRIPT)
+        && placements.some((placement) => placement.id === "pickup" && placement.role === "logistics.pickup")
+        && placements.some((placement) => placement.id === "delivery" && placement.role === "logistics.delivery");
       depot = entry && center ? {
         entry: [...entry.position], focus: [center.position[0], entry.position[1], center.position[2]],
       } : null;
@@ -59,7 +93,8 @@ export function createGameModule(): ForgeGameModule {
       status.append(title, description, controls);
       document.getElementById("ui-overlay")?.append(status);
     },
-    onLevelUnloaded() { depot = null; removeStatus(); common.onLevelUnloaded?.(); },
-    dispose() { depot = null; removeStatus(); common.dispose?.(); },
+    update(deltaSeconds) { common.update?.(deltaSeconds); },
+    onLevelUnloaded() { depot = null; boardReady = false; board?.reset(); removeStatus(); common.onLevelUnloaded?.(); },
+    dispose() { depot = null; boardReady = false; board?.reset(); removeStatus(); common.dispose?.(); },
   };
 }

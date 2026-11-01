@@ -1,7 +1,7 @@
 # Ridgebound M0 — uygulama ve kabul kontrol listesi
 
 Tarih: 01.11.2026. P2 teknik ve kullanıcı kabulü tamamlandı.
-M0 durumu: **KISMİ — A kural dilimi, B saha bağlantısı ve C depo/kamera akışı hazır; görev runtime'ı ve kullanıcı kabulü henüz yok.**
+M0 durumu: **KISMİ — A kuralları, B saha bağlantısı, C depo/kamera ve D pano/sözleşme teknik dilimi hazır; yükleme/teslim/ödül runtime'ı ve tam M0 kullanıcı kabulü açık.**
 Bu belge canlı çalışma listesidir; tarihsel tasarım belgeleri değiştirilmez.
 `[x]` yalnız satırda belirtilen işi doğrular; bir uygulama kutusunun kapanması
 ilgili M0 oyun kabulünün geçtiği anlamına gelmez.
@@ -72,7 +72,7 @@ Yeni genel motor değişikliği şu an zorunlu olarak kanıtlanmış değil.
 - [x] Yanlış nokta/yük/araç, boş teslim ve kapasite aşımını reddet.
 - [x] Tamamlanma, ödeme işareti ve bakiyeyi tek durum değişikliğiyle üret.
 - [x] Odaklı kural testlerini ve Ridgebound type-check sonucunu doğrula (günlükte).
-- [ ] Runtime bağlanınca tek otoriter görev kaydını kullan; paralel kayıt oluşturma.
+- [x] D kabul/iptal runtime'ında tek otoriter görev kaydını kullan; paralel kayıt oluşturma. E/F bağlantıları henüz yok.
 
 Kod: `src/game/m0/transport.ts`; testler: `tests/m0/transport.test.mjs`.
 Bu dilim fizik/input/UI/save uygulamaz. Sayılar yalnız test fixture'larında;
@@ -115,9 +115,15 @@ D diliminde olduğundan **M0-02 tam kabulü hâlâ açık**. Kullanıcı C görs
 
 ### D — İş panosu ve sözleşme
 
-- [ ] Fiziksel panodan sözleşme aç; özet: yük adı, kg, çıkış/varış, ücret, bilinen riskler.
-- [ ] Gerekçe ayrıntıda; birden fazla bölüm açık kalabilsin, hepsini okumak zorunlu olmasın.
-- [ ] Kabul ve yüklemeyi ayır; tek aktif iş ve yükleme öncesi iptali bağla. M0-03–05.
+- [x] Fiziksel panodan sözleşme aç; özet: yük adı, kg, çıkış/varış, ücret, bilinen riskler.
+- [x] Gerekçe ayrıntıda; birden fazla bölüm açık kalabilsin, hepsini okumak zorunlu olmasın.
+- [x] Kabul ve yüklemeyi ayır; tek aktif iş ve yükleme öncesi iptali bağla. M0-03–05 teknik kanıtı.
+
+D kanıtı: [pano/sözleşme raporu](reports/M0_D_CONTRACT_BOARD.md). Depo panelinden
+sahnedeki sarı panoya bağlı ayrı sözleşme ekranı açılır. 500 kg erzak ve 100 deneme
+kredisi açıkça **deneme içeriğidir**; gerçek ekonomi/kapasite kararı değildir.
+Kabul/iptal mevcut Forge `flags` ve hızlı kayıt kanalına bağlıdır; iki durumun
+gerçek browser save/load turu geçti. D kullanıcı görsel kabulü henüz alınmadı.
 
 ### E — Yükleme ve HUD
 
@@ -161,7 +167,8 @@ Kayıt bağlantısını her dilimde geliştir; bu bölüm son ana ertelenmez.
 
 ## 5. Bağlayıcı M0 kabul listesi
 
-Kaynak şablondaki kimlikler korunur. Tamamı şimdilik **TEST EDİLMEDİ**.
+Kaynak şablondaki kimlikler korunur. Tam M0 kabulü henüz yoktur. M0-02–05 için
+D teknik kanıtı vardır; kullanıcı kabulü açık olduğundan kutular kapatılmadı.
 
 - [ ] M0-01 — Tek araç sürülür; depo, teslimat ve tek iş sahnede tanımlıdır.
 - [ ] M0-02 — Depo/pano açılır, yönetim görünümünden sürüşe dönülür.
@@ -181,7 +188,7 @@ Kaynak şablondaki kimlikler korunur. Tamamı şimdilik **TEST EDİLMEDİ**.
 
 ## 6. Açık kararlar ve kapsam sınırı
 
-- [ ] Kapasite, yük kg, ücret/para birimi ve yük adları: gerçek içerik henüz seçilmedi.
+- [ ] Kapasite, yük kg, ücret/para birimi ve yük adları: gerçek içerik henüz seçilmedi. D: 500 kg erzak / 100 deneme kredisi, etiketli test içeriği.
 - [ ] Arazi boyutu, seed, depo/teslim koordinatları ve rota ölçüleri: test/kalibrasyon.
 - [ ] Kamera sınırları, durma eşiği, etkileşim menzili ve tuşlar: prototipte kalibre edilecek.
 - [ ] Otomatik kayıt politikası: öneri kritik geçişler sonrası mevcut capability ile kayıt.
@@ -215,5 +222,11 @@ A sırasında build/browser/manuel oyun kabulü yapılmadı; M0-01–15 açık k
 | 01.11.2026 | C kullanıcı kabulü | Kullanıcı depo/kamera görsel kabulünü onayladı. M0-02 pano/sözleşme nedeniyle açık. |
 | 01.11.2026 | Saha işaretleri | Kullanıcı testinde yük alanı bulunamadı. Pano sarı, yük alanı turuncu, teslim yeşil; üçüne Forge `worldWidgets` etiketi (pano/yük 160 m'de söner, teslim her mesafede). Browser: 3 etiket yüklendi, başlangıçta yük alanı etiketi okunur, depo ipucu "E — Depo yönetimine geç", console/HTTP hatası yok. Görev yönü/HUD hâlâ E dilimi. |
 
-Sıradaki dilim D: iş panosu ve sözleşme. Görev/kargo UI/save bağlantıları ve
-M0-01–15 hâlâ açık. B/C için yeni production build üretilmedi.
+| Tarih | İş | Kanıt / sınır |
+|---|---|---|
+| 01.11.2026 | D pano/sözleşme | Forge UI + mevcut Behavior/ScriptState ile ayrı sözleşme, bağımsız ayrıntılar, kabul/iptal; tek `ridgebound.transport.v1` kaydı. Rapor: `reports/M0_D_CONTRACT_BOARD.md`. |
+| 01.11.2026 | D doğrulama | 16/16 M0 testi, Ridgebound check geçti. Ayrı 5198 projesinde kabul/iptal save/load, reload, storage hatası/tekrar kayıt, Back/Esc ve iki viewport doğrulandı. |
+| 01.11.2026 | Forge UI katman düzeltmesi | `src/style.css`: ekran kökü dünya etiketlerinin üstünde. Ridgebound küçük ekran browser kanıtı + filtreli Forge UI grubunda 30 test geçti; tam motor/build gate'i değildir. |
+
+Sıradaki dilim E: yükleme ve HUD. F teslim/ödül, G kalan kayıt/kurtarma ve H
+kapanış açık. M0-01–15 tam kabul kutuları açık. B/C/D için yeni production build üretilmedi.

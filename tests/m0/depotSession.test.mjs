@@ -20,22 +20,34 @@ const {createDepotGameMode,PerspectiveCamera,Object3D,ActionMap,DEFAULT_INPUT_BI
 
 function setup(){
  let speed=0,depth=0,handler,unsubscribed=false,canOpen=true,config={entry:[0,0,0],focus:[2,0,2]};
- const objects=new Map([['car-a',new Object3D()],['car-b',new Object3D()]]),fields={},inputs=[],resets=[];
+ const objects=new Map([['car-a',new Object3D()],['car-b',new Object3D()]]),fields={},inputs=[],resets=[],boardActions=[];
  const actions=new ActionMap(DEFAULT_INPUT_BINDINGS);
  const context={camera:new PerspectiveCamera(),actions,characters:[],inputMode:'game',
   vehicles:{ids:()=>[...objects.keys()],object:id=>objects.get(id)??null,state:()=>({forwardSpeed:speed,wheels:[],drivetrain:null,engineLoad:0}),setInput:(id,input)=>inputs.push({id,...input}),reset:(...args)=>resets.push(args)},
   markCameraControlled(){},getInputMode(){return this.inputMode},setInputMode(mode){this.inputMode=mode},setMouseCursorVisible(){},setPointerLookMode(){},consumeLookDelta:()=>({dx:0,dy:0}),
   onScriptMessage(type,cb){handler=cb;return()=>{unsubscribed=true}},
  };
- const host={config:()=>config,presenter:()=>({screenDepth:()=>depth,pushWidget:()=>{if(!canOpen)return false;depth++;context.inputMode='ui';return true},clearScreens:()=>{depth=0;context.inputMode='game'}}),publish:value=>Object.assign(fields,value)};
+ const host={config:()=>config,presenter:()=>({screenDepth:()=>depth,pushWidget:()=>{if(!canOpen)return false;depth++;context.inputMode='ui';return true},clearScreens:()=>{depth=0;context.inputMode='game'}}),publish:value=>Object.assign(fields,value),contractAction:action=>{boardActions.push(action);return true}};
  const session=createDepotGameMode(host).createSession(context);
  session.spawnDefaultPawn();session.possess();
  const tick=()=>{actions.advance();session.beforeEngineUpdate(1/60);session.update(1/60)};
  const tap=code=>{actions.handleDown(code);tick();actions.handleUp(code);tick()};
  const message=action=>{handler({payload:{message:'ridgebound:depot:'+action}});tick()};
  tick();
- return {session,context,actions,fields,objects,inputs,resets,tick,tap,message,enter:()=>tap('KeyE'),setSpeed:v=>speed=v,setCanOpen:v=>canOpen=v,setConfig:v=>config=v,back:()=>{depth=0;tick()},unsubscribed:()=>unsubscribed};
+ return {session,context,actions,fields,objects,inputs,resets,boardActions,tick,tap,message,contract:action=>{handler({payload:{message:'ridgebound:contract:'+action}});tick()},pop:()=>{depth--;tick()},enter:()=>tap('KeyE'),setSpeed:v=>speed=v,setCanOpen:v=>canOpen=v,setConfig:v=>config=v,back:()=>{depth=0;tick()},unsubscribed:()=>unsubscribed};
 }
+
+test('contract commands require its open screen and a stationary live vehicle at the depot; Back keeps the same parked session',()=>{
+ const s=setup();s.contract('accept');assert.deepEqual(s.boardActions,[]);
+ s.enter();s.contract('accept');assert.deepEqual(s.boardActions,[]);
+ s.message('board');assert.deepEqual(s.boardActions,['open']);s.contract('accept');assert.deepEqual(s.boardActions,['open','accept']);
+ s.setSpeed(2);s.contract('cancel');assert.equal(s.boardActions.length,2);
+ s.setSpeed(0);s.objects.get('car-a').position.x=30;s.tick();s.contract('cancel');assert.equal(s.boardActions.length,2);
+ s.objects.get('car-a').position.x=0;s.tick();s.tick();s.pop();s.contract('cancel');assert.equal(s.boardActions.length,2);
+ assert.equal(s.fields['depot.active'],true);assert.equal(s.session.playerState.pawnEntityId,'car-a');
+ s.message('board');assert.equal(s.boardActions.at(-1),'open');s.objects.delete('car-a');s.contract('accept');assert.equal(s.boardActions.at(-1),'open');
+ s.session.dispose();
+});
 
 test('moving, distant and missing-point entries fail; E does not reset; R uses Forge reset',()=>{
  const s=setup();s.setSpeed(2);s.enter();assert.equal(s.fields['depot.active'],false);assert.equal(s.resets.length,0);

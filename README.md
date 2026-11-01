@@ -2,7 +2,7 @@
 
 VS Code'da **Terminal > Run Build Task** (`Ctrl+Shift+B`), Forge'daki gibi geliştirme sunucusunu başlatıp editörü tarayıcıda açar. Oyun için **Terminal > Run Task > Open Game** seç. Sunucu zaten çalışıyorsa aynı sunucu kullanılır; bu görevlerin açtığı sunucu arka planda çalışmaya devam eder. Başlatma günlükleri `.forge/dev-server/` altındadır.
 
-Forge ortak kaynağını kullanan bağımsız oyun projesi. P2 kabulü tamamlandı. M0 için Landscape/Gaz52 saha bağlantısı, saf görev kuralları ve depo modu/hibrit kamera (E depo, R aracı düzelt) hazır; nakliye runtime döngüsü henüz bağlı değil. Güncel sıra: [M0 kontrol listesi](docs/M0_CHECKLIST.md).
+Forge ortak kaynağını kullanan bağımsız oyun projesi. P2 kabulü tamamlandı. M0 için Landscape/Gaz52, görev kuralları, depo/kamera (E depo, R aracı düzelt) ve pano/sözleşme kabul-iptal akışı hazır. Depoda “Sarı iş panosu” düğmesi sözleşmeyi açar; kabul ve iptal mevcut hızlı kayda bağlanır. Yükleme/teslim/ödül runtime döngüsü henüz bağlı değil. Güncel sıra: [M0 kontrol listesi](docs/M0_CHECKLIST.md).
 
 ## Çalıştırma
 
@@ -26,7 +26,7 @@ Varsayılan yerleşim `Desktop/Forge` ve `Desktop/Games/Ridgebound`. Başka bir 
 - Genel motor/editör/araç geliştirmesi: Forge deposu.
 - Oyun modülü ve editör kataloğu: manifestteki `game.module` ve `game.editorCatalog` alanları.
 
-Prototip yalnız ortak kaynak bağlantısını doğrular. Yük/teslimat görevleri, ekonomi, M0 kabulü henüz yoktur. Bağımsız build doğrulaması build kayıtlarıyla izlenir. Build ve yeniden derleme komutları aşağıdadır. Genel Forge kamera, davranış ve editör katalogları kopyalanmadan ortak kaynaktan kullanılır.
+Pano sözleşmesi etiketli deneme içeriğidir; kabul otomatik yüklemez. Yükleme/teslimat döngüsü, gerçek ekonomi ve tam M0 kabulü henüz yoktur. Bağımsız build doğrulaması build kayıtlarıyla izlenir. Build ve yeniden derleme komutları aşağıdadır. Genel Forge kamera, davranış ve editör katalogları kopyalanmadan ortak kaynaktan kullanılır.
 
 ## Bağımsız build ve önizleme
 

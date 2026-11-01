@@ -45,6 +45,21 @@
             }
           },
           {
+            "id": "depot-board",
+            "widget": "Button",
+            "props": {
+              "text": "Sarı iş panosu — Sözleşmeyi aç",
+              "onClick": {
+                "type": "message",
+                "message": "ridgebound:depot:board"
+              },
+              "padding": 9,
+              "background": "#33483e",
+              "color": "#ffffff",
+              "radius": 5
+            }
+          },
+          {
             "id": "depot-camera-title",
             "widget": "Text",
             "props": {
