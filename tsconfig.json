@@ -1,0 +1,6 @@
+{
+  "extends": "../../Forge/tsconfig.json",
+  "include": [
+    "src"
+  ]
+}

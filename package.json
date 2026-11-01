@@ -1,0 +1,14 @@
+{
+  "name": "ridgebound",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/forge.mjs dev",
+    "editor": "node tools/forge.mjs dev",
+    "check": "node tools/forge.mjs check",
+    "build": "node tools/forge.mjs build",
+    "preview": "node tools/forge.mjs preview",
+    "verify:build": "node tools/forge.mjs verify-build"
+  }
+}

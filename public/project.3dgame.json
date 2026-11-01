@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "name": "Ridgebound",
+  "type": "three-game",
+  "version": "0.0.0",
+  "entry": "forge:default",
+  "publicDir": "public",
+  "game": {
+    "module": "src/game/gameModule.ts",
+    "editorCatalog": "src/game/editorCatalog.ts"
+  },
+  "editor": {
+    "defaultScene": "layouts/Prototype.level.json",
+    "assetManifest": "assets/manifest.json",
+    "gridSize": 0.5,
+    "gridEnabled": true
+  },
+  "scripts": {
+    "preview": "npm run dev",
+    "build": "npm run build"
+  },
+  "output": {
+    "distDir": "dist"
+  }
+}
