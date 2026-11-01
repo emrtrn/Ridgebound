@@ -19,3 +19,8 @@ Dosyalar aynı göreli yollarındadır; motor/editör kaynağı kopyalanmadı.
 
 Materyal dosyasının lisans alanı, kullandığı dokunun ayrı kaynak kaydını değiştirmez.
 Graybox binalar, parseller ve işaretler Forge primitive geometrileridir.
+
+## M0 C arayüzleri
+
+`assets/UI/M0_Depot.ui.json` ve `M0_DepotHUD.ui.json` Ridgebound için oluşturulan
+proje arayüz verileridir; mevcut Forge UI renderer/capability'si tarafından kullanılır.

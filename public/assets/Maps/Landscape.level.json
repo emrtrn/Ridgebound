@@ -359,7 +359,8 @@
   ],
   "characters": [],
   "worldSettings": {
-    "gameMode": "forge.vehicle"
+    "gameMode": "forge.vehicle",
+    "hudWidget": "ridgebound-depot-hud"
   },
   "skyAtmosphere": {},
   "heightFog": {

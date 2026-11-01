@@ -1,0 +1,262 @@
+{
+  "schema": 1,
+  "type": "ui",
+  "name": "Ridgebound — Depo Yönetimi",
+  "preview": {
+    "width": 1280,
+    "height": 720
+  },
+  "root": {
+    "id": "root",
+    "widget": "Canvas",
+    "props": {
+      "align": "start",
+      "justify": "end",
+      "padding": 24
+    },
+    "children": [
+      {
+        "id": "depot-panel",
+        "widget": "Panel",
+        "props": {
+          "width": 350,
+          "padding": 16,
+          "gap": 10,
+          "background": "rgba(18,32,26,0.95)",
+          "radius": 8
+        },
+        "children": [
+          {
+            "id": "depot-title",
+            "widget": "Text",
+            "props": {
+              "text": "Depo yönetimi",
+              "fontSize": 23,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "depot-description",
+            "widget": "Text",
+            "props": {
+              "text": "Araç park halinde. Depoyu bu görünümden inceleyebilirsiniz.",
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "depot-camera-title",
+            "widget": "Text",
+            "props": {
+              "text": "Kamera",
+              "fontSize": 17,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "depot-orbit",
+            "widget": "Stack",
+            "props": {
+              "direction": "row",
+              "gap": 8
+            },
+            "children": [
+              {
+                "id": "depot-left",
+                "widget": "Button",
+                "props": {
+                  "text": "Sola döndür",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:depot:left"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "depot-right",
+                "widget": "Button",
+                "props": {
+                  "text": "Sağa döndür",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:depot:right"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              }
+            ]
+          },
+          {
+            "id": "depot-zoom",
+            "widget": "Stack",
+            "props": {
+              "direction": "row",
+              "gap": 8
+            },
+            "children": [
+              {
+                "id": "depot-near",
+                "widget": "Button",
+                "props": {
+                  "text": "Yakınlaş",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:depot:near"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "depot-far",
+                "widget": "Button",
+                "props": {
+                  "text": "Uzaklaş",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:depot:far"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              }
+            ]
+          },
+          {
+            "id": "depot-pan-1",
+            "widget": "Stack",
+            "props": {
+              "direction": "row",
+              "gap": 8
+            },
+            "children": [
+              {
+                "id": "depot-north",
+                "widget": "Button",
+                "props": {
+                  "text": "İleri kaydır",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:depot:north"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "depot-south",
+                "widget": "Button",
+                "props": {
+                  "text": "Geri kaydır",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:depot:south"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              }
+            ]
+          },
+          {
+            "id": "depot-pan-2",
+            "widget": "Stack",
+            "props": {
+              "direction": "row",
+              "gap": 8
+            },
+            "children": [
+              {
+                "id": "depot-west",
+                "widget": "Button",
+                "props": {
+                  "text": "Sola kaydır",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:depot:west"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "depot-east",
+                "widget": "Button",
+                "props": {
+                  "text": "Sağa kaydır",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:depot:east"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              }
+            ]
+          },
+          {
+            "id": "depot-center",
+            "widget": "Button",
+            "props": {
+              "text": "Merkeze dön",
+              "onClick": {
+                "type": "message",
+                "message": "ridgebound:depot:center"
+              },
+              "padding": 9,
+              "background": "#33483e",
+              "color": "#ffffff",
+              "radius": 5
+            }
+          },
+          {
+            "id": "depot-notice",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "depot.notice"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "depot-return",
+            "widget": "Button",
+            "props": {
+              "text": "Sürüşe dön (Esc)",
+              "onClick": {
+                "type": "message",
+                "message": "ridgebound:depot:return"
+              },
+              "padding": 9,
+              "background": "#33483e",
+              "color": "#ffffff",
+              "radius": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "initialFocus": "depot-return"
+}

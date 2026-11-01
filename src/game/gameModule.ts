@@ -1,13 +1,14 @@
 import { createGameModule as createCommonGameModule } from "@/game/gameModule";
 import type { ForgeGameModule } from "@/scene/ForgeGameModule";
-import { gameModeProviderService } from "@/scene/capabilities/runtimeServiceKeys";
-import { createVehicleGameMode } from "@/game/gameModes/vehicleGameMode";
-import { DEFAULT_VEHICLE_CHASE_CAMERA } from "@/game/gameModes/vehicleCameraControl";
+import { gameModeProviderService, uiPresenterService, uiViewModelService } from "@/scene/capabilities/runtimeServiceKeys";
+import { createDepotGameMode } from "./m0/depotGameMode";
+import type { DepotConfig } from "./m0/depotRules";
 
 /** M0 content preview; contract rules are not connected to the runtime yet. */
 export function createGameModule(): ForgeGameModule {
   const common = createCommonGameModule();
   let status: HTMLElement | null = null;
+  let depot: DepotConfig | null = null;
   const removeStatus = () => { status?.remove(); status = null; };
   return {
     ...common,
@@ -17,9 +18,15 @@ export function createGameModule(): ForgeGameModule {
       const provider = runtime.services.resolve(gameModeProviderService);
       if (!provider) throw new Error("Common Forge game mode catalog unavailable");
       const resolveCommonMode = provider.resolve.bind(provider);
-      // Compose Forge's driving session; only the long Gaz52's framing differs.
-      const truckMode = createVehicleGameMode({
-        ...DEFAULT_VEHICLE_CHASE_CAMERA, distance: 12, height: 5, lookHeight: 1.6,
+      const truckMode = createDepotGameMode({
+        config: () => depot,
+        presenter: () => runtime.services.resolve(uiPresenterService),
+        publish(fields) {
+          if (status && typeof fields["depot.active"] === "boolean") status.hidden = fields["depot.active"];
+          const store = runtime.services.resolve(uiViewModelService);
+          store?.setFields(fields);
+          store?.flush();
+        },
       });
       provider.resolve = async (request) => request.gameModeId === "forge.vehicle"
         ? truckMode
@@ -27,6 +34,12 @@ export function createGameModule(): ForgeGameModule {
     },
     async onLevelLoaded(context) {
       await common.onLevelLoaded?.(context);
+      const placements = context.layout.instances.flatMap((group) => group.placements);
+      const entry = placements.find((placement) => placement.role === "logistics.pickup");
+      const center = placements.find((placement) => placement.role === "building.transport.depot");
+      depot = entry && center ? {
+        entry: [...entry.position], focus: [center.position[0], entry.position[1], center.position[2]],
+      } : null;
       removeStatus();
       status = document.createElement("section");
       status.id = "ridgebound-status";
@@ -40,13 +53,13 @@ export function createGameModule(): ForgeGameModule {
       description.textContent = driving ? "M0 saha prototipi · Gaz52" : "Prototip alanı";
       const controls = document.createElement("div");
       controls.textContent = driving
-        ? "W/S: gaz/fren · A/D: direksiyon · Space: el freni · E: aracı düzelt · F8: ölçümler"
+        ? "W/S: gaz/fren · A/D: direksiyon · Space: el freni · E: depo · R: aracı düzelt · F8: ölçümler"
         : "WASD: hareket · Sağ fare: bakış · Q/E: alçal/yüksel";
       controls.style.cssText = "font-size:12px;color:#c6d3c7;margin-top:8px";
       status.append(title, description, controls);
       document.getElementById("ui-overlay")?.append(status);
     },
-    onLevelUnloaded() { removeStatus(); common.onLevelUnloaded?.(); },
-    dispose() { removeStatus(); common.dispose?.(); },
+    onLevelUnloaded() { depot = null; removeStatus(); common.onLevelUnloaded?.(); },
+    dispose() { depot = null; removeStatus(); common.dispose?.(); },
   };
 }

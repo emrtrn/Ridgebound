@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "type": "ui",
+  "name": "Ridgebound — Depo İpucu",
+  "preview": {
+    "width": 1280,
+    "height": 720
+  },
+  "root": {
+    "id": "root",
+    "widget": "Canvas",
+    "props": {
+      "align": "start",
+      "justify": "end",
+      "padding": 24
+    },
+    "children": [
+      {
+        "id": "depot-hint",
+        "widget": "Panel",
+        "props": {
+          "width": 350,
+          "padding": 16,
+          "gap": 10,
+          "background": "rgba(18,32,26,0.95)",
+          "radius": 8
+        },
+        "children": [
+          {
+            "id": "depot-prompt",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "depot.prompt"
+              },
+              "fontSize": 15,
+              "color": "#f2eee5"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

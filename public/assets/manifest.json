@@ -430,6 +430,66 @@
         "packVersion": "0.1"
       },
       "license": "AI-generated project asset"
+    },
+    {
+      "id": "ridgebound-depot-hud",
+      "name": "Ridgebound — Depo İpucu",
+      "assetType": "ui",
+      "category": "UI",
+      "path": "assets/UI/M0_DepotHUD.ui.json",
+      "tags": [
+        "ridgebound",
+        "m0",
+        "depot"
+      ],
+      "placeable": false,
+      "runtime": {
+        "loadGroup": "ridgebound-ui",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 844
+      },
+      "source": {
+        "origin": "Ridgebound"
+      },
+      "license": "Project-local",
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      }
+    },
+    {
+      "id": "ridgebound-depot",
+      "name": "Ridgebound — Depo Yönetimi",
+      "assetType": "ui",
+      "category": "UI",
+      "path": "assets/UI/M0_Depot.ui.json",
+      "tags": [
+        "ridgebound",
+        "m0",
+        "depot"
+      ],
+      "placeable": false,
+      "runtime": {
+        "loadGroup": "ridgebound-ui",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 7221
+      },
+      "source": {
+        "origin": "Ridgebound"
+      },
+      "license": "Project-local",
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      }
     }
   ]
 }

@@ -1,7 +1,7 @@
 # Ridgebound M0 — uygulama ve kabul kontrol listesi
 
 Tarih: 01.11.2026. P2 teknik ve kullanıcı kabulü tamamlandı.
-M0 durumu: **KISMİ — A kural dilimi ve B saha bağlantısı hazır; görev runtime'ı ve kullanıcı kabulü henüz yok.**
+M0 durumu: **KISMİ — A kural dilimi, B saha bağlantısı ve C depo/kamera akışı hazır; görev runtime'ı ve kullanıcı kabulü henüz yok.**
 Bu belge canlı çalışma listesidir; tarihsel tasarım belgeleri değiştirilmez.
 `[x]` yalnız satırda belirtilen işi doğrular; bir uygulama kutusunun kapanması
 ilgili M0 oyun kabulünün geçtiği anlamına gelmez.
@@ -103,11 +103,15 @@ M0-01 ancak tek iş de runtime'a bağlanınca kapanır. M1 fizik kabulü burada 
 
 ### C — Depo modu ve hibrit kamera
 
-- [ ] Duran etkin araç + menzil + açık eylem ile depo moduna gir.
-- [ ] Sınırlı 3/4 kamera; depo merkezi odak, seçim odağı değiştirmesin.
-- [ ] Mevcut araç modundaki E/interact reset çakışmasını gider; reseti ayrı yönlendir.
-- [ ] UI açıkken sürüş girişini kes; güvenli frenleme/park davranışını doğrula.
-- [ ] Açık “Sürüşe dön” ile aynı araca dön; giriş/çıkışı tekrarla. M0-02.
+- [x] Duran etkin araç + menzil + açık eylem ile depo moduna gir.
+- [x] Sınırlı 3/4 kamera; depo merkezi odak, dünya tıklaması odağı değiştirmesin.
+- [x] Mevcut araç modundaki E/interact reset çakışmasını gider; E depo, R upright reset.
+- [x] UI açıkken sürüş girişini kes; güvenli frenleme/park davranışını doğrula.
+- [x] Açık “Sürüşe dön” ve etiketli Esc eylemiyle aynı araca dön; giriş/çıkışı tekrarla.
+
+C kanıtı: [depo/kamera raporu](reports/M0_C_DEPOT_CAMERA.md). Kamera kontrolleri
+Forge UI düğmeleridir; zoom/orbit/pan sınırları prototip değeridir. Pano/sözleşme
+D diliminde olduğundan **M0-02 tam kabulü hâlâ açık**. Kullanıcı C görsel kabulünü onayladı.
 
 ### D — İş panosu ve sözleşme
 
@@ -206,5 +210,9 @@ A sırasında build/browser/manuel oyun kabulü yapılmadı; M0-01–15 açık k
 | 01.11.2026 | B saha/içerik bağlantısı | 14 Forge asset'i; mevcut Landscape'te 512×512 m World Terrain, 4 tile + global map, 2 yol, 3 bina, 7 parsel; mevcut World Builder ve bake API'leri. |
 | 01.11.2026 | B teknik doğrulama | Son `npm.cmd run check` geçti; browser Gaz52 sürüşünde 16 km/sa, direksiyon/el freni/reset, World Builder profil yükleme; fixture save 200, dropped=[] ve reload/Play. Ayrıntı: `reports/M0_B_LANDSCAPE.md`. |
 
-Sıradaki dilim C: depo modu/hibrit kamera. Görev/kargo UI/save bağlantıları ve
-M0-01–15 hâlâ açık. B için yeni production build üretilmedi.
+| 01.11.2026 | C depo modu ve kamera | Duran araçla E girişi; Forge UI paneli, sınırlı RTS kamera yardımcıları, park ve aynı araca dönüş. Kaynak `src/game/m0/depotGameMode.ts`; rapor `reports/M0_C_DEPOT_CAMERA.md`. |
+| 01.11.2026 | C doğrulama | 12 M0 testi geçti; son check geçti; browser hareketli/uzak giriş reddi, kamera sınırları, basılı tuş güvenliği, dönüş, küçük viewport; geçici proje save/reload/Play geçti. |
+| 01.11.2026 | C kullanıcı kabulü | Kullanıcı depo/kamera görsel kabulünü onayladı. M0-02 pano/sözleşme nedeniyle açık. |
+
+Sıradaki dilim D: iş panosu ve sözleşme. Görev/kargo UI/save bağlantıları ve
+M0-01–15 hâlâ açık. B/C için yeni production build üretilmedi.
