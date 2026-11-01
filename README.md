@@ -2,7 +2,7 @@
 
 VS Code'da **Terminal > Run Build Task** (`Ctrl+Shift+B`), Forge'daki gibi geliştirme sunucusunu başlatıp editörü tarayıcıda açar. Oyun için **Terminal > Run Task > Open Game** seç. Sunucu zaten çalışıyorsa aynı sunucu kullanılır; bu görevlerin açtığı sunucu arka planda çalışmaya devam eder. Başlatma günlükleri `.forge/dev-server/` altındadır.
 
-Forge ortak kaynağını kullanan bağımsız oyun projesi. P2 kabulü tamamlandı. M0 için Landscape/Gaz52, depo/kamera, pano/sözleşme, yükleme, görev HUD'u ve teslim/sonuç hazır. Depoda E → “Sarı iş panosu” ile profili seçip işi kabul edin; “Yükü araca al” ayrı işlemdir. Yeşil teslim alanında durup E ile ekranı açın ve “Teslim et” düğmesine basın. Sabit ücret bir kez eklenir; yeni iş otomatik başlamaz. R aracı düzeltir. Güncel sıra: [M0 kontrol listesi](docs/M0_CHECKLIST.md).
+Forge ortak kaynağını kullanan bağımsız oyun projesi. P2 kabulü tamamlandı. M0 için Landscape/Gaz52, depo/kamera, pano/sözleşme, yükleme, görev HUD'u ve teslim/sonuç hazır. Depoda E → “Sarı iş panosu” ile profili seçip işi kabul edin; “Yükü araca al” ayrı işlemdir. Yeşil teslim alanında durup E ile ekranı açın ve “Teslim et” düğmesine basın. Sabit ücret bir kez eklenir; yeni iş otomatik başlamaz. R aracı bulunduğu yerde düzeltir; T aynı aracı güvenli başlangıç noktasına döndürür ve görev/yük/bakiyeyi koruyarak hızlı kayıt alır. Eski veya uyumsuz görev kaydı yüklenirse işlem durur ve kayıt korunur. Güncel sıra: [M0 kontrol listesi](docs/M0_CHECKLIST.md).
 
 ## Çalıştırma
 

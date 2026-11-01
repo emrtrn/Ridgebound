@@ -19,6 +19,7 @@ await writeFile(artifact,bundle.outputFiles[0].text);
 const {createDepotGameMode,PerspectiveCamera,Object3D,ActionMap,DEFAULT_INPUT_BINDINGS}=await import(pathToFileURL(artifact));
 
 function setup(){
+ let recoveryTarget=null,recovered=0;
  let speed=0,depth=0,handler,unsubscribed=false,canOpen=true,config={entry:[0,0,0],focus:[2,0,2],pickupPointId:'pickup'};
  const objects=new Map([['car-a',new Object3D()],['car-b',new Object3D()]]),fields={},inputs=[],resets=[],boardActions=[],loads=[],deliveries=[];
  const actions=new ActionMap(DEFAULT_INPUT_BINDINGS);
@@ -27,15 +28,27 @@ function setup(){
   markCameraControlled(){},getInputMode(){return this.inputMode},setInputMode(mode){this.inputMode=mode},setMouseCursorVisible(){},setPointerLookMode(){},consumeLookDelta:()=>({dx:0,dy:0}),
   onScriptMessage(type,cb){handler=cb;return()=>{unsubscribed=true}},
  };
- const host={config:()=>config,presenter:()=>({screenDepth:()=>depth,pushWidget:()=>{if(!canOpen)return false;depth++;context.inputMode='ui';return true},clearScreens:()=>{depth=0;context.inputMode='game'}}),publish:value=>Object.assign(fields,value),contractAction:action=>{boardActions.push(action);return true},loadCargo:(point,id)=>{loads.push({point,id});return true},telemetry:live=>{fields.telemetry=live},deliveryConfig:()=>({pointId:'delivery',position:[100,0,0]}),deliverCargo:(point,id)=>{deliveries.push({point,id});return true},deliveryNotice:notice=>{fields['delivery.notice']=notice}};
+ const host={recoveryTransform:()=>recoveryTarget,recovered:()=>recovered++,config:()=>config,presenter:()=>({screenDepth:()=>depth,pushWidget:()=>{if(!canOpen)return false;depth++;context.inputMode='ui';return true},clearScreens:()=>{depth=0;context.inputMode='game'}}),publish:value=>Object.assign(fields,value),contractAction:action=>{boardActions.push(action);return true},loadCargo:(point,id)=>{loads.push({point,id});return true},telemetry:live=>{fields.telemetry=live},deliveryConfig:()=>({pointId:'delivery',position:[100,0,0]}),deliverCargo:(point,id)=>{deliveries.push({point,id});return true},deliveryNotice:notice=>{fields['delivery.notice']=notice}};
  const session=createDepotGameMode(host).createSession(context);
  session.spawnDefaultPawn();session.possess();
  const tick=()=>{actions.advance();session.beforeEngineUpdate(1/60);session.update(1/60)};
  const tap=code=>{actions.handleDown(code);tick();actions.handleUp(code);tick()};
  const message=action=>{handler({payload:{message:'ridgebound:depot:'+action}});tick()};
  tick();
- return {session,context,actions,fields,objects,inputs,resets,boardActions,loads,deliveries,confirm:()=>{handler({payload:{message:'ridgebound:delivery:confirm',pointId:'injected',vehicleId:'other'}});tick()},tick,tap,message,contract:action=>{handler({payload:{message:'ridgebound:contract:'+action}});tick()},pop:()=>{depth--;tick()},enter:()=>tap('KeyE'),setSpeed:v=>speed=v,setCanOpen:v=>canOpen=v,setConfig:v=>config=v,back:()=>{depth=0;tick()},unsubscribed:()=>unsubscribed};
+ return {session,context,actions,fields,objects,inputs,resets,boardActions,loads,deliveries,setRecovery:v=>recoveryTarget=v,recovered:()=>recovered,confirm:()=>{handler({payload:{message:'ridgebound:delivery:confirm',pointId:'injected',vehicleId:'other'}});tick()},tick,tap,message,contract:action=>{handler({payload:{message:'ridgebound:contract:'+action}});tick()},pop:()=>{depth--;tick()},enter:()=>tap('KeyE'),setSpeed:v=>speed=v,setCanOpen:v=>canOpen=v,setConfig:v=>config=v,back:()=>{depth=0;tick()},unsubscribed:()=>unsubscribed};
 }
+
+test('G safe recovery delegates the authored pose to Forge, keeps the same pawn, parks held controls and ignores UI/missing targets',()=>{
+ const s=setup();s.tap('KeyT');assert.equal(s.resets.length,0);assert.equal(s.recovered(),0);
+ const target={position:[-180,9.713,-50],rotation:[0,120,0],scale:[1,1,1]};s.setRecovery(target);
+ s.enter();s.tap('KeyT');assert.equal(s.resets.length,0);s.back();
+ s.objects.get('car-a').position.set(40,-20,50);s.tick();s.actions.handleDown('KeyW');s.actions.handleDown('KeyT');s.tick();
+ assert.deepEqual(s.resets,[['car-a',target]]);assert.equal(s.recovered(),1);assert.equal(s.session.playerState.pawnEntityId,'car-a');
+ s.tick();assert.equal(s.resets.length,1);assert.equal(s.inputs.at(-1).throttle,0);
+ s.actions.handleUp('KeyT');s.actions.handleUp('KeyW');s.tick();s.tap('KeyT');assert.equal(s.recovered(),2);
+ assert.equal(s.loads.length,0);assert.equal(s.deliveries.length,0);assert.equal(s.boardActions.length,0);
+ s.objects.delete('car-a');s.tap('KeyT');assert.equal(s.resets.length,2);s.session.dispose();
+});
 
 test('delivery screen requires stopped live vehicle at its own point; opening never delivers, confirmation uses actual ids and parks controls',()=>{
  const s=setup();s.confirm();assert.equal(s.deliveries.length,0);s.enter();s.confirm();assert.equal(s.deliveries.length,0);s.back();

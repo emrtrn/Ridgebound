@@ -10,6 +10,7 @@ import type { RuntimeUiPresenter } from "@/scene/capabilities/runtimeServiceKeys
 import { depotEntryStatus, INITIAL_DEPOT_VIEW, limitDepotView, DEPOT_LIMITS, type DeliveryConfig, type DepotConfig, type DepotView } from "./depotRules";
 import { CONTRACT_WIDGET_ID, DELIVERY_WIDGET_ID, ROUTES_WIDGET_ID, type BoardAction } from "./contractBoard";
 import type { TransportTelemetry } from "./transportHud";
+import type { TransformComponent } from "@engine/scene/components";
 
 export const DEPOT_WIDGET_ID = "ridgebound-depot";
 export interface DepotModeHost {
@@ -22,6 +23,8 @@ export interface DepotModeHost {
   deliveryConfig?(): DeliveryConfig | null;
   deliverCargo?(pointId: string, vehicleId: string): boolean;
   deliveryNotice?(message: string): void;
+  recoveryTransform?(vehicleId: string): TransformComponent | null;
+  recovered?(): void;
 }
 
 /** The existing Forge driving session remains the sole driving implementation. */
@@ -50,6 +53,7 @@ class DepotSession implements GameModeSession {
   private disposed = false;
   private contractOpen = false;
   private deliveryOpen = false;
+  private recoveryPending = false;
 
   constructor(private readonly context: GameModeContext, private readonly driving: GameModeSession, private readonly host: DepotModeHost) {
     this.playerState = driving.playerState;
@@ -57,6 +61,7 @@ class DepotSession implements GameModeSession {
     this.camera = new PlayerCameraManager(context.camera);
     context.actions.bind("KeyE", "ridgebound.depot");
     context.actions.bind("KeyR", "interact");
+    context.actions.bind("KeyT", "ridgebound.recover");
   }
 
   spawnDefaultPawn(): void { this.driving.spawnDefaultPawn(); }
@@ -145,9 +150,21 @@ class DepotSession implements GameModeSession {
   beforeEngineUpdate(deltaSeconds: number): void {
     const id = this.playerState.pawnEntityId;
     if ((this.depot || this.deliveryOpen) && this.parkedVehicleId) { this.park(this.parkedVehicleId); return; }
-    const heldControl = ["move-forward", "move-back", "move-left", "move-right", "jump", "interact", "ridgebound.depot"].some((action) => this.context.actions.held(action));
+    const heldControl = ["move-forward", "move-back", "move-left", "move-right", "jump", "interact", "ridgebound.depot", "ridgebound.recover"].some((action) => this.context.actions.held(action));
     if (this.releaseControls && !heldControl) this.releaseControls = false;
     if (id && (this.releaseControls || this.context.getInputMode() === "ui")) { this.park(id); return; }
+    if (id && this.context.actions.pressed("ridgebound.recover")) {
+      const transform = this.host.recoveryTransform?.(id);
+      if (transform && this.context.vehicles?.object(id) && this.context.vehicles.state(id)) {
+        this.context.vehicles.reset(id, transform);
+        this.park(id);
+        this.lastPosition = null;
+        this.planarSpeed = 0;
+        this.releaseControls = true;
+        this.recoveryPending = true;
+      } else this.host.deliveryNotice?.("Güvenli dönüş noktası veya araç doğrulanamadı; görev korundu.");
+      return;
+    }
     const config = this.host.config();
     const object = id ? this.context.vehicles?.object(id) : null;
     const state = id ? this.context.vehicles?.state(id) : null;
@@ -204,6 +221,8 @@ class DepotSession implements GameModeSession {
   }
 
   update(deltaSeconds: number): void {
+    // Physics has consumed the reset before the existing Forge capture is requested.
+    if (this.recoveryPending) { this.recoveryPending = false; this.host.recovered?.(); }
     const id = this.playerState.pawnEntityId;
     const object = id ? this.context.vehicles?.object(id) : null;
     if (object) {
@@ -254,6 +273,7 @@ class DepotSession implements GameModeSession {
     if (this.depot || this.deliveryOpen) this.host.presenter()?.clearScreens();
     this.context.actions.bind("KeyE", DEFAULT_INPUT_BINDINGS.KeyE!);
     this.context.actions.bind("KeyR", DEFAULT_INPUT_BINDINGS.KeyR!);
+    this.context.actions.bind("KeyT", DEFAULT_INPUT_BINDINGS.KeyT ?? "ridgebound.unused");
     this.driving.dispose();
   }
 }

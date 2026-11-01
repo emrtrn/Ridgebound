@@ -2,13 +2,16 @@ import { createGameModule as createCommonGameModule } from "@/game/gameModule";
 import type { ForgeGameModule } from "@/scene/ForgeGameModule";
 import type { RuntimeServiceKey } from "@/scene/capabilities/RuntimeServices";
 import type { BehaviorRegistryFactory } from "@/scene/capabilities/runtimeServiceKeys";
-import { behaviorRegistryFactoryService, gameModeProviderService, saveGameCommandsService, uiPresenterService, uiViewModelService } from "@/scene/capabilities/runtimeServiceKeys";
+import { behaviorRegistryFactoryService, gameModeProviderService, gameplaySaveStateService, saveGameCommandsService, uiPresenterService, uiViewModelService } from "@/scene/capabilities/runtimeServiceKeys";
 import { createDepotGameMode } from "./m0/depotGameMode";
 import type { DeliveryConfig, DepotConfig } from "./m0/depotRules";
 import { BOARD_SCRIPT, createContractBoard } from "./m0/contractBoard";
-import { actorInstanceEntityId } from "@engine/scene/actorInstance";
+import { actorInstanceEntityId, actorInstanceTransform } from "@engine/scene/actorInstance";
 import { DEMO_CAPACITY_KG } from "./m0/m0Content";
 import type { TransportPoints } from "./m0/transportHud";
+import type { TransformComponent } from "@engine/scene/components";
+import { readSaveGameUiCommand } from "@engine/persistence/saveGameSlots";
+import { createTransportPersistence, transportSaveBindings } from "./m0/transportPersistence";
 
 /** Compose Forge runtime systems with Ridgebound's depot and contract rules. */
 export function createGameModule(): ForgeGameModule {
@@ -17,6 +20,9 @@ export function createGameModule(): ForgeGameModule {
   let points: TransportPoints | null = null;
   let deliveryConfig: DeliveryConfig | null = null;
   const capacities = new Map<string, number>();
+  const recovery = new Map<string, TransformComponent>();
+  let persistence: ReturnType<typeof createTransportPersistence> | null = null;
+  let installSaveCommands = () => {};
   let boardReady = false;
   let board: ReturnType<typeof createContractBoard> | null = null;
   return {
@@ -48,9 +54,47 @@ export function createGameModule(): ForgeGameModule {
         if (value === "Empty") return "Henüz hızlı kayıt yok.";
         if (value === "Save failed") return "Kayıt alınamadı; ilerleme yalnız bu oturumda. Tekrar kaydetmeyi deneyin.";
         if (value === "Load failed") return "Kayıt yüklenemedi.";
+        if (value === "Loading") return "Kayıt yükleniyor; işlemlerin tamamlanmasını bekleyin.";
         return "Kayıt kullanılamıyor.";
       };
-      board = createContractBoard({ publish, saveStatus, points: () => points, save() {
+      const nativeSave = runtime.services.resolve(gameplaySaveStateService);
+      if (!nativeSave) throw new Error("Forge save state bridge unavailable");
+      const capture = nativeSave.capture.bind(nativeSave);
+      const restore = nativeSave.restore.bind(nativeSave);
+      persistence = createTransportPersistence({ capture, restore }, message => board?.blockRestore(message));
+      nativeSave.capture = persistence.bridge.capture;
+      nativeSave.restore = persistence.bridge.restore;
+      let commandsInstalled = false;
+      installSaveCommands = () => {
+        const commandService = runtime.services.resolve(saveGameCommandsService);
+        if (commandService && !commandsInstalled) {
+          const commands = { ...commandService };
+          commandsInstalled = true;
+          Object.assign(commandService, {
+            ...commands,
+            handleUiMessage(message: string) {
+              const command = readSaveGameUiCommand(message);
+              if (command?.kind !== "load") return commands.handleUiMessage(message);
+              if (persistence?.isLoading()) return true;
+              persistence?.beginLoad();
+              // Clear a stale Empty/Load failed status before Forge tries the slot.
+              runtime.services.resolve(uiViewModelService)?.setField(`save.slots.${command.slot}.status`, "Loading");
+              const handled = commands.handleUiMessage(message);
+              const status = runtime.services.resolve(uiViewModelService)?.getField(`save.slots.${command.slot}.status`);
+              if (status === "Empty" || status === "Load failed") persistence?.cancelLoad();
+              return handled;
+            },
+            requestSaveGameLoad(payload: unknown) {
+              if (persistence?.isLoading()) return false;
+              persistence?.beginLoad();
+              const ok = commands.requestSaveGameLoad(payload);
+              if (!ok) persistence?.cancelLoad();
+              return ok;
+            },
+          });
+        }
+      };
+      board = createContractBoard({ publish, saveStatus, points: () => points, canMutate: () => persistence?.canMutate() ?? false, save() {
         runtime.services.resolve(saveGameCommandsService)?.handleUiMessage("save:write:quick");
       } });
       const provider = runtime.services.resolve(gameModeProviderService);
@@ -79,6 +123,8 @@ export function createGameModule(): ForgeGameModule {
           return board?.deliver(pointId, vehicleId) ?? false;
         },
         deliveryNotice: (message) => board?.deliveryNotice(message),
+        recoveryTransform: id => persistence?.canMutate() ? recovery.get(id) ?? null : null,
+        recovered: () => board?.recovered(),
       });
       provider.resolve = async (request) => request.gameModeId === "forge.vehicle"
         ? truckMode
@@ -100,15 +146,20 @@ export function createGameModule(): ForgeGameModule {
       points = entry && delivery ? { pickup: [...entry.position], delivery: [...delivery.position] } : null;
       deliveryConfig = delivery ? { pointId: "delivery", position: [...delivery.position] } : null;
       capacities.clear();
+      recovery.clear();
       (context.layout.actors ?? []).forEach((actor, index) => {
         const id = actorInstanceEntityId(index);
         if (actor.classRef === "assets/vehicles/gaz52/Script_Gaz52.actor.json" && context.entity(id)?.components.Vehicle) {
           capacities.set(id, DEMO_CAPACITY_KG);
+          const pose = actorInstanceTransform(actor);
+          recovery.set(id, { ...pose, rotation: [0, pose.rotation[1], 0] });
         }
       });
+      installSaveCommands();
+      persistence?.levelLoaded(transportSaveBindings(context, [...capacities.keys()]));
     },
     update(deltaSeconds) { common.update?.(deltaSeconds); },
-    onLevelUnloaded() { depot = null; points = null; deliveryConfig = null; capacities.clear(); boardReady = false; board?.reset(); common.onLevelUnloaded?.(); },
+    onLevelUnloaded() { persistence?.unload(); recovery.clear(); depot = null; points = null; deliveryConfig = null; capacities.clear(); boardReady = false; board?.reset(); common.onLevelUnloaded?.(); },
     dispose() { depot = null; points = null; deliveryConfig = null; capacities.clear(); boardReady = false; board?.reset(); common.dispose?.(); },
   };
 }

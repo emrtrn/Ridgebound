@@ -39,6 +39,7 @@ export interface ContractBoardHost {
   save(): void;
   saveStatus?(): string;
   points?(): TransportPoints | null;
+  canMutate?(): boolean;
 }
 
 /** ScriptState is the only authoritative record; no second in-memory job store. */
@@ -49,8 +50,9 @@ export function createContractBoard(host: ContractBoardHost) {
   let terms = false;
   let notice = "";
   let telemetry: TransportTelemetry | null = null;
+  let blocked = "";
   const publish = (): void => {
-    const state = readBoardState(scriptState?.get(TRANSPORT_KEY, null));
+    const state = blocked ? null : readBoardState(scriptState?.get(TRANSPORT_KEY, null));
     const phase = state?.phase;
     host.publish({
       "contract.summary": state ? cargoLabel(state.contract) : "Sözleşme bilgisi okunamıyor.",
@@ -65,11 +67,11 @@ export function createContractBoard(host: ContractBoardHost) {
       "contract.reason": reason ? "Yerleşimin erzak ihtiyacını depodan karşılamak için bu sevkiyat isteniyor." : "",
       "contract.termsLabel": `${terms ? "−" : "+"} 2. Taşıma koşulları`,
       "contract.terms": terms ? "Kabul yüklemez. Yük alma ayrıca onaylanır. Tek aktif iş; yükleme öncesi cezasız iptal. Zorunlu teslim süresi yok." : "",
-      "contract.notice": notice,
+      "contract.notice": blocked || notice,
       "contract.saveStatus": host.saveStatus?.() ?? "",
       "depot.loadHint": `${state ? cargoLabel(state.contract) : "Yük bilgisi yok"} / ${DEMO_CAPACITY_KG} kg deneme kapasitesi`,
       "depot.loadLabel": phase === "loaded" ? "Yük araçta" : "Yükü araca al",
-      "hud.notice": notice,
+      "hud.notice": blocked || notice,
       "hud.balance": state ? `Bakiye: ${state.balance} deneme kredisi` : "Bakiye okunamıyor.",
       "delivery.title": phase === "completed" ? "Teslimat tamamlandı" : phase === "delivered" ? "Teslim alındı · Sonuç bekleniyor" : "Teslimatı onayla",
       "delivery.cargo": state ? cargoLabel(state.contract) : "Görev kaydı okunamıyor.",
@@ -80,7 +82,7 @@ export function createContractBoard(host: ContractBoardHost) {
         : phase === "loaded" ? "Doğru yük, aynı taşıyıcı araç ve teslim noktası doğrulanarak teslim alınacak."
         : "Araçta teslim edilebilir görev yükü yok. Önce işi kabul edip yükleyin.",
       "delivery.confirmLabel": phase === "completed" ? "Teslim tamamlandı" : phase === "delivered" ? "Sonucu tamamla" : "Teslim et",
-      "delivery.notice": notice,
+      "delivery.notice": blocked || notice,
       "routes.main": `${DEMO_ROUTES[0].name} · Yaklaşık ${DEMO_ROUTES[0].mapLengthM} m yol çizgisi`,
       "routes.alternative": `${DEMO_ROUTES[1].name} · Yaklaşık ${DEMO_ROUTES[1].mapLengthM} m yol çizgisi`,
       ...transportHud(state, telemetry, host.points?.() ?? null),
@@ -90,7 +92,7 @@ export function createContractBoard(host: ContractBoardHost) {
     if (entityId && entityId !== context.entityId) return;
     entityId = context.entityId;
     scriptState = context.state;
-    if (scriptState.get(TRANSPORT_KEY, undefined) === undefined) {
+    if (!blocked && scriptState.get(TRANSPORT_KEY, undefined) === undefined) {
       scriptState.persist(TRANSPORT_KEY, createTransportState(DEMO_CONTRACT, "m0-demo-1") as unknown as SceneJsonValue);
     }
     publish();
@@ -98,6 +100,7 @@ export function createContractBoard(host: ContractBoardHost) {
   return {
     tick,
     action(action: BoardAction): boolean {
+      if (blocked || host.canMutate?.() === false) { publish(); return false; }
       if (!scriptState) { notice = "İş panosu hazır değil."; publish(); return false; }
       const state = readBoardState(scriptState.get(TRANSPORT_KEY, null));
       if (action === "open") { reason = false; terms = false; notice = ""; host.publish({ "depot.notice": "" }); publish(); return true; }
@@ -127,6 +130,7 @@ export function createContractBoard(host: ContractBoardHost) {
     },
     /** The session supplies the live vehicle and verified pickup point, never UI payload data. */
     load(pointId: string, vehicleId: string, capacityKg: number): boolean {
+      if (blocked || host.canMutate?.() === false) { publish(); return false; }
       const state = readBoardState(scriptState?.get(TRANSPORT_KEY, null));
       if (!state || !scriptState) notice = "Görev kaydı okunamıyor; yükleme yapılamaz.";
       else {
@@ -147,6 +151,7 @@ export function createContractBoard(host: ContractBoardHost) {
     deliveryNotice(message: string) { notice = message; publish(); },
     /** Called only from the parked delivery screen after live point/vehicle validation. */
     deliver(pointId: string, vehicleId: string): boolean {
+      if (blocked || host.canMutate?.() === false) { publish(); return false; }
       let state = readBoardState(scriptState?.get(TRANSPORT_KEY, null));
       if (!state || !scriptState) { notice = "Görev kaydı okunamıyor; teslim yapılamaz."; publish(); return false; }
       if (state.phase === "completed") { notice = "Bu iş zaten tamamlandı; tekrar ücret eklenmedi."; publish(); return false; }
@@ -172,6 +177,8 @@ export function createContractBoard(host: ContractBoardHost) {
       publish();
       return true;
     },
-    reset() { scriptState = null; entityId = null; reason = false; terms = false; notice = ""; telemetry = null; },
+    blockRestore(message: string) { blocked = message; publish(); },
+    recovered() { notice = "Araç güvenli başlangıç noktasına döndü. Görev, yük ve bakiye korundu."; host.save(); publish(); },
+    reset() { scriptState = null; entityId = null; reason = false; terms = false; notice = ""; telemetry = null; blocked = ""; },
   };
 }

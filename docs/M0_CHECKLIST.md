@@ -1,7 +1,7 @@
 # Ridgebound M0 — uygulama ve kabul kontrol listesi
 
-Tarih: 01.11.2026. P2 teknik ve kullanıcı kabulü tamamlandı.
-M0 durumu: **KISMİ — A–F teknik dilimleri hazır; G kalan kayıt/kurtarma ve H kapanış açık. Kullanıcı kabul/yükleme/sürüş ile gerçek teslim noktasına ulaşmayı doğruladı; F teslim/sonuç kullanıcı kabulü henüz yok.**
+Tarih: 02.11.2026. P2 teknik ve kullanıcı kabulü tamamlandı.
+M0 durumu: **KISMİ — A–G teknik dilimleri hazır; H kapanış açık. Kullanıcı kabul/yükleme/sürüş ile gerçek teslim noktasına ulaşmayı doğruladı; F teslim/sonuç ve G kurtarma kullanıcı kabulü henüz yok.**
 Bu belge canlı çalışma listesidir; tarihsel tasarım belgeleri değiştirilmez.
 `[x]` yalnız satırda belirtilen işi doğrular; bir uygulama kutusunun kapanması
 ilgili M0 oyun kabulünün geçtiği anlamına gelmez.
@@ -154,23 +154,32 @@ durunca E ekranı açar; ayrı “Teslim et” onayı yükü teslim eder. Bölge
 otomatik teslim/ödeme değildir. Mevcut tek görev kaydı delivered makbuzunu,
 ardından completed/ödeme işareti/bakiyeyi saklar. Tekrar onay veya completed
 restore ek ücret üretmez. Delivered restore açık onayla tamamlanabilir.
-F kullanıcı kabulü ve tüm G/H kapanış kanıtı açık kalır.
+F kullanıcı kabulü ve H kapanış kanıtı açık kalır; G teknik kanıtı aşağıdadır.
 
 ### G — Kayıt ve kurtarma
 
 Kayıt bağlantısını her dilimde geliştir; bu bölüm son ana ertelenmez.
 
-- [ ] Mevcut save capability ve `flags` içinde görev örneği/sözleşme snapshot'ı,
+- [x] Mevcut save capability ve `flags` içinde görev örneği/sözleşme snapshot'ı,
   aşama, kargo/profil/araç kimlikleri, bakiye ve ödeme işaretini birlikte sakla.
-- [ ] Restore öncesi oyun verisini doğrula; eski/bozuk/uyumsuz veriyi sessizce
+- [x] Restore öncesi oyun verisini doğrula; eski/bozuk/uyumsuz veriyi sessizce
   yeniden yorumlama. Şema/migrasyon ihtiyacını Forge kayıt sözleşmesine göre ele al.
-- [ ] Kabul/yüklü/teslim edilmiş/tamamlanmış aşamalarda save/load round-trip yap.
-- [ ] Restore sonrası HUD'u kayıt durumundan türet; bildirimi ücret ekleme tetikleyicisi yapma.
-- [ ] Güvenli konuma reset görev/kargoyu korusun; tamamlanan işi yeniden ödeme.
-- [ ] Storage hatası ve restore sırasında komut sırasını sınayarak sonucu raporla.
-- [ ] Yeni authored alan varsa loader/normalizer/`tools/saveValidator.ts` allowlist'ini kontrol et.
+- [x] Kabul/yüklü/teslim edilmiş/tamamlanmış aşamalarda save/load round-trip yap.
+- [x] Restore sonrası HUD'u kayıt durumundan türet; bildirimi ücret ekleme tetikleyicisi yapma.
+- [x] Güvenli konuma reset görev/kargoyu korusun; tamamlanan işi yeniden ödeme.
+- [x] Storage hatası ve restore sırasında komut sırasını sınayarak sonucu raporla.
+- [x] Yeni authored alan varsa loader/normalizer/`tools/saveValidator.ts` allowlist'ini kontrol et.
   Runtime save localStorage'dır; sahne/dev save endpoint'lerine ilerleme yazılmaz.
-- [ ] M0-12–14 için gerçek Forge save/load kanıtı üret; JSON kopyası bunu kanıtlamaz.
+- [x] M0-12–14 için gerçek Forge save/load kanıtı üret; JSON kopyası bunu kanıtlamaz.
+
+G kanıtı: [kayıt/kurtarma raporu](reports/M0_G_PERSISTENCE_RECOVERY.md).
+Tek kayıt korunur; restore güncel pano/taşıyıcı ve sözleşmeyle doğrulanır.
+Uyumsuz eski indeksler sessiz taşınmaz; işlem/kayıt bloke edilerek slot korunur.
+T aynı aracı authored güvenli başlangıca döndürür; görev/kargo/bakiye korunur.
+31/31 regresyon ve check geçti; browser accepted/loaded/completed load,
+loaded/completed kurtarma ve storage/uyumsuz kayıt ekranları doğrulandı.
+Delivered için F browser kanıtı ve G gerçek Forge store/restore regresyonu vardır.
+Bu teknik kanıtlar H tam manuel oturum ve kullanıcı kabulünü kapatmaz.
 
 ### H — Kapanış
 
@@ -184,7 +193,8 @@ Kayıt bağlantısını her dilimde geliştir; bu bölüm son ana ertelenmez.
 ## 5. Bağlayıcı M0 kabul listesi
 
 Kaynak şablondaki kimlikler korunur. Tam M0 kabulü henüz yoktur. M0-02–12 için
-D/E/F teknik kanıtı vardır; tüm kabul koşulları kapanmadığından kutular kapatılmadı.
+D/E/F/G teknik kanıtı vardır; M0-13–14 kayıt/kurtarma teknik kanıtı da eklendi.
+Tüm kabul koşulları kapanmadığından kutular kapatılmadı.
 
 - [ ] M0-01 — Tek araç sürülür; depo, teslimat ve tek iş sahnede tanımlıdır.
 - [ ] M0-02 — Depo/pano açılır, yönetim görünümünden sürüşe dönülür.
@@ -207,8 +217,8 @@ D/E/F teknik kanıtı vardır; tüm kabul koşulları kapanmadığından kutular
 - [ ] Kapasite, yük kg, ücret/para birimi ve yük adları: gerçek içerik henüz seçilmedi. E: 500/1500/2500 kg erzak, 2000 kg kapasite, 100 deneme kredisi; etiketli test içeriği.
 - [ ] Arazi boyutu, seed, depo/teslim koordinatları ve rota ölçüleri: test/kalibrasyon.
 - [ ] Kamera sınırları, durma eşiği, etkileşim menzili ve tuşlar: prototipte kalibre edilecek.
-- [ ] Otomatik kayıt politikası: öneri kritik geçişler sonrası mevcut capability ile kayıt.
-- [ ] Reset hedefi: öneri aktif görev/kargo korunarak güvenli noktaya dönmek.
+- [x] Prototip kayıt politikası: kritik geçişler ve T kurtarma sonrası mevcut capability ile quick slot; hata görünür, manuel tekrar kayıt var.
+- [x] Prototip reset hedefi: T ile aynı aracın authored başlangıcı; görev/kargo/bakiye korunur. R yerinde düzeltir. Kullanıcı kabulü H'de.
 - [ ] Tamamlanmış işi yeniden sunma: açık; otomatik yeniden başlatma yok.
 
 M1: yükün kütle/COM etkisi, üç yüzey ve iki rotanın ölçülebilir sürüş farkı.
@@ -249,5 +259,8 @@ A sırasında build/browser/manuel oyun kabulü yapılmadı; M0-01–15 açık k
 | 01.11.2026 | F teslim/sonuç | Yeşil noktada duran aynı araç + E ekranı + açık onay; delivered makbuzu ve tek complete/ödeme güncellemesi; sonuç/bakiye ve yeniden açma. |
 | 01.11.2026 | F doğrulama | 26/26 M0 testi ve check geçti. Ayrı 5200 projesinde boş teslim reddi, açık onay, storage hatasında delivered restore, completed save/load ve tekrar komutlarda bakiye 100 kaldı. Güncel cell düzeninde Forge merge bağlantısı ve salt okunur runtime/depo kontrolü de geçti. Rapor: `reports/M0_F_DELIVERY_RESULT.md`. |
 
-Sıradaki dilim G: kalan kayıt/kurtarma; ardından H kapanış.
-M0-01–15 tam kabul kutuları açık. B–F için yeni production build üretilmedi.
+| 02.11.2026 | G kayıt/kurtarma | Restore öncesi oyun doğrulaması, eski pano/taşıyıcı reddi, pending load komut kilidi ve Forge reset üzerinden T güvenli dönüş. Rapor: `reports/M0_G_PERSISTENCE_RECOVERY.md`. |
+| 02.11.2026 | G doğrulama | 31/31 M0 regresyonu ve check geçti. Ayrı 5201 projesinde accepted/loaded/completed load, loaded/completed güvenli dönüş, storage hatası ve eski pano kaydını koruma doğrulandı. Forge kaynakları değiştirilmedi. |
+
+Sıradaki dilim H kapanış.
+M0-01–15 tam kabul kutuları açık. B–G için yeni production build üretilmedi.

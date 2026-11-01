@@ -1,0 +1,16 @@
+[1101/235404.011:ERROR:gpu\command_buffer\service\gl_utils.cc:430] [.WebGL-0x1ad4001bca00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[1101/235406.006:ERROR:gpu\command_buffer\service\gl_utils.cc:430] [.WebGL-0x1ad4001bca00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[1101/235406.557:ERROR:gpu\command_buffer\service\gl_utils.cc:430] [.WebGL-0x1ad4001bca00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[1101/235410.618:ERROR:gpu\command_buffer\service\gl_utils.cc:430] [.WebGL-0x1ad4001bca00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[1101/235434.958:WARNING:ui\gl\angle_platform_impl.cc:52] Shader.cpp:771 (gl::Shader::resolveCompile): Compiler log: ERROR: 0:1728: 'FORGE_TERRAIN_RIVER_CAUSTICS' : unexpected token after conditional expression
+
+[1101/235557.228:WARNING:ui\gl\angle_platform_impl.cc:52] Shader.cpp:771 (gl::Shader::resolveCompile): Compiler log: ERROR: 0:1728: 'FORGE_TERRAIN_RIVER_CAUSTICS' : unexpected token after conditional expression
+
+[1101/235835.906:ERROR:gpu\command_buffer\service\gl_utils.cc:430] [.WebGL-0x6154001afc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[1101/235837.416:ERROR:gpu\command_buffer\service\gl_utils.cc:430] [.WebGL-0x6154001afc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[1101/235838.025:ERROR:gpu\command_buffer\service\gl_utils.cc:430] [.WebGL-0x6154001afc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[1101/235842.401:ERROR:gpu\command_buffer\service\gl_utils.cc:430] [.WebGL-0x6154001afc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[1102/000002.806:WARNING:ui\gl\angle_platform_impl.cc:52] Shader.cpp:771 (gl::Shader::resolveCompile): Compiler log: ERROR: 0:1728: 'FORGE_TERRAIN_RIVER_CAUSTICS' : unexpected token after conditional expression
+
+[1102/000709.521:WARNING:ui\gl\angle_platform_impl.cc:52] Shader.cpp:771 (gl::Shader::resolveCompile): Compiler log: ERROR: 0:1728: 'FORGE_TERRAIN_RIVER_CAUSTICS' : unexpected token after conditional expression
+

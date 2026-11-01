@@ -127,7 +127,7 @@
             "id": "hud-controls",
             "widget": "Text",
             "props": {
-              "text": "W/S gaz-fren · A/D direksiyon · Space el freni\nE depo/teslim · R aracı düzelt · F8 ölçümler",
+              "text": "W/S gaz-fren · A/D direksiyon · Space el freni\nE depo/teslim · R aracı düzelt\nT güvenli başlangıca dön · F8 ölçümler",
               "fontSize": 12,
               "color": "#f2eee5"
             }
