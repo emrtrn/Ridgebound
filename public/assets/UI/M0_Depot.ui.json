@@ -60,6 +60,49 @@
             }
           },
           {
+            "id": "depot-load-hint",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "depot.loadHint"
+              },
+              "fontSize": 13,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "depot-load",
+            "widget": "Button",
+            "props": {
+              "text": {
+                "bind": "depot.loadLabel"
+              },
+              "onClick": {
+                "type": "message",
+                "message": "ridgebound:depot:load"
+              },
+              "padding": 9,
+              "background": "#33483e",
+              "color": "#ffffff",
+              "radius": 5
+            }
+          },
+          {
+            "id": "depot-routes",
+            "widget": "Button",
+            "props": {
+              "text": "İki güzergâhı karşılaştır",
+              "onClick": {
+                "type": "message",
+                "message": "ridgebound:depot:routes"
+              },
+              "padding": 9,
+              "background": "#33483e",
+              "color": "#ffffff",
+              "radius": 5
+            }
+          },
+          {
             "id": "depot-camera-title",
             "widget": "Text",
             "props": {

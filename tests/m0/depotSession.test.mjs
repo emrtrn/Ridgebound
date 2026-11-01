@@ -19,23 +19,46 @@ await writeFile(artifact,bundle.outputFiles[0].text);
 const {createDepotGameMode,PerspectiveCamera,Object3D,ActionMap,DEFAULT_INPUT_BINDINGS}=await import(pathToFileURL(artifact));
 
 function setup(){
- let speed=0,depth=0,handler,unsubscribed=false,canOpen=true,config={entry:[0,0,0],focus:[2,0,2]};
- const objects=new Map([['car-a',new Object3D()],['car-b',new Object3D()]]),fields={},inputs=[],resets=[],boardActions=[];
+ let speed=0,depth=0,handler,unsubscribed=false,canOpen=true,config={entry:[0,0,0],focus:[2,0,2],pickupPointId:'pickup'};
+ const objects=new Map([['car-a',new Object3D()],['car-b',new Object3D()]]),fields={},inputs=[],resets=[],boardActions=[],loads=[],deliveries=[];
  const actions=new ActionMap(DEFAULT_INPUT_BINDINGS);
  const context={camera:new PerspectiveCamera(),actions,characters:[],inputMode:'game',
   vehicles:{ids:()=>[...objects.keys()],object:id=>objects.get(id)??null,state:()=>({forwardSpeed:speed,wheels:[],drivetrain:null,engineLoad:0}),setInput:(id,input)=>inputs.push({id,...input}),reset:(...args)=>resets.push(args)},
   markCameraControlled(){},getInputMode(){return this.inputMode},setInputMode(mode){this.inputMode=mode},setMouseCursorVisible(){},setPointerLookMode(){},consumeLookDelta:()=>({dx:0,dy:0}),
   onScriptMessage(type,cb){handler=cb;return()=>{unsubscribed=true}},
  };
- const host={config:()=>config,presenter:()=>({screenDepth:()=>depth,pushWidget:()=>{if(!canOpen)return false;depth++;context.inputMode='ui';return true},clearScreens:()=>{depth=0;context.inputMode='game'}}),publish:value=>Object.assign(fields,value),contractAction:action=>{boardActions.push(action);return true}};
+ const host={config:()=>config,presenter:()=>({screenDepth:()=>depth,pushWidget:()=>{if(!canOpen)return false;depth++;context.inputMode='ui';return true},clearScreens:()=>{depth=0;context.inputMode='game'}}),publish:value=>Object.assign(fields,value),contractAction:action=>{boardActions.push(action);return true},loadCargo:(point,id)=>{loads.push({point,id});return true},telemetry:live=>{fields.telemetry=live},deliveryConfig:()=>({pointId:'delivery',position:[100,0,0]}),deliverCargo:(point,id)=>{deliveries.push({point,id});return true},deliveryNotice:notice=>{fields['delivery.notice']=notice}};
  const session=createDepotGameMode(host).createSession(context);
  session.spawnDefaultPawn();session.possess();
  const tick=()=>{actions.advance();session.beforeEngineUpdate(1/60);session.update(1/60)};
  const tap=code=>{actions.handleDown(code);tick();actions.handleUp(code);tick()};
  const message=action=>{handler({payload:{message:'ridgebound:depot:'+action}});tick()};
  tick();
- return {session,context,actions,fields,objects,inputs,resets,boardActions,tick,tap,message,contract:action=>{handler({payload:{message:'ridgebound:contract:'+action}});tick()},pop:()=>{depth--;tick()},enter:()=>tap('KeyE'),setSpeed:v=>speed=v,setCanOpen:v=>canOpen=v,setConfig:v=>config=v,back:()=>{depth=0;tick()},unsubscribed:()=>unsubscribed};
+ return {session,context,actions,fields,objects,inputs,resets,boardActions,loads,deliveries,confirm:()=>{handler({payload:{message:'ridgebound:delivery:confirm',pointId:'injected',vehicleId:'other'}});tick()},tick,tap,message,contract:action=>{handler({payload:{message:'ridgebound:contract:'+action}});tick()},pop:()=>{depth--;tick()},enter:()=>tap('KeyE'),setSpeed:v=>speed=v,setCanOpen:v=>canOpen=v,setConfig:v=>config=v,back:()=>{depth=0;tick()},unsubscribed:()=>unsubscribed};
 }
+
+test('delivery screen requires stopped live vehicle at its own point; opening never delivers, confirmation uses actual ids and parks controls',()=>{
+ const s=setup();s.confirm();assert.equal(s.deliveries.length,0);s.enter();s.confirm();assert.equal(s.deliveries.length,0);s.back();
+ s.objects.get('car-a').position.x=100;s.tick();s.tick();s.setSpeed(2);s.enter();assert.equal(s.context.inputMode,'game');
+ s.setSpeed(0);s.enter();assert.equal(s.context.inputMode,'ui');assert.equal(s.deliveries.length,0);
+ s.confirm();assert.deepEqual(s.deliveries,[{point:'delivery',id:'car-a'}]);
+ s.actions.handleDown('KeyW');s.actions.handleDown('KeyR');s.tick();assert.equal(s.inputs.at(-1).throttle,0);assert.equal(s.resets.length,0);
+ s.setSpeed(2);s.confirm();assert.equal(s.deliveries.length,1);s.setSpeed(0);
+ s.objects.get('car-a').position.x=125;s.tick();s.confirm();assert.equal(s.deliveries.length,1);
+ s.objects.get('car-a').position.x=100;s.tick();s.tick();s.back();assert.equal(s.context.inputMode,'game');assert.equal(s.session.playerState.pawnEntityId,'car-a');
+ s.tick();assert.equal(s.inputs.at(-1).throttle,0,'held UI keys do not leak into driving');
+ s.actions.handleUp('KeyW');s.actions.handleUp('KeyR');s.tick();s.enter();s.objects.delete('car-a');s.confirm();assert.equal(s.deliveries.length,1);s.session.dispose();
+});
+
+test('loading uses the actual parked vehicle and pickup, rejects moving/distant/missing car and nested screens; telemetry is live',()=>{
+ const s=setup();s.message('load');assert.equal(s.loads.length,0);s.enter();s.message('load');assert.deepEqual(s.loads,[{point:'pickup',id:'car-a'}]);
+ s.message('board');s.message('load');assert.equal(s.loads.length,1);s.pop();
+ s.setSpeed(2);s.message('load');assert.equal(s.loads.length,1);assert.equal(s.fields.telemetry.speedMps,2);
+ s.setSpeed(0);s.objects.get('car-a').position.x=30;s.tick();s.message('load');assert.equal(s.loads.length,1);
+ s.objects.get('car-a').position.x=0;s.tick();s.tick();s.message('routes');s.contract('accept');assert.equal(s.boardActions.length,1,'route screen is not a contract screen');s.pop();
+ s.objects.delete('car-a');s.message('load');assert.equal(s.loads.length,1);assert.equal(s.fields.telemetry.vehicleId,null);assert.equal(s.fields.telemetry.position,null);
+ s.session.dispose();
+});
 
 test('contract commands require its open screen and a stationary live vehicle at the depot; Back keeps the same parked session',()=>{
  const s=setup();s.contract('accept');assert.deepEqual(s.boardActions,[]);

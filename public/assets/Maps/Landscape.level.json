@@ -11,363 +11,41 @@
   "instances": [
     {
       "assetId": "shape:cube",
-      "placements": [
-        {
-          "id": "wb-parcel-depot.p1",
-          "role": "marker.parcel",
-          "position": [
-            -159.815,
-            9.307,
-            -43.229
-          ],
-          "name": "depot.p1",
-          "collision": false,
-          "rotation": [
-            0,
-            33.7,
-            0
-          ],
-          "scale": [
-            36.381,
-            0.2,
-            45.321
-          ]
-        },
-        {
-          "id": "wb-parcel-depot.p2",
-          "role": "marker.parcel",
-          "position": [
-            -144.409,
-            9.788,
-            -53.499
-          ],
-          "name": "depot.p2",
-          "collision": false,
-          "rotation": [
-            0,
-            33.7,
-            0
-          ],
-          "scale": [
-            37.691,
-            0.2,
-            45.327
-          ]
-        },
-        {
-          "id": "wb-parcel-depot.p3",
-          "role": "marker.parcel",
-          "position": [
-            -130.345,
-            10.199,
-            -62.877
-          ],
-          "name": "depot.p3",
-          "collision": false,
-          "rotation": [
-            0,
-            33.7,
-            0
-          ],
-          "scale": [
-            29.942,
-            0.2,
-            45.321
-          ]
-        },
-        {
-          "id": "wb-parcel-depot.p4",
-          "role": "marker.parcel",
-          "position": [
-            -176.267,
-            9.139,
-            -72.332
-          ],
-          "name": "depot.p4",
-          "collision": false,
-          "rotation": [
-            0,
-            33.7,
-            0
-          ],
-          "scale": [
-            46.205,
-            0.2,
-            44.045
-          ]
-        },
-        {
-          "id": "wb-parcel-depot.p5",
-          "role": "marker.parcel",
-          "position": [
-            -158.636,
-            9.704,
-            -84.086
-          ],
-          "name": "depot.p5",
-          "collision": false,
-          "rotation": [
-            0,
-            33.7,
-            0
-          ],
-          "scale": [
-            38.564,
-            0.2,
-            44.042
-          ]
-        },
-        {
-          "id": "wb-parcel-delivery.p1",
-          "role": "marker.parcel",
-          "position": [
-            179.479,
-            14.148,
-            36.349
-          ],
-          "name": "delivery.p1",
-          "collision": false,
-          "rotation": [
-            0,
-            -57.7,
-            0
-          ],
-          "scale": [
-            39.32,
-            0.2,
-            44.882
-          ]
-        },
-        {
-          "id": "wb-parcel-delivery.p2",
-          "role": "marker.parcel",
-          "position": [
-            189.11,
-            14.312,
-            51.556
-          ],
-          "name": "delivery.p2",
-          "collision": false,
-          "rotation": [
-            0,
-            -57.7,
-            0
-          ],
-          "scale": [
-            32.69,
-            0.2,
-            44.884
-          ]
-        },
-        {
-          "id": "wb-building-depot.p1",
-          "role": "building.transport.depot",
-          "position": [
-            -161.035,
-            12,
-            -45.06
-          ],
-          "name": "building.transport.depot depot.p1",
-          "rotation": [
-            0,
-            -146.3,
-            0
-          ],
-          "scale": [
-            28.38,
-            13,
-            24.52
-          ],
-          "color": "#a8adb0"
-        },
-        {
-          "id": "wb-building-depot.p2",
-          "role": "building.residential.detached",
-          "position": [
-            -146.731,
-            11.48,
-            -56.982
-          ],
-          "name": "building.residential.detached depot.p2",
-          "rotation": [
-            0,
-            -146.3,
-            0
-          ],
-          "scale": [
-            18.96,
-            9,
-            16.58
-          ],
-          "color": "#a8adb0"
-        },
-        {
-          "id": "wb-building-delivery.p1",
-          "role": "building.transport.delivery",
-          "position": [
-            177.786,
-            16.35,
-            37.424
-          ],
-          "name": "building.transport.delivery delivery.p1",
-          "rotation": [
-            0,
-            -57.7,
-            0
-          ],
-          "scale": [
-            24.06,
-            11,
-            24.86
-          ],
-          "color": "#a8adb0"
-        },
-        {
-          "id": "wb-furniture-depot-prop.sign.settlementName-1",
-          "role": "prop.sign.settlementName",
-          "position": [
-            -173.723,
-            10.164,
-            -46.493
-          ],
-          "name": "prop.sign.settlementName depot",
-          "rotation": [
-            0,
-            -56.3,
-            0
-          ],
-          "scale": [
-            3.6,
-            6.2,
-            0.4
-          ],
-          "color": "#9a9fa2"
-        },
-        {
-          "id": "wb-furniture-depot-prop.sign.settlementName-2",
-          "role": "prop.sign.settlementName",
-          "position": [
-            -135.823,
-            11.531,
-            -87.143
-          ],
-          "name": "prop.sign.settlementName depot",
-          "rotation": [
-            0,
-            123.7,
-            0
-          ],
-          "scale": [
-            3.6,
-            6.2,
-            0.4
-          ],
-          "color": "#9a9fa2"
-        },
-        {
-          "id": "wb-furniture-delivery-prop.sign.settlementName-1",
-          "role": "prop.sign.settlementName",
-          "position": [
-            155.01,
-            15.229,
-            40.924
-          ],
-          "name": "prop.sign.settlementName delivery",
-          "rotation": [
-            0,
-            -147.7,
-            0
-          ],
-          "scale": [
-            3.6,
-            6.2,
-            0.4
-          ],
-          "color": "#9a9fa2"
-        },
-        {
-          "id": "wb-furniture-delivery-prop.sign.settlementName-2",
-          "role": "prop.sign.settlementName",
-          "position": [
-            185.615,
-            15.608,
-            65.326
-          ],
-          "name": "prop.sign.settlementName delivery",
-          "rotation": [
-            0,
-            32.3,
-            0
-          ],
-          "scale": [
-            3.6,
-            6.2,
-            0.4
-          ],
-          "color": "#9a9fa2"
-        },
-        {
-          "id": "board",
-          "role": "logistics.board",
-          "position": [
-            -174,
-            9.828,
-            -35
-          ],
-          "name": "M0 — İş Panosu (graybox)",
-          "behavior": {
-            "script": "ridgebound-contract-board"
-          },
-          "scale": [
-            4.8,
-            4,
-            0.5
-          ],
-          "color": "#e3c43a"
-        },
-        {
-          "id": "pickup",
-          "role": "logistics.pickup",
-          "position": [
-            -172,
-            9.447,
-            -47
-          ],
-          "name": "M0 — Yük Alma Noktası (graybox)",
-          "scale": [
-            6,
-            1.2,
-            4
-          ],
-          "color": "#e8892a"
-        },
-        {
-          "id": "delivery",
-          "role": "logistics.delivery",
-          "position": [
-            159,
-            14.428,
-            50
-          ],
-          "name": "M0 — Teslim Noktası (graybox)",
-          "scale": [
-            6,
-            1.2,
-            4
-          ],
-          "color": "#3fae55"
-        }
-      ]
+      "placements": []
     }
   ],
   "characters": [],
   "worldSettings": {
+    "partition": {
+      "enabled": true,
+      "grids": {
+        "main": {
+          "cellSize": 128,
+          "loadRange": 384
+        },
+        "foliage": {
+          "cellSize": 64,
+          "loadRange": 256
+        }
+      }
+    },
+    "staticObjectsCastShadow": true,
+    "viewDistance": 2000,
     "gameMode": "forge.vehicle",
     "hudWidget": "ridgebound-depot-hud"
   },
-  "skyAtmosphere": {},
+  "worldCells": [
+    "-2_-1",
+    "1_0"
+  ],
+  "skyAtmosphere": {
+    "rayleigh": 1,
+    "turbidity": 2
+  },
   "heightFog": {
-    "density": 0.01
+    "mode": "exp",
+    "color": "#80bdff",
+    "density": 0.000989
   },
   "cloudLayer": {
     "coverage": 0.4,
@@ -416,7 +94,8 @@
       ],
       "color": "#ffffff",
       "intensity": 2,
-      "castShadow": true
+      "castShadow": true,
+      "cascadedShadows": true
     }
   ],
   "landscapes": [
@@ -431,66 +110,5 @@
       "name": "Landscape — M0"
     }
   ],
-  "actors": [
-    {
-      "classRef": "assets/vehicles/gaz52/Script_Gaz52.actor.json",
-      "position": [
-        -180,
-        9.713,
-        -50
-      ],
-      "name": "Gaz52",
-      "rotationYDeg": 120,
-      "scale": 1
-    }
-  ],
-  "worldWidgets": [
-    {
-      "widget": "ridgebound-marker-pickup",
-      "anchor": {
-        "worldPos": [
-          -172,
-          9.447,
-          -47
-        ],
-        "offset3d": [
-          0,
-          5,
-          0
-        ]
-      },
-      "maxDistance": 160
-    },
-    {
-      "widget": "ridgebound-marker-board",
-      "anchor": {
-        "worldPos": [
-          -174,
-          9.828,
-          -35
-        ],
-        "offset3d": [
-          0,
-          5,
-          0
-        ]
-      },
-      "maxDistance": 160
-    },
-    {
-      "widget": "ridgebound-marker-delivery",
-      "anchor": {
-        "worldPos": [
-          159,
-          14.428,
-          50
-        ],
-        "offset3d": [
-          0,
-          5,
-          0
-        ]
-      }
-    }
-  ]
+  "actors": []
 }

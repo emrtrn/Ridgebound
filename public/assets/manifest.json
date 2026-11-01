@@ -448,7 +448,7 @@
         "castShadow": false,
         "receiveShadow": false,
         "collision": false,
-        "bytes": 844
+        "bytes": 3399
       },
       "source": {
         "origin": "Ridgebound"
@@ -478,7 +478,7 @@
         "castShadow": false,
         "receiveShadow": false,
         "collision": false,
-        "bytes": 7946
+        "bytes": 9175
       },
       "source": {
         "origin": "Ridgebound"
@@ -568,7 +568,7 @@
         "castShadow": false,
         "receiveShadow": false,
         "collision": false,
-        "bytes": 727
+        "bytes": 764
       },
       "source": {
         "origin": "Ridgebound"
@@ -598,7 +598,67 @@
         "castShadow": false,
         "receiveShadow": false,
         "collision": false,
-        "bytes": 7868
+        "bytes": 9991
+      },
+      "source": {
+        "origin": "Ridgebound"
+      },
+      "license": "Project-local",
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      }
+    },
+    {
+      "id": "ridgebound-routes",
+      "name": "Ridgebound — Güzergâh Bilgisi",
+      "assetType": "ui",
+      "category": "UI",
+      "path": "assets/UI/M0_Routes.ui.json",
+      "tags": [
+        "ridgebound",
+        "m0",
+        "routes"
+      ],
+      "placeable": false,
+      "runtime": {
+        "loadGroup": "ridgebound-ui",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 3252
+      },
+      "source": {
+        "origin": "Ridgebound"
+      },
+      "license": "Project-local",
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      }
+    },
+    {
+      "id": "ridgebound-delivery",
+      "name": "Ridgebound — Teslim ve Sonuç",
+      "assetType": "ui",
+      "category": "UI",
+      "path": "assets/UI/M0_Delivery.ui.json",
+      "tags": [
+        "ridgebound",
+        "m0",
+        "delivery"
+      ],
+      "placeable": false,
+      "runtime": {
+        "loadGroup": "ridgebound-ui",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 4857
       },
       "source": {
         "origin": "Ridgebound"

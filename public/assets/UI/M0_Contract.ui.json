@@ -36,6 +36,70 @@
             }
           },
           {
+            "id": "contract-profiles",
+            "widget": "Stack",
+            "props": {
+              "direction": "row",
+              "gap": 8
+            },
+            "children": [
+              {
+                "id": "profile-light",
+                "widget": "Button",
+                "props": {
+                  "text": "Hafif · 500 kg",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:contract:profile-light"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "profile-heavy",
+                "widget": "Button",
+                "props": {
+                  "text": "Ağır · 1500 kg",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:contract:profile-heavy"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "profile-overload",
+                "widget": "Button",
+                "props": {
+                  "text": "Sınır üstü · 2500 kg",
+                  "onClick": {
+                    "type": "message",
+                    "message": "ridgebound:contract:profile-overload"
+                  },
+                  "padding": 9,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              }
+            ]
+          },
+          {
+            "id": "contract-test-values",
+            "widget": "Text",
+            "props": {
+              "text": "Deneme profilleri · Gaz52 deneme kapasitesi: 2000 kg. Profili iş kabulünden önce seçin.",
+              "fontSize": 12,
+              "color": "#f2eee5"
+            }
+          },
+          {
             "id": "contract-summary",
             "widget": "Text",
             "props": {

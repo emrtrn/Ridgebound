@@ -8,6 +8,11 @@ export const DEPOT_LIMITS = {
 export interface DepotConfig {
   readonly entry: readonly [number, number, number];
   readonly focus: readonly [number, number, number];
+  readonly pickupPointId?: string;
+}
+export interface DeliveryConfig {
+  readonly pointId: string;
+  readonly position: readonly [number, number, number];
 }
 
 export function depotEntryStatus(config: DepotConfig | null, position: readonly number[] | null, speed: number): "unavailable" | "far" | "moving" | "ready" {

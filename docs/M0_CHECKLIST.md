@@ -1,7 +1,7 @@
 # Ridgebound M0 — uygulama ve kabul kontrol listesi
 
 Tarih: 01.11.2026. P2 teknik ve kullanıcı kabulü tamamlandı.
-M0 durumu: **KISMİ — A kuralları, B saha bağlantısı, C depo/kamera ve D pano/sözleşme teknik dilimi hazır; yükleme/teslim/ödül runtime'ı ve tam M0 kullanıcı kabulü açık.**
+M0 durumu: **KISMİ — A–F teknik dilimleri hazır; G kalan kayıt/kurtarma ve H kapanış açık. Kullanıcı kabul/yükleme/sürüş ile gerçek teslim noktasına ulaşmayı doğruladı; F teslim/sonuç kullanıcı kabulü henüz yok.**
 Bu belge canlı çalışma listesidir; tarihsel tasarım belgeleri değiştirilmez.
 `[x]` yalnız satırda belirtilen işi doğrular; bir uygulama kutusunun kapanması
 ilgili M0 oyun kabulünün geçtiği anlamına gelmez.
@@ -72,7 +72,7 @@ Yeni genel motor değişikliği şu an zorunlu olarak kanıtlanmış değil.
 - [x] Yanlış nokta/yük/araç, boş teslim ve kapasite aşımını reddet.
 - [x] Tamamlanma, ödeme işareti ve bakiyeyi tek durum değişikliğiyle üret.
 - [x] Odaklı kural testlerini ve Ridgebound type-check sonucunu doğrula (günlükte).
-- [x] D kabul/iptal runtime'ında tek otoriter görev kaydını kullan; paralel kayıt oluşturma. E/F bağlantıları henüz yok.
+- [x] D kabul/iptal ve E yükleme/HUD runtime'ında tek otoriter görev kaydını kullan; paralel kayıt oluşturma. F bağlantısı henüz yok.
 
 Kod: `src/game/m0/transport.ts`; testler: `tests/m0/transport.test.mjs`.
 Bu dilim fizik/input/UI/save uygulamaz. Sayılar yalnız test fixture'larında;
@@ -127,18 +127,34 @@ gerçek browser save/load turu geçti. D kullanıcı görsel kabulü henüz alı
 
 ### E — Yükleme ve HUD
 
-- [ ] Hafif/ağır içerik profilleri ve nominal kapasite için etiketli test değerleri seç.
-- [ ] Doğru noktada açık yükleme; kapasite üstü yüklenmesin, kimlik korunsun.
-- [ ] HUD: iş, yük/durum, hedef/yön, hız, eylem ve anlaşılır hata mesajı.
-- [ ] Sade rota kıyasında yalnız tanımlı/ölçülmüş mesafe ve riskleri göster;
+- [x] Hafif/ağır içerik profilleri ve nominal kapasite için etiketli test değerleri seç.
+- [x] Doğru noktada açık yükleme; kapasite üstü yüklenmesin, kimlik korunsun.
+- [x] HUD: iş, yük/durum, hedef/yön, hız, eylem ve anlaşılır hata mesajı.
+- [x] Sade rota kıyasında yalnız tanımlı/ölçülmüş mesafe ve riskleri göster;
   bilgi yoksa bunu belirt. Tam GPS veya güvenlik garantisi yok. M0-06–08.
+
+E kanıtı: [yükleme/HUD raporu](reports/M0_E_LOADING_HUD.md). Hafif 500 kg,
+ağır 1500 kg, sınır üstü denemesi 2500 kg; Gaz52 için 2000 kg **deneme kapasitesi**.
+Yükleme mevcut depo ekranında ayrı eylemdir; gerçek fizik kütlesi/COM değişmez (M1).
+Yol çizgileri Forge spline örneklemesiyle yatay ölçüldü: ana 533 m, alternatif
+435 m; depo/teslim bağlantıları ve sürüş riski bu ölçüme dahil değildir.
+Yüklü hafif/ağır browser save/load geçti. Kullanıcı gerçek sahnede işi kabul edip
+yüklediğini ve teslim noktasına ulaştığını bildirdi. Bu ana akış kullanıcı kanıtıdır;
+her deneme profili/kapasite olumsuz senaryosunun manuel sınandığı anlamına gelmez.
 
 ### F — Teslim ve sonuç
 
-- [ ] Aktif iş + doğru kargo + aynı taşıyıcı araç + doğru nokta + açık teslimi bağla.
-- [ ] Yanlış nokta/yük/boş araç ve art arda komutları sınayarak reddet.
-- [ ] Teslim/tamamlanma ve bir defalık sabit ücreti bağla; yeni iş otomatik başlamasın.
-- [ ] Sonuç ekranından tekrar ödeme yapılamasın. M0-09–12.
+- [x] Aktif iş + doğru kargo + aynı taşıyıcı araç + doğru nokta + açık teslimi bağla.
+- [x] Yanlış nokta/yük/boş araç ve art arda komutları sınayarak reddet.
+- [x] Teslim/tamamlanma ve bir defalık sabit ücreti bağla; yeni iş otomatik başlamasın.
+- [x] Sonuç ekranından tekrar ödeme yapılamasın. M0-09–12 teknik kanıtı.
+
+F kanıtı: [teslim/sonuç raporu](reports/M0_F_DELIVERY_RESULT.md). Yeşil alanda
+durunca E ekranı açar; ayrı “Teslim et” onayı yükü teslim eder. Bölgeye giriş
+otomatik teslim/ödeme değildir. Mevcut tek görev kaydı delivered makbuzunu,
+ardından completed/ödeme işareti/bakiyeyi saklar. Tekrar onay veya completed
+restore ek ücret üretmez. Delivered restore açık onayla tamamlanabilir.
+F kullanıcı kabulü ve tüm G/H kapanış kanıtı açık kalır.
 
 ### G — Kayıt ve kurtarma
 
@@ -167,8 +183,8 @@ Kayıt bağlantısını her dilimde geliştir; bu bölüm son ana ertelenmez.
 
 ## 5. Bağlayıcı M0 kabul listesi
 
-Kaynak şablondaki kimlikler korunur. Tam M0 kabulü henüz yoktur. M0-02–05 için
-D teknik kanıtı vardır; kullanıcı kabulü açık olduğundan kutular kapatılmadı.
+Kaynak şablondaki kimlikler korunur. Tam M0 kabulü henüz yoktur. M0-02–12 için
+D/E/F teknik kanıtı vardır; tüm kabul koşulları kapanmadığından kutular kapatılmadı.
 
 - [ ] M0-01 — Tek araç sürülür; depo, teslimat ve tek iş sahnede tanımlıdır.
 - [ ] M0-02 — Depo/pano açılır, yönetim görünümünden sürüşe dönülür.
@@ -188,7 +204,7 @@ D teknik kanıtı vardır; kullanıcı kabulü açık olduğundan kutular kapat�
 
 ## 6. Açık kararlar ve kapsam sınırı
 
-- [ ] Kapasite, yük kg, ücret/para birimi ve yük adları: gerçek içerik henüz seçilmedi. D: 500 kg erzak / 100 deneme kredisi, etiketli test içeriği.
+- [ ] Kapasite, yük kg, ücret/para birimi ve yük adları: gerçek içerik henüz seçilmedi. E: 500/1500/2500 kg erzak, 2000 kg kapasite, 100 deneme kredisi; etiketli test içeriği.
 - [ ] Arazi boyutu, seed, depo/teslim koordinatları ve rota ölçüleri: test/kalibrasyon.
 - [ ] Kamera sınırları, durma eşiği, etkileşim menzili ve tuşlar: prototipte kalibre edilecek.
 - [ ] Otomatik kayıt politikası: öneri kritik geçişler sonrası mevcut capability ile kayıt.
@@ -227,6 +243,11 @@ A sırasında build/browser/manuel oyun kabulü yapılmadı; M0-01–15 açık k
 | 01.11.2026 | D pano/sözleşme | Forge UI + mevcut Behavior/ScriptState ile ayrı sözleşme, bağımsız ayrıntılar, kabul/iptal; tek `ridgebound.transport.v1` kaydı. Rapor: `reports/M0_D_CONTRACT_BOARD.md`. |
 | 01.11.2026 | D doğrulama | 16/16 M0 testi, Ridgebound check geçti. Ayrı 5198 projesinde kabul/iptal save/load, reload, storage hatası/tekrar kayıt, Back/Esc ve iki viewport doğrulandı. |
 | 01.11.2026 | Forge UI katman düzeltmesi | `src/style.css`: ekran kökü dünya etiketlerinin üstünde. Ridgebound küçük ekran browser kanıtı + filtreli Forge UI grubunda 30 test geçti; tam motor/build gate'i değildir. |
+| 01.11.2026 | E yükleme ve HUD | Mevcut Forge Vehicle session + UI/ViewModel + tek kalıcı görev kaydı. Hafif/ağır seçim, açık yükleme, nominal kapasite reddi, kargo/araç kimliği, canlı görev HUD'u ve rota bilgisi. Rapor: `reports/M0_E_LOADING_HUD.md`. |
+| 01.11.2026 | E doğrulama | 21/21 M0 testi ve Ridgebound check geçti. Ayrı 5199 projesinde hafif/ağır yükleme, aşım reddi, loaded save/load, storage hatası/tekrar kayıt, canlı hız ve iki viewport doğrulandı. Forge kaynakları bu dilimde değiştirilmedi. |
+| 01.11.2026 | E kullanıcı testi | Kullanıcı gerçek sahnede işi kabul etti, yükledi ve teslim noktasına ulaştı. Teslimin henüz yapılamaması o anda açık olan F kapsamıydı; tüm olumsuz koşulların manuel kabulü iddia edilmedi. |
+| 01.11.2026 | F teslim/sonuç | Yeşil noktada duran aynı araç + E ekranı + açık onay; delivered makbuzu ve tek complete/ödeme güncellemesi; sonuç/bakiye ve yeniden açma. |
+| 01.11.2026 | F doğrulama | 26/26 M0 testi ve check geçti. Ayrı 5200 projesinde boş teslim reddi, açık onay, storage hatasında delivered restore, completed save/load ve tekrar komutlarda bakiye 100 kaldı. Güncel cell düzeninde Forge merge bağlantısı ve salt okunur runtime/depo kontrolü de geçti. Rapor: `reports/M0_F_DELIVERY_RESULT.md`. |
 
-Sıradaki dilim E: yükleme ve HUD. F teslim/ödül, G kalan kayıt/kurtarma ve H
-kapanış açık. M0-01–15 tam kabul kutuları açık. B/C/D için yeni production build üretilmedi.
+Sıradaki dilim G: kalan kayıt/kurtarma; ardından H kapanış.
+M0-01–15 tam kabul kutuları açık. B–F için yeni production build üretilmedi.

@@ -2,7 +2,7 @@
 
 VS Code'da **Terminal > Run Build Task** (`Ctrl+Shift+B`), Forge'daki gibi geliştirme sunucusunu başlatıp editörü tarayıcıda açar. Oyun için **Terminal > Run Task > Open Game** seç. Sunucu zaten çalışıyorsa aynı sunucu kullanılır; bu görevlerin açtığı sunucu arka planda çalışmaya devam eder. Başlatma günlükleri `.forge/dev-server/` altındadır.
 
-Forge ortak kaynağını kullanan bağımsız oyun projesi. P2 kabulü tamamlandı. M0 için Landscape/Gaz52, görev kuralları, depo/kamera (E depo, R aracı düzelt) ve pano/sözleşme kabul-iptal akışı hazır. Depoda “Sarı iş panosu” düğmesi sözleşmeyi açar; kabul ve iptal mevcut hızlı kayda bağlanır. Yükleme/teslim/ödül runtime döngüsü henüz bağlı değil. Güncel sıra: [M0 kontrol listesi](docs/M0_CHECKLIST.md).
+Forge ortak kaynağını kullanan bağımsız oyun projesi. P2 kabulü tamamlandı. M0 için Landscape/Gaz52, depo/kamera, pano/sözleşme, yükleme, görev HUD'u ve teslim/sonuç hazır. Depoda E → “Sarı iş panosu” ile profili seçip işi kabul edin; “Yükü araca al” ayrı işlemdir. Yeşil teslim alanında durup E ile ekranı açın ve “Teslim et” düğmesine basın. Sabit ücret bir kez eklenir; yeni iş otomatik başlamaz. R aracı düzeltir. Güncel sıra: [M0 kontrol listesi](docs/M0_CHECKLIST.md).
 
 ## Çalıştırma
 
@@ -26,7 +26,7 @@ Varsayılan yerleşim `Desktop/Forge` ve `Desktop/Games/Ridgebound`. Başka bir 
 - Genel motor/editör/araç geliştirmesi: Forge deposu.
 - Oyun modülü ve editör kataloğu: manifestteki `game.module` ve `game.editorCatalog` alanları.
 
-Pano sözleşmesi etiketli deneme içeriğidir; kabul otomatik yüklemez. Yükleme/teslimat döngüsü, gerçek ekonomi ve tam M0 kabulü henüz yoktur. Bağımsız build doğrulaması build kayıtlarıyla izlenir. Build ve yeniden derleme komutları aşağıdadır. Genel Forge kamera, davranış ve editör katalogları kopyalanmadan ortak kaynaktan kullanılır.
+Pano sözleşmeleri etiketli deneme içeriğidir: 500/1500 kg yük, 2500 kg sınır üstü denemesi, 2000 kg Gaz52 deneme kapasitesi ve 100 deneme kredisi ücret. Kabul otomatik yüklemez. HUD kuş uçuşu hedef mesafesi/yönü, canlı hız ve bakiye gösterir; depoda iki yolun çizgi uzunluğu karşılaştırılabilir. Teslim ekranı sonucu, hızlı kayıt/yükleme ve sürüşe dönüşü sunar. Gerçek kapasite/ekonomi, yükün fizik kütlesi/COM etkisi ve tam M0 kabulü henüz yoktur. Bağımsız build doğrulaması build kayıtlarıyla izlenir. Build ve yeniden derleme komutları aşağıdadır. Genel Forge kamera, davranış ve editör katalogları kopyalanmadan ortak kaynaktan kullanılır.
 
 ## Bağımsız build ve önizleme
 

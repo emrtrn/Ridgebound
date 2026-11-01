@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "type": "ui",
-  "name": "Ridgebound — Depo İpucu",
+  "name": "Ridgebound — Görev ve Sürüş HUD",
   "preview": {
     "width": 1280,
     "height": 720
@@ -20,20 +20,115 @@
         "widget": "Panel",
         "props": {
           "width": 350,
-          "padding": 16,
-          "gap": 10,
+          "padding": 14,
+          "gap": 7,
           "background": "rgba(18,32,26,0.95)",
           "radius": 8
         },
         "children": [
           {
-            "id": "depot-prompt",
+            "id": "hud-title",
+            "widget": "Text",
+            "props": {
+              "text": "Ridgebound · Nakliye",
+              "fontSize": 18,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "hud-job",
             "widget": "Text",
             "props": {
               "text": {
-                "bind": "depot.prompt"
+                "bind": "hud.job"
               },
-              "fontSize": 15,
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "hud-cargo",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "hud.cargo"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "hud-target",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "hud.target"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "hud-speed",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "hud.speed"
+              },
+              "fontSize": 17,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "hud-balance",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "hud.balance"
+              },
+              "fontSize": 13,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "hud-action",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "hud.action"
+              },
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "hud-notice",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "hud.notice"
+              },
+              "fontSize": 13,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "hud-save-status",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.saveStatus"
+              },
+              "fontSize": 12,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "hud-controls",
+            "widget": "Text",
+            "props": {
+              "text": "W/S gaz-fren · A/D direksiyon · Space el freni\nE depo/teslim · R aracı düzelt · F8 ölçümler",
+              "fontSize": 12,
               "color": "#f2eee5"
             }
           }

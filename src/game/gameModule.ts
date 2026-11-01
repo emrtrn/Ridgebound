@@ -4,17 +4,21 @@ import type { RuntimeServiceKey } from "@/scene/capabilities/RuntimeServices";
 import type { BehaviorRegistryFactory } from "@/scene/capabilities/runtimeServiceKeys";
 import { behaviorRegistryFactoryService, gameModeProviderService, saveGameCommandsService, uiPresenterService, uiViewModelService } from "@/scene/capabilities/runtimeServiceKeys";
 import { createDepotGameMode } from "./m0/depotGameMode";
-import type { DepotConfig } from "./m0/depotRules";
+import type { DeliveryConfig, DepotConfig } from "./m0/depotRules";
 import { BOARD_SCRIPT, createContractBoard } from "./m0/contractBoard";
+import { actorInstanceEntityId } from "@engine/scene/actorInstance";
+import { DEMO_CAPACITY_KG } from "./m0/m0Content";
+import type { TransportPoints } from "./m0/transportHud";
 
 /** Compose Forge runtime systems with Ridgebound's depot and contract rules. */
 export function createGameModule(): ForgeGameModule {
   const common = createCommonGameModule();
-  let status: HTMLElement | null = null;
   let depot: DepotConfig | null = null;
+  let points: TransportPoints | null = null;
+  let deliveryConfig: DeliveryConfig | null = null;
+  const capacities = new Map<string, number>();
   let boardReady = false;
   let board: ReturnType<typeof createContractBoard> | null = null;
-  const removeStatus = () => { status?.remove(); status = null; };
   return {
     ...common,
     id: "ridgebound.prototype",
@@ -32,7 +36,6 @@ export function createGameModule(): ForgeGameModule {
         },
       } });
       const publish = (fields: Record<string, string | number | boolean>) => {
-        if (status && typeof fields["depot.active"] === "boolean") status.hidden = fields["depot.active"];
         const store = runtime.services.resolve(uiViewModelService);
         store?.setFields(fields);
         store?.flush();
@@ -47,7 +50,7 @@ export function createGameModule(): ForgeGameModule {
         if (value === "Load failed") return "Kayıt yüklenemedi.";
         return "Kayıt kullanılamıyor.";
       };
-      board = createContractBoard({ publish, saveStatus, save() {
+      board = createContractBoard({ publish, saveStatus, points: () => points, save() {
         runtime.services.resolve(saveGameCommandsService)?.handleUiMessage("save:write:quick");
       } });
       const provider = runtime.services.resolve(gameModeProviderService);
@@ -58,6 +61,24 @@ export function createGameModule(): ForgeGameModule {
         presenter: () => runtime.services.resolve(uiPresenterService),
         publish,
         contractAction: (action) => boardReady ? board?.action(action) ?? false : false,
+        loadCargo(pointId, vehicleId) {
+          const capacity = capacities.get(vehicleId);
+          if (!boardReady || capacity === undefined) {
+            publish({ "depot.notice": "Bu araç veya görev noktası için yükleme tanımlı değil." });
+            return false;
+          }
+          return board?.load(pointId, vehicleId, capacity) ?? false;
+        },
+        telemetry: (live) => board?.updateHud(live),
+        deliveryConfig: () => deliveryConfig,
+        deliverCargo(pointId, vehicleId) {
+          if (!boardReady || !capacities.has(vehicleId)) {
+            board?.deliveryNotice("Bu araç veya görev noktası için teslim tanımlı değil.");
+            return false;
+          }
+          return board?.deliver(pointId, vehicleId) ?? false;
+        },
+        deliveryNotice: (message) => board?.deliveryNotice(message),
       });
       provider.resolve = async (request) => request.gameModeId === "forge.vehicle"
         ? truckMode
@@ -66,35 +87,28 @@ export function createGameModule(): ForgeGameModule {
     async onLevelLoaded(context) {
       await common.onLevelLoaded?.(context);
       const placements = context.layout.instances.flatMap((group) => group.placements);
-      const entry = placements.find((placement) => placement.role === "logistics.pickup");
+      const entry = placements.find((placement) => placement.id === "pickup" && placement.role === "logistics.pickup");
       const center = placements.find((placement) => placement.role === "building.transport.depot");
+      const delivery = placements.find((placement) => placement.id === "delivery" && placement.role === "logistics.delivery");
       boardReady = placements.some((placement) => placement.role === "logistics.board" && placement.behavior?.script === BOARD_SCRIPT)
         && placements.some((placement) => placement.id === "pickup" && placement.role === "logistics.pickup")
         && placements.some((placement) => placement.id === "delivery" && placement.role === "logistics.delivery");
       depot = entry && center ? {
         entry: [...entry.position], focus: [center.position[0], entry.position[1], center.position[2]],
+        pickupPointId: "pickup",
       } : null;
-      removeStatus();
-      status = document.createElement("section");
-      status.id = "ridgebound-status";
-      status.dataset.gameModule = "ridgebound.prototype";
-      status.style.cssText = "position:absolute;top:24px;left:24px;max-width:calc(100vw - 48px);padding:18px 22px;border:1px solid #768979;border-radius:8px;background:#17251feb;color:#f3eee1;font:15px/1.6 system-ui;pointer-events:none;box-sizing:border-box";
-      const title = document.createElement("strong");
-      title.textContent = "Ridgebound";
-      title.style.cssText = "display:block;font-size:24px;letter-spacing:1px";
-      const description = document.createElement("div");
-      const driving = context.layout.worldSettings?.gameMode === "forge.vehicle";
-      description.textContent = driving ? "M0 saha prototipi · Gaz52" : "Prototip alanı";
-      const controls = document.createElement("div");
-      controls.textContent = driving
-        ? "W/S: gaz/fren · A/D: direksiyon · Space: el freni · E: depo · R: aracı düzelt · F8: ölçümler"
-        : "WASD: hareket · Sağ fare: bakış · Q/E: alçal/yüksel";
-      controls.style.cssText = "font-size:12px;color:#c6d3c7;margin-top:8px";
-      status.append(title, description, controls);
-      document.getElementById("ui-overlay")?.append(status);
+      points = entry && delivery ? { pickup: [...entry.position], delivery: [...delivery.position] } : null;
+      deliveryConfig = delivery ? { pointId: "delivery", position: [...delivery.position] } : null;
+      capacities.clear();
+      (context.layout.actors ?? []).forEach((actor, index) => {
+        const id = actorInstanceEntityId(index);
+        if (actor.classRef === "assets/vehicles/gaz52/Script_Gaz52.actor.json" && context.entity(id)?.components.Vehicle) {
+          capacities.set(id, DEMO_CAPACITY_KG);
+        }
+      });
     },
     update(deltaSeconds) { common.update?.(deltaSeconds); },
-    onLevelUnloaded() { depot = null; boardReady = false; board?.reset(); removeStatus(); common.onLevelUnloaded?.(); },
-    dispose() { depot = null; boardReady = false; board?.reset(); removeStatus(); common.dispose?.(); },
+    onLevelUnloaded() { depot = null; points = null; deliveryConfig = null; capacities.clear(); boardReady = false; board?.reset(); common.onLevelUnloaded?.(); },
+    dispose() { depot = null; points = null; deliveryConfig = null; capacities.clear(); boardReady = false; board?.reset(); common.dispose?.(); },
   };
 }

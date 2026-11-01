@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "type": "worldCell",
+  "grid": "main",
+  "key": "1_0",
+  "instances": [
+    {
+      "assetId": "shape:cube",
+      "placements": [
+        {
+          "id": "wb-parcel-delivery.p1",
+          "role": "marker.parcel",
+          "position": [
+            179.479,
+            14.148,
+            36.349
+          ],
+          "name": "delivery.p1",
+          "collision": false,
+          "rotation": [
+            0,
+            -57.7,
+            0
+          ],
+          "scale": [
+            39.32,
+            0.2,
+            44.882
+          ]
+        },
+        {
+          "id": "wb-parcel-delivery.p2",
+          "role": "marker.parcel",
+          "position": [
+            189.11,
+            14.312,
+            51.556
+          ],
+          "name": "delivery.p2",
+          "collision": false,
+          "rotation": [
+            0,
+            -57.7,
+            0
+          ],
+          "scale": [
+            32.69,
+            0.2,
+            44.884
+          ]
+        },
+        {
+          "id": "wb-building-delivery.p1",
+          "role": "building.transport.delivery",
+          "position": [
+            177.786,
+            16.35,
+            37.424
+          ],
+          "name": "building.transport.delivery delivery.p1",
+          "rotation": [
+            0,
+            -57.7,
+            0
+          ],
+          "scale": [
+            24.06,
+            11,
+            24.86
+          ],
+          "color": "#a8adb0"
+        },
+        {
+          "id": "wb-furniture-delivery-prop.sign.settlementName-1",
+          "role": "prop.sign.settlementName",
+          "position": [
+            155.01,
+            15.229,
+            40.924
+          ],
+          "name": "prop.sign.settlementName delivery",
+          "rotation": [
+            0,
+            -147.7,
+            0
+          ],
+          "scale": [
+            3.6,
+            6.2,
+            0.4
+          ],
+          "color": "#9a9fa2"
+        },
+        {
+          "id": "wb-furniture-delivery-prop.sign.settlementName-2",
+          "role": "prop.sign.settlementName",
+          "position": [
+            185.615,
+            15.608,
+            65.326
+          ],
+          "name": "prop.sign.settlementName delivery",
+          "rotation": [
+            0,
+            32.3,
+            0
+          ],
+          "scale": [
+            3.6,
+            6.2,
+            0.4
+          ],
+          "color": "#9a9fa2"
+        },
+        {
+          "id": "delivery",
+          "role": "logistics.delivery",
+          "position": [
+            159,
+            14.428,
+            50
+          ],
+          "name": "M0 — Teslim Noktası (graybox)",
+          "scale": [
+            6,
+            1.2,
+            4
+          ],
+          "color": "#3fae55"
+        }
+      ]
+    }
+  ],
+  "worldWidgets": [
+    {
+      "widget": "ridgebound-marker-delivery",
+      "anchor": {
+        "worldPos": [
+          159,
+          14.428,
+          50
+        ],
+        "offset3d": [
+          0,
+          5,
+          0
+        ]
+      }
+    }
+  ]
+}

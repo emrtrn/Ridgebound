@@ -1,0 +1,182 @@
+{
+  "schema": 1,
+  "type": "ui",
+  "name": "Ridgebound — Teslim ve Sonuç",
+  "preview": {
+    "width": 1280,
+    "height": 720
+  },
+  "root": {
+    "id": "root",
+    "widget": "Canvas",
+    "props": {
+      "align": "center",
+      "justify": "center",
+      "padding": 20
+    },
+    "children": [
+      {
+        "id": "delivery-panel",
+        "widget": "Panel",
+        "props": {
+          "width": 680,
+          "padding": 20,
+          "gap": 14,
+          "background": "rgba(18,32,26,0.98)",
+          "radius": 8
+        },
+        "children": [
+          {
+            "id": "delivery-title",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "delivery.title"
+              },
+              "fontSize": 23,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "delivery-cargo",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "delivery.cargo"
+              },
+              "fontSize": 18,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "delivery-fee",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "delivery.fee"
+              },
+              "fontSize": 15,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "delivery-balance",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "delivery.balance"
+              },
+              "fontSize": 18,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "delivery-status",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "delivery.status"
+              },
+              "fontSize": 15,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "delivery-notice",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "delivery.notice"
+              },
+              "fontSize": 15,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "delivery-confirm",
+            "widget": "Button",
+            "props": {
+              "text": {
+                "bind": "delivery.confirmLabel"
+              },
+              "onClick": {
+                "type": "message",
+                "message": "ridgebound:delivery:confirm"
+              },
+              "padding": 10,
+              "background": "#33483e",
+              "color": "#ffffff",
+              "radius": 5
+            }
+          },
+          {
+            "id": "delivery-save-actions",
+            "widget": "Stack",
+            "props": {
+              "direction": "row",
+              "gap": 10
+            },
+            "children": [
+              {
+                "id": "delivery-save",
+                "widget": "Button",
+                "props": {
+                  "text": "Hızlı kaydet",
+                  "onClick": {
+                    "type": "message",
+                    "message": "save:write:quick"
+                  },
+                  "padding": 10,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "delivery-load",
+                "widget": "Button",
+                "props": {
+                  "text": "Hızlı kaydı yükle",
+                  "onClick": {
+                    "type": "message",
+                    "message": "save:load:quick"
+                  },
+                  "padding": 10,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              },
+              {
+                "id": "delivery-back",
+                "widget": "Button",
+                "props": {
+                  "text": "Sürüşe dön (Esc)",
+                  "onClick": {
+                    "type": "back"
+                  },
+                  "padding": 10,
+                  "background": "#33483e",
+                  "color": "#ffffff",
+                  "radius": 5
+                }
+              }
+            ]
+          },
+          {
+            "id": "delivery-save-status",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "contract.saveStatus"
+              },
+              "fontSize": 13,
+              "color": "#f2eee5"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "initialFocus": "delivery-confirm"
+}

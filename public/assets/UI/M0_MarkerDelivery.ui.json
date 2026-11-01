@@ -29,7 +29,7 @@
         "id": "hint",
         "widget": "Text",
         "props": {
-          "text": "Teslim henüz etkin değil",
+          "text": "Dur · E: Teslim ekranı",
           "fontSize": 30,
           "color": "#f2eee5"
         }

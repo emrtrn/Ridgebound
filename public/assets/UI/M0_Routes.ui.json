@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "type": "ui",
+  "name": "Ridgebound — Güzergâh Bilgisi",
+  "preview": {
+    "width": 1280,
+    "height": 720
+  },
+  "root": {
+    "id": "root",
+    "widget": "Canvas",
+    "props": {
+      "align": "center",
+      "justify": "center",
+      "padding": 20
+    },
+    "children": [
+      {
+        "id": "routes-panel",
+        "widget": "Panel",
+        "props": {
+          "width": 720,
+          "padding": 18,
+          "gap": 12,
+          "background": "rgba(18,32,26,0.98)",
+          "radius": 8
+        },
+        "children": [
+          {
+            "id": "routes-title",
+            "widget": "Text",
+            "props": {
+              "text": "İki güzergâh · Serbest rota seçimi",
+              "fontSize": 22,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "routes-explanation",
+            "widget": "Text",
+            "props": {
+              "text": "Mesafeler mevcut haritadaki yol çizgilerinin yatay ölçümüdür. Depo ve teslim alanına bağlantılar dahil değildir.",
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "routes-main",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "routes.main"
+              },
+              "fontSize": 18,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "routes-main-risk",
+            "widget": "Text",
+            "props": {
+              "text": "Zemin ve engel riski: Bilgi mevcut değil. Sürüş koşulları henüz ölçülmedi.",
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "routes-alternative",
+            "widget": "Text",
+            "props": {
+              "text": {
+                "bind": "routes.alternative"
+              },
+              "fontSize": 18,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "routes-alternative-risk",
+            "widget": "Text",
+            "props": {
+              "text": "Zemin ve engel riski: Bilgi mevcut değil. Daha kısa olması daha güvenli olduğu anlamına gelmez.",
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "routes-advice",
+            "widget": "Text",
+            "props": {
+              "text": "Bu bilgiler öneri içindir. İki yolu da serbestçe kullanabilir, rota dışına çıkabilirsiniz. Yük kapasitesi güvenli geçiş garantisi değildir.",
+              "fontSize": 14,
+              "color": "#f2eee5"
+            }
+          },
+          {
+            "id": "routes-back",
+            "widget": "Button",
+            "props": {
+              "text": "Depoya dön (Esc)",
+              "onClick": {
+                "type": "back"
+              },
+              "padding": 9,
+              "background": "#33483e",
+              "color": "#ffffff",
+              "radius": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "initialFocus": "routes-back"
+}
