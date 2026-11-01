@@ -213,6 +213,7 @@ A sırasında build/browser/manuel oyun kabulü yapılmadı; M0-01–15 açık k
 | 01.11.2026 | C depo modu ve kamera | Duran araçla E girişi; Forge UI paneli, sınırlı RTS kamera yardımcıları, park ve aynı araca dönüş. Kaynak `src/game/m0/depotGameMode.ts`; rapor `reports/M0_C_DEPOT_CAMERA.md`. |
 | 01.11.2026 | C doğrulama | 12 M0 testi geçti; son check geçti; browser hareketli/uzak giriş reddi, kamera sınırları, basılı tuş güvenliği, dönüş, küçük viewport; geçici proje save/reload/Play geçti. |
 | 01.11.2026 | C kullanıcı kabulü | Kullanıcı depo/kamera görsel kabulünü onayladı. M0-02 pano/sözleşme nedeniyle açık. |
+| 01.11.2026 | Saha işaretleri | Kullanıcı testinde yük alanı bulunamadı. Pano sarı, yük alanı turuncu, teslim yeşil; üçüne Forge `worldWidgets` etiketi (pano/yük 160 m'de söner, teslim her mesafede). Browser: 3 etiket yüklendi, başlangıçta yük alanı etiketi okunur, depo ipucu "E — Depo yönetimine geç", console/HTTP hatası yok. Görev yönü/HUD hâlâ E dilimi. |
 
 Sıradaki dilim D: iş panosu ve sözleşme. Görev/kargo UI/save bağlantıları ve
 M0-01–15 hâlâ açık. B/C için yeni production build üretilmedi.

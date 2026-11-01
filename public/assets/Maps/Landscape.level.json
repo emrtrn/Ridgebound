@@ -320,7 +320,7 @@
             4,
             0.5
           ],
-          "color": "#8d979e"
+          "color": "#e3c43a"
         },
         {
           "id": "pickup",
@@ -336,7 +336,7 @@
             1.2,
             4
           ],
-          "color": "#b49a70"
+          "color": "#e8892a"
         },
         {
           "id": "delivery",
@@ -352,7 +352,7 @@
             1.2,
             4
           ],
-          "color": "#91a89c"
+          "color": "#3fae55"
         }
       ]
     }
@@ -439,6 +439,55 @@
       "name": "Gaz52",
       "rotationYDeg": 120,
       "scale": 1
+    }
+  ],
+  "worldWidgets": [
+    {
+      "widget": "ridgebound-marker-pickup",
+      "anchor": {
+        "worldPos": [
+          -172,
+          9.447,
+          -47
+        ],
+        "offset3d": [
+          0,
+          5,
+          0
+        ]
+      },
+      "maxDistance": 160
+    },
+    {
+      "widget": "ridgebound-marker-board",
+      "anchor": {
+        "worldPos": [
+          -174,
+          9.828,
+          -35
+        ],
+        "offset3d": [
+          0,
+          5,
+          0
+        ]
+      },
+      "maxDistance": 160
+    },
+    {
+      "widget": "ridgebound-marker-delivery",
+      "anchor": {
+        "worldPos": [
+          159,
+          14.428,
+          50
+        ],
+        "offset3d": [
+          0,
+          5,
+          0
+        ]
+      }
     }
   ]
 }

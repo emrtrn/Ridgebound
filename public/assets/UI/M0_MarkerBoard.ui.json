@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "type": "ui",
+  "name": "Ridgebound — İş Panosu Etiketi",
+  "preview": {
+    "width": 320,
+    "height": 120
+  },
+  "root": {
+    "id": "root",
+    "widget": "Panel",
+    "props": {
+      "padding": 20,
+      "gap": 6,
+      "background": "rgba(18,32,26,0.9)",
+      "radius": 10
+    },
+    "children": [
+      {
+        "id": "title",
+        "widget": "Text",
+        "props": {
+          "text": "İş panosu",
+          "fontSize": 42,
+          "color": "#ffe066"
+        }
+      },
+      {
+        "id": "hint",
+        "widget": "Text",
+        "props": {
+          "text": "Henüz etkin değil",
+          "fontSize": 30,
+          "color": "#f2eee5"
+        }
+      }
+    ]
+  }
+}

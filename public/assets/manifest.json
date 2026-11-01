@@ -490,6 +490,96 @@
         "allowRotation": false,
         "allowScale": false
       }
+    },
+    {
+      "id": "ridgebound-marker-pickup",
+      "name": "Ridgebound — Yük Alanı Etiketi",
+      "assetType": "ui",
+      "category": "UI",
+      "path": "assets/UI/M0_MarkerPickup.ui.json",
+      "tags": [
+        "ridgebound",
+        "m0",
+        "marker"
+      ],
+      "placeable": false,
+      "runtime": {
+        "loadGroup": "ridgebound-ui",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 716
+      },
+      "source": {
+        "origin": "Ridgebound"
+      },
+      "license": "Project-local",
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      }
+    },
+    {
+      "id": "ridgebound-marker-board",
+      "name": "Ridgebound — İş Panosu Etiketi",
+      "assetType": "ui",
+      "category": "UI",
+      "path": "assets/UI/M0_MarkerBoard.ui.json",
+      "tags": [
+        "ridgebound",
+        "m0",
+        "marker"
+      ],
+      "placeable": false,
+      "runtime": {
+        "loadGroup": "ridgebound-ui",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 712
+      },
+      "source": {
+        "origin": "Ridgebound"
+      },
+      "license": "Project-local",
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      }
+    },
+    {
+      "id": "ridgebound-marker-delivery",
+      "name": "Ridgebound — Teslim Noktası Etiketi",
+      "assetType": "ui",
+      "category": "UI",
+      "path": "assets/UI/M0_MarkerDelivery.ui.json",
+      "tags": [
+        "ridgebound",
+        "m0",
+        "marker"
+      ],
+      "placeable": false,
+      "runtime": {
+        "loadGroup": "ridgebound-ui",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 727
+      },
+      "source": {
+        "origin": "Ridgebound"
+      },
+      "license": "Project-local",
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      }
     }
   ]
 }

@@ -24,3 +24,5 @@ Graybox binalar, parseller ve işaretler Forge primitive geometrileridir.
 
 `assets/UI/M0_Depot.ui.json` ve `M0_DepotHUD.ui.json` Ridgebound için oluşturulan
 proje arayüz verileridir; mevcut Forge UI renderer/capability'si tarafından kullanılır.
+`M0_MarkerPickup`, `M0_MarkerBoard` ve `M0_MarkerDelivery` etiketleri de proje
+verisidir; Landscape `worldWidgets` alanıyla Forge world widget sistemine bağlanır.
