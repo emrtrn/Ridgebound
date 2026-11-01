@@ -1,0 +1,2711 @@
+{
+  "schema": 1,
+  "type": "worldTerrain",
+  "name": "Ridgebound M0",
+  "tileQuads": 128,
+  "spacing": 2,
+  "tilesX": 2,
+  "tilesZ": 2,
+  "origin": [
+    -256,
+    0,
+    -256
+  ],
+  "heightMin": -16,
+  "heightMax": 96,
+  "layers": [
+    {
+      "id": "grass",
+      "name": "Grass",
+      "color": "#5f9449",
+      "material": "starter-mat-grass",
+      "physicalMaterial": "default"
+    },
+    {
+      "id": "earth",
+      "name": "Earth",
+      "color": "#8a6441",
+      "material": "lt-earth",
+      "physicalMaterial": "default"
+    },
+    {
+      "id": "rock",
+      "name": "Rock",
+      "color": "#7f8485",
+      "material": "lt-rock",
+      "physicalMaterial": "default"
+    },
+    {
+      "id": "mud",
+      "name": "Mud",
+      "color": "#4a3626",
+      "material": "lt-wet-mud",
+      "physicalMaterial": "default"
+    }
+  ],
+  "tiles": [
+    {
+      "key": "0_0",
+      "minHeight": 8.133496284484863,
+      "maxHeight": 44.65362548828125
+    },
+    {
+      "key": "1_0",
+      "minHeight": 10.832892417907715,
+      "maxHeight": 51.47635269165039
+    },
+    {
+      "key": "0_1",
+      "minHeight": 7.5342302322387695,
+      "maxHeight": 43.842933654785156
+    },
+    {
+      "key": "1_1",
+      "minHeight": 10.942099571228027,
+      "maxHeight": 52.33362579345703
+    }
+  ],
+  "collision": true,
+  "splines": [
+    {
+      "id": "wb-road-main-route",
+      "points": [
+        {
+          "id": "p0",
+          "position": [
+            -210,
+            9.037,
+            -30
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p1",
+          "position": [
+            -201.818,
+            8.583,
+            -35.455
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p2",
+          "position": [
+            -193.636,
+            8.443,
+            -40.909
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p3",
+          "position": [
+            -185.455,
+            8.651,
+            -46.364
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p4",
+          "position": [
+            -177.273,
+            8.914,
+            -51.818
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p5",
+          "position": [
+            -169.091,
+            9.181,
+            -57.273
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p6",
+          "position": [
+            -160.909,
+            9.445,
+            -62.727
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p7",
+          "position": [
+            -152.727,
+            9.703,
+            -68.182
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p8",
+          "position": [
+            -144.545,
+            9.948,
+            -73.636
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p9",
+          "position": [
+            -136.364,
+            10.175,
+            -79.091
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p10",
+          "position": [
+            -128.182,
+            10.381,
+            -84.545
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p11",
+          "position": [
+            -120,
+            10.562,
+            -90
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p12",
+          "position": [
+            -111.25,
+            10.717,
+            -93.125
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p13",
+          "position": [
+            -102.5,
+            10.849,
+            -96.25
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p14",
+          "position": [
+            -93.75,
+            10.955,
+            -99.375
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p15",
+          "position": [
+            -85,
+            11.037,
+            -102.5
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p16",
+          "position": [
+            -76.25,
+            11.095,
+            -105.625
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p17",
+          "position": [
+            -67.5,
+            11.132,
+            -108.75
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p18",
+          "position": [
+            -58.75,
+            11.149,
+            -111.875
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p19",
+          "position": [
+            -50,
+            11.149,
+            -115
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p20",
+          "position": [
+            -40.556,
+            11.147,
+            -113.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p21",
+          "position": [
+            -31.111,
+            11.129,
+            -111.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p22",
+          "position": [
+            -21.667,
+            11.098,
+            -110
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p23",
+          "position": [
+            -12.222,
+            11.059,
+            -108.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p24",
+          "position": [
+            -2.778,
+            11.014,
+            -106.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p25",
+          "position": [
+            6.667,
+            10.967,
+            -105
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p26",
+          "position": [
+            16.111,
+            10.922,
+            -103.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p27",
+          "position": [
+            25.556,
+            10.884,
+            -101.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p28",
+          "position": [
+            35,
+            10.854,
+            -100
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p29",
+          "position": [
+            42.778,
+            10.844,
+            -94.444
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p30",
+          "position": [
+            50.556,
+            10.852,
+            -88.889
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p31",
+          "position": [
+            58.333,
+            10.882,
+            -83.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p32",
+          "position": [
+            66.111,
+            10.936,
+            -77.778
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p33",
+          "position": [
+            73.889,
+            11.017,
+            -72.222
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p34",
+          "position": [
+            81.667,
+            11.125,
+            -66.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p35",
+          "position": [
+            89.444,
+            11.259,
+            -61.111
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p36",
+          "position": [
+            97.222,
+            11.42,
+            -55.556
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p37",
+          "position": [
+            105,
+            11.604,
+            -50
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p38",
+          "position": [
+            110.278,
+            11.817,
+            -41.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p39",
+          "position": [
+            115.556,
+            12.049,
+            -33.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p40",
+          "position": [
+            120.833,
+            12.294,
+            -25
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p41",
+          "position": [
+            126.111,
+            12.546,
+            -16.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p42",
+          "position": [
+            131.389,
+            12.8,
+            -8.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p43",
+          "position": [
+            136.667,
+            13.05,
+            0
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p44",
+          "position": [
+            141.944,
+            13.29,
+            8.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p45",
+          "position": [
+            147.222,
+            13.514,
+            16.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p46",
+          "position": [
+            152.5,
+            13.719,
+            25
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p47",
+          "position": [
+            157.778,
+            13.899,
+            33.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p48",
+          "position": [
+            163.056,
+            14.053,
+            41.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p49",
+          "position": [
+            168.333,
+            14.179,
+            50
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p50",
+          "position": [
+            173.611,
+            14.276,
+            58.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p51",
+          "position": [
+            178.889,
+            14.345,
+            66.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p52",
+          "position": [
+            184.167,
+            14.388,
+            75
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p53",
+          "position": [
+            189.444,
+            14.407,
+            83.333
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p54",
+          "position": [
+            194.722,
+            14.483,
+            91.667
+          ],
+          "width": 10,
+          "falloff": 3
+        },
+        {
+          "id": "p55",
+          "position": [
+            200,
+            14.702,
+            100
+          ],
+          "width": 10,
+          "falloff": 3
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "startPointId": "p0",
+          "endPointId": "p1",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s1",
+          "startPointId": "p1",
+          "endPointId": "p2",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s2",
+          "startPointId": "p2",
+          "endPointId": "p3",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s3",
+          "startPointId": "p3",
+          "endPointId": "p4",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s4",
+          "startPointId": "p4",
+          "endPointId": "p5",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s5",
+          "startPointId": "p5",
+          "endPointId": "p6",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s6",
+          "startPointId": "p6",
+          "endPointId": "p7",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s7",
+          "startPointId": "p7",
+          "endPointId": "p8",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s8",
+          "startPointId": "p8",
+          "endPointId": "p9",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s9",
+          "startPointId": "p9",
+          "endPointId": "p10",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s10",
+          "startPointId": "p10",
+          "endPointId": "p11",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s11",
+          "startPointId": "p11",
+          "endPointId": "p12",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s12",
+          "startPointId": "p12",
+          "endPointId": "p13",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s13",
+          "startPointId": "p13",
+          "endPointId": "p14",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s14",
+          "startPointId": "p14",
+          "endPointId": "p15",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s15",
+          "startPointId": "p15",
+          "endPointId": "p16",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s16",
+          "startPointId": "p16",
+          "endPointId": "p17",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s17",
+          "startPointId": "p17",
+          "endPointId": "p18",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s18",
+          "startPointId": "p18",
+          "endPointId": "p19",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s19",
+          "startPointId": "p19",
+          "endPointId": "p20",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s20",
+          "startPointId": "p20",
+          "endPointId": "p21",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s21",
+          "startPointId": "p21",
+          "endPointId": "p22",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s22",
+          "startPointId": "p22",
+          "endPointId": "p23",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s23",
+          "startPointId": "p23",
+          "endPointId": "p24",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s24",
+          "startPointId": "p24",
+          "endPointId": "p25",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s25",
+          "startPointId": "p25",
+          "endPointId": "p26",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s26",
+          "startPointId": "p26",
+          "endPointId": "p27",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s27",
+          "startPointId": "p27",
+          "endPointId": "p28",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s28",
+          "startPointId": "p28",
+          "endPointId": "p29",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s29",
+          "startPointId": "p29",
+          "endPointId": "p30",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s30",
+          "startPointId": "p30",
+          "endPointId": "p31",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s31",
+          "startPointId": "p31",
+          "endPointId": "p32",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s32",
+          "startPointId": "p32",
+          "endPointId": "p33",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s33",
+          "startPointId": "p33",
+          "endPointId": "p34",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s34",
+          "startPointId": "p34",
+          "endPointId": "p35",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s35",
+          "startPointId": "p35",
+          "endPointId": "p36",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s36",
+          "startPointId": "p36",
+          "endPointId": "p37",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s37",
+          "startPointId": "p37",
+          "endPointId": "p38",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s38",
+          "startPointId": "p38",
+          "endPointId": "p39",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s39",
+          "startPointId": "p39",
+          "endPointId": "p40",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s40",
+          "startPointId": "p40",
+          "endPointId": "p41",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s41",
+          "startPointId": "p41",
+          "endPointId": "p42",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s42",
+          "startPointId": "p42",
+          "endPointId": "p43",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s43",
+          "startPointId": "p43",
+          "endPointId": "p44",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s44",
+          "startPointId": "p44",
+          "endPointId": "p45",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s45",
+          "startPointId": "p45",
+          "endPointId": "p46",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s46",
+          "startPointId": "p46",
+          "endPointId": "p47",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s47",
+          "startPointId": "p47",
+          "endPointId": "p48",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s48",
+          "startPointId": "p48",
+          "endPointId": "p49",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s49",
+          "startPointId": "p49",
+          "endPointId": "p50",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s50",
+          "startPointId": "p50",
+          "endPointId": "p51",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s51",
+          "startPointId": "p51",
+          "endPointId": "p52",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s52",
+          "startPointId": "p52",
+          "endPointId": "p53",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s53",
+          "startPointId": "p53",
+          "endPointId": "p54",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s54",
+          "startPointId": "p54",
+          "endPointId": "p55",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        }
+      ],
+      "name": "main-route",
+      "smooth": true,
+      "coordinateSpace": "world"
+    },
+    {
+      "id": "wb-road-short-route",
+      "points": [
+        {
+          "id": "p0",
+          "position": [
+            -210,
+            9.037,
+            -30
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p1",
+          "position": [
+            -200.556,
+            8.49,
+            -26.944
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p2",
+          "position": [
+            -191.111,
+            8.342,
+            -23.889
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p3",
+          "position": [
+            -181.667,
+            8.504,
+            -20.833
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p4",
+          "position": [
+            -172.222,
+            8.655,
+            -17.778
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p5",
+          "position": [
+            -162.778,
+            8.787,
+            -14.722
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p6",
+          "position": [
+            -153.333,
+            8.903,
+            -11.667
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p7",
+          "position": [
+            -143.889,
+            9.005,
+            -8.611
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p8",
+          "position": [
+            -134.444,
+            9.096,
+            -5.556
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p9",
+          "position": [
+            -125,
+            9.178,
+            -2.5
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p10",
+          "position": [
+            -115.556,
+            9.255,
+            0.556
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p11",
+          "position": [
+            -106.111,
+            9.331,
+            3.611
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p12",
+          "position": [
+            -96.667,
+            9.409,
+            6.667
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p13",
+          "position": [
+            -87.222,
+            9.494,
+            9.722
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p14",
+          "position": [
+            -77.778,
+            9.588,
+            12.778
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p15",
+          "position": [
+            -68.333,
+            9.695,
+            15.833
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p16",
+          "position": [
+            -58.889,
+            9.817,
+            18.889
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p17",
+          "position": [
+            -49.444,
+            9.957,
+            21.944
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p18",
+          "position": [
+            -40,
+            10.116,
+            25
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p19",
+          "position": [
+            -30.909,
+            10.308,
+            25.455
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p20",
+          "position": [
+            -21.818,
+            10.506,
+            25.909
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p21",
+          "position": [
+            -12.727,
+            10.709,
+            26.364
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p22",
+          "position": [
+            -3.636,
+            10.916,
+            26.818
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p23",
+          "position": [
+            5.455,
+            11.126,
+            27.273
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p24",
+          "position": [
+            14.545,
+            11.338,
+            27.727
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p25",
+          "position": [
+            23.636,
+            11.549,
+            28.182
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p26",
+          "position": [
+            32.727,
+            11.76,
+            28.636
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p27",
+          "position": [
+            41.818,
+            11.968,
+            29.091
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p28",
+          "position": [
+            50.909,
+            12.172,
+            29.545
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p29",
+          "position": [
+            60,
+            12.371,
+            30
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p30",
+          "position": [
+            68.75,
+            12.619,
+            34.375
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p31",
+          "position": [
+            77.5,
+            12.865,
+            38.75
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p32",
+          "position": [
+            86.25,
+            13.107,
+            43.125
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p33",
+          "position": [
+            95,
+            13.338,
+            47.5
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p34",
+          "position": [
+            103.75,
+            13.555,
+            51.875
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p35",
+          "position": [
+            112.5,
+            13.753,
+            56.25
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p36",
+          "position": [
+            121.25,
+            13.928,
+            60.625
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p37",
+          "position": [
+            130,
+            14.08,
+            65
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p38",
+          "position": [
+            138.75,
+            14.205,
+            69.375
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p39",
+          "position": [
+            147.5,
+            14.303,
+            73.75
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p40",
+          "position": [
+            156.25,
+            14.374,
+            78.125
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p41",
+          "position": [
+            165,
+            14.419,
+            82.5
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p42",
+          "position": [
+            173.75,
+            14.44,
+            86.875
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p43",
+          "position": [
+            182.5,
+            14.441,
+            91.25
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p44",
+          "position": [
+            191.25,
+            14.432,
+            95.625
+          ],
+          "width": 6,
+          "falloff": 3
+        },
+        {
+          "id": "p45",
+          "position": [
+            200,
+            14.702,
+            100
+          ],
+          "width": 6,
+          "falloff": 3
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "startPointId": "p0",
+          "endPointId": "p1",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s1",
+          "startPointId": "p1",
+          "endPointId": "p2",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s2",
+          "startPointId": "p2",
+          "endPointId": "p3",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s3",
+          "startPointId": "p3",
+          "endPointId": "p4",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s4",
+          "startPointId": "p4",
+          "endPointId": "p5",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s5",
+          "startPointId": "p5",
+          "endPointId": "p6",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s6",
+          "startPointId": "p6",
+          "endPointId": "p7",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s7",
+          "startPointId": "p7",
+          "endPointId": "p8",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s8",
+          "startPointId": "p8",
+          "endPointId": "p9",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s9",
+          "startPointId": "p9",
+          "endPointId": "p10",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s10",
+          "startPointId": "p10",
+          "endPointId": "p11",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s11",
+          "startPointId": "p11",
+          "endPointId": "p12",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s12",
+          "startPointId": "p12",
+          "endPointId": "p13",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s13",
+          "startPointId": "p13",
+          "endPointId": "p14",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s14",
+          "startPointId": "p14",
+          "endPointId": "p15",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s15",
+          "startPointId": "p15",
+          "endPointId": "p16",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s16",
+          "startPointId": "p16",
+          "endPointId": "p17",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s17",
+          "startPointId": "p17",
+          "endPointId": "p18",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s18",
+          "startPointId": "p18",
+          "endPointId": "p19",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s19",
+          "startPointId": "p19",
+          "endPointId": "p20",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s20",
+          "startPointId": "p20",
+          "endPointId": "p21",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s21",
+          "startPointId": "p21",
+          "endPointId": "p22",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s22",
+          "startPointId": "p22",
+          "endPointId": "p23",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s23",
+          "startPointId": "p23",
+          "endPointId": "p24",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s24",
+          "startPointId": "p24",
+          "endPointId": "p25",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s25",
+          "startPointId": "p25",
+          "endPointId": "p26",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s26",
+          "startPointId": "p26",
+          "endPointId": "p27",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s27",
+          "startPointId": "p27",
+          "endPointId": "p28",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s28",
+          "startPointId": "p28",
+          "endPointId": "p29",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s29",
+          "startPointId": "p29",
+          "endPointId": "p30",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s30",
+          "startPointId": "p30",
+          "endPointId": "p31",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s31",
+          "startPointId": "p31",
+          "endPointId": "p32",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s32",
+          "startPointId": "p32",
+          "endPointId": "p33",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s33",
+          "startPointId": "p33",
+          "endPointId": "p34",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s34",
+          "startPointId": "p34",
+          "endPointId": "p35",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s35",
+          "startPointId": "p35",
+          "endPointId": "p36",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s36",
+          "startPointId": "p36",
+          "endPointId": "p37",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s37",
+          "startPointId": "p37",
+          "endPointId": "p38",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s38",
+          "startPointId": "p38",
+          "endPointId": "p39",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s39",
+          "startPointId": "p39",
+          "endPointId": "p40",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s40",
+          "startPointId": "p40",
+          "endPointId": "p41",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s41",
+          "startPointId": "p41",
+          "endPointId": "p42",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s42",
+          "startPointId": "p42",
+          "endPointId": "p43",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s43",
+          "startPointId": "p43",
+          "endPointId": "p44",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        },
+        {
+          "id": "s44",
+          "startPointId": "p44",
+          "endPointId": "p45",
+          "deform": {
+            "enabled": true,
+            "raiseTerrain": true,
+            "lowerTerrain": true,
+            "flatten": true
+          },
+          "paint": {
+            "enabled": true,
+            "layerId": "earth",
+            "strength": 1
+          }
+        }
+      ],
+      "name": "short-route",
+      "smooth": true,
+      "coordinateSpace": "world"
+    }
+  ]
+}

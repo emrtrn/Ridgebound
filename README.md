@@ -1,6 +1,6 @@
 # Ridgebound
 
-Forge ortak kaynağını kullanan bağımsız oyun projesi. Durum: P1-C küçük sahne prototipi; M0 nakliye oyunu henüz uygulanmadı.
+Forge ortak kaynağını kullanan bağımsız oyun projesi. P2 kabulü tamamlandı. M0 için Landscape/Gaz52 saha bağlantısı ve saf görev kuralları hazır; nakliye runtime döngüsü henüz bağlı değil. Güncel sıra: [M0 kontrol listesi](docs/M0_CHECKLIST.md).
 
 ## Çalıştırma
 

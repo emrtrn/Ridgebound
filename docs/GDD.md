@@ -14,6 +14,13 @@ Bu beş dosya `Downloads/Offroad` kaynaklarından değiştirilmeden kopyalandı.
 
 ## Uygulama durumu
 
-P1-B, ortak Forge ile bağımsız oyun modülü ve küçük sahne bağlantısının prototipidir. Küpler görev deposu, teslim noktası veya sürülebilir araç olarak kabul edilmez. M0'ın 15 kabul maddesi henüz tamamlanmış sayılmaz. Bağımsız build ve SP kabulü P1-C/P2 işidir.
+Güncel iş sırası ve kanıt durumu [M0 kontrol listesinde](M0_CHECKLIST.md) tutulur.
+P2 teknik ve kullanıcı kabulü tamamlandı. M0 için Gaz52, mevcut Landscape,
+Forge terrain materyalleri ve World Builder ile graybox saha yaklaşımı seçildi.
+
+P1-B, ortak Forge ile bağımsız oyun modülü ve küçük sahne bağlantısının prototipiydi.
+Küpler görev deposu, teslim noktası veya sürülebilir araç olarak kabul edilmez.
+M0'ın 15 kabul maddesi henüz tamamlanmış sayılmaz; kural testleri runtime veya
+oynanış kabulünün yerine geçmez.
 
 Genel motor/editör düzeltmesi Forge'da, oyuna özel görev ve içerik Ridgebound'da geliştirilir. Ayrı motor kopyası, motor release sistemi veya uzun ömürlü oyun-motor dalı oluşturulmaz.

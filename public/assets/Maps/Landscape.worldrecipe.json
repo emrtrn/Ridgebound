@@ -1,0 +1,840 @@
+{
+  "schemaVersion": 1,
+  "recipeId": "ridgebound-m0",
+  "seed": 52,
+  "generators": {
+    "buildings": 1,
+    "fences": 1,
+    "furniture": 1,
+    "landUse": 2,
+    "parcels": 2,
+    "roads": 4,
+    "settlementSites": 3,
+    "streets": 1
+  },
+  "plan": {
+    "regions": [],
+    "water": [],
+    "landmarks": [
+      {
+        "id": "depot-board",
+        "source": "manual",
+        "kind": "logistics.depot",
+        "position": [
+          -165,
+          -40
+        ],
+        "settlement": "depot"
+      },
+      {
+        "id": "delivery-point",
+        "source": "manual",
+        "kind": "logistics.delivery",
+        "position": [
+          150,
+          50
+        ],
+        "settlement": "delivery"
+      }
+    ],
+    "settlements": [
+      {
+        "id": "depot",
+        "source": "manual",
+        "center": [
+          -155,
+          -65
+        ],
+        "radius": 64,
+        "type": "hamlet",
+        "population": 3,
+        "program": {
+          "add": [
+            {
+              "role": "building.transport.depot",
+              "count": 1,
+              "siting": "entrance"
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery",
+        "source": "manual",
+        "center": [
+          170,
+          50
+        ],
+        "radius": 64,
+        "type": "hamlet",
+        "population": 0,
+        "program": {
+          "add": [
+            {
+              "role": "building.transport.delivery",
+              "count": 1,
+              "siting": "entrance"
+            }
+          ]
+        }
+      }
+    ],
+    "roadGraph": {
+      "nodes": [
+        {
+          "id": "depot-road",
+          "source": "manual",
+          "position": [
+            -210,
+            -30
+          ],
+          "kind": "end"
+        },
+        {
+          "id": "delivery-road",
+          "source": "manual",
+          "position": [
+            200,
+            100
+          ],
+          "kind": "end"
+        }
+      ],
+      "edges": [
+        {
+          "id": "main-route",
+          "source": "manual",
+          "from": "depot-road",
+          "to": "delivery-road",
+          "roadClass": "local",
+          "guide": [
+            [
+              -120,
+              -90
+            ],
+            [
+              -50,
+              -115
+            ],
+            [
+              35,
+              -100
+            ],
+            [
+              105,
+              -50
+            ]
+          ]
+        },
+        {
+          "id": "short-route",
+          "source": "manual",
+          "from": "depot-road",
+          "to": "delivery-road",
+          "roadClass": "track",
+          "guide": [
+            [
+              -40,
+              25
+            ],
+            [
+              60,
+              30
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "generated": {
+    "sites": [
+      {
+        "settlement": "depot",
+        "center": [
+          -155,
+          -65
+        ],
+        "coreRadius": 29,
+        "core": [
+          [
+            -165,
+            -91
+          ],
+          [
+            -145,
+            -91
+          ],
+          [
+            -145,
+            -87
+          ],
+          [
+            -133,
+            -83
+          ],
+          [
+            -129,
+            -59
+          ],
+          [
+            -133,
+            -59
+          ],
+          [
+            -137,
+            -43
+          ],
+          [
+            -161,
+            -39
+          ],
+          [
+            -161,
+            -43
+          ],
+          [
+            -177,
+            -47
+          ],
+          [
+            -181,
+            -75
+          ]
+        ],
+        "score": 0.826,
+        "dwellings": 1,
+        "program": [
+          {
+            "role": "building.transport.depot",
+            "count": 1,
+            "siting": "entrance",
+            "source": "recipe"
+          }
+        ]
+      },
+      {
+        "settlement": "delivery",
+        "center": [
+          170,
+          50
+        ],
+        "coreRadius": 26,
+        "core": [
+          [
+            170,
+            30
+          ],
+          [
+            186,
+            34
+          ],
+          [
+            190,
+            50
+          ],
+          [
+            194,
+            50
+          ],
+          [
+            190,
+            66
+          ],
+          [
+            182,
+            66
+          ],
+          [
+            174,
+            74
+          ],
+          [
+            154,
+            66
+          ],
+          [
+            154,
+            54
+          ],
+          [
+            150,
+            54
+          ],
+          [
+            154,
+            38
+          ],
+          [
+            170,
+            34
+          ]
+        ],
+        "score": 0.858,
+        "dwellings": 0,
+        "program": [
+          {
+            "role": "building.transport.delivery",
+            "count": 1,
+            "siting": "entrance",
+            "source": "recipe"
+          }
+        ]
+      }
+    ],
+    "parcels": [
+      {
+        "id": "depot.p1",
+        "settlement": "depot",
+        "polygon": [
+          [
+            -173.667,
+            -47.612
+          ],
+          [
+            -170.64,
+            -49.63
+          ],
+          [
+            -167.613,
+            -51.648
+          ],
+          [
+            -164.586,
+            -53.666
+          ],
+          [
+            -161.559,
+            -55.683
+          ],
+          [
+            -158.532,
+            -57.701
+          ],
+          [
+            -145.963,
+            -38.847
+          ],
+          [
+            -148.991,
+            -36.828
+          ],
+          [
+            -152.018,
+            -34.811
+          ],
+          [
+            -155.043,
+            -32.794
+          ],
+          [
+            -158.07,
+            -30.776
+          ],
+          [
+            -161.098,
+            -28.757
+          ]
+        ],
+        "frontage": "main-route",
+        "landUse": "industrial",
+        "role": "building.transport.depot",
+        "placement": "wb-building-depot.p1"
+      },
+      {
+        "id": "depot.p2",
+        "settlement": "depot",
+        "polygon": [
+          [
+            -158.532,
+            -57.701
+          ],
+          [
+            -155.397,
+            -59.792
+          ],
+          [
+            -152.262,
+            -61.882
+          ],
+          [
+            -149.127,
+            -63.972
+          ],
+          [
+            -145.992,
+            -66.062
+          ],
+          [
+            -142.856,
+            -68.152
+          ],
+          [
+            -130.288,
+            -49.297
+          ],
+          [
+            -133.424,
+            -47.206
+          ],
+          [
+            -136.558,
+            -45.117
+          ],
+          [
+            -139.691,
+            -43.028
+          ],
+          [
+            -142.826,
+            -40.938
+          ],
+          [
+            -145.963,
+            -38.847
+          ]
+        ],
+        "frontage": "main-route",
+        "landUse": "residential",
+        "role": "building.residential.detached",
+        "placement": "wb-building-depot.p2"
+      },
+      {
+        "id": "depot.p3",
+        "settlement": "depot",
+        "polygon": [
+          [
+            -142.856,
+            -68.152
+          ],
+          [
+            -139.742,
+            -70.228
+          ],
+          [
+            -136.628,
+            -72.305
+          ],
+          [
+            -133.514,
+            -74.381
+          ],
+          [
+            -130.401,
+            -76.456
+          ],
+          [
+            -117.833,
+            -57.601
+          ],
+          [
+            -120.944,
+            -55.527
+          ],
+          [
+            -124.056,
+            -53.452
+          ],
+          [
+            -127.171,
+            -51.375
+          ],
+          [
+            -130.288,
+            -49.297
+          ]
+        ],
+        "frontage": "main-route"
+      },
+      {
+        "id": "depot.p4",
+        "settlement": "depot",
+        "polygon": [
+          [
+            -179.769,
+            -56.764
+          ],
+          [
+            -176.566,
+            -58.9
+          ],
+          [
+            -173.362,
+            -61.036
+          ],
+          [
+            -170.159,
+            -63.171
+          ],
+          [
+            -166.955,
+            -65.307
+          ],
+          [
+            -163.752,
+            -67.442
+          ],
+          [
+            -160.549,
+            -69.578
+          ],
+          [
+            -172.764,
+            -87.899
+          ],
+          [
+            -175.966,
+            -85.764
+          ],
+          [
+            -179.168,
+            -83.629
+          ],
+          [
+            -182.372,
+            -81.494
+          ],
+          [
+            -185.577,
+            -79.357
+          ],
+          [
+            -188.781,
+            -77.221
+          ],
+          [
+            -191.983,
+            -75.086
+          ]
+        ],
+        "frontage": "main-route"
+      },
+      {
+        "id": "depot.p5",
+        "settlement": "depot",
+        "polygon": [
+          [
+            -160.549,
+            -69.578
+          ],
+          [
+            -157.34,
+            -71.717
+          ],
+          [
+            -154.131,
+            -73.856
+          ],
+          [
+            -150.923,
+            -75.995
+          ],
+          [
+            -147.715,
+            -78.133
+          ],
+          [
+            -144.507,
+            -80.272
+          ],
+          [
+            -156.724,
+            -98.592
+          ],
+          [
+            -159.929,
+            -96.455
+          ],
+          [
+            -163.136,
+            -94.317
+          ],
+          [
+            -166.345,
+            -92.178
+          ],
+          [
+            -169.555,
+            -90.038
+          ],
+          [
+            -172.764,
+            -87.899
+          ]
+        ],
+        "frontage": "main-route"
+      },
+      {
+        "id": "delivery.p1",
+        "settlement": "delivery",
+        "polygon": [
+          [
+            164.741,
+            34.048
+          ],
+          [
+            166.845,
+            37.37
+          ],
+          [
+            168.949,
+            40.692
+          ],
+          [
+            171.052,
+            44.014
+          ],
+          [
+            173.156,
+            47.336
+          ],
+          [
+            175.26,
+            50.657
+          ],
+          [
+            194.217,
+            38.65
+          ],
+          [
+            192.114,
+            35.329
+          ],
+          [
+            190.011,
+            32.009
+          ],
+          [
+            187.907,
+            28.687
+          ],
+          [
+            185.803,
+            25.364
+          ],
+          [
+            183.699,
+            22.042
+          ]
+        ],
+        "frontage": "main-route",
+        "landUse": "industrial",
+        "role": "building.transport.delivery",
+        "placement": "wb-building-delivery.p1"
+      },
+      {
+        "id": "delivery.p2",
+        "settlement": "delivery",
+        "polygon": [
+          [
+            175.26,
+            50.657
+          ],
+          [
+            177.008,
+            53.418
+          ],
+          [
+            178.757,
+            56.179
+          ],
+          [
+            180.506,
+            58.94
+          ],
+          [
+            182.254,
+            61.701
+          ],
+          [
+            184.003,
+            64.462
+          ],
+          [
+            202.96,
+            52.455
+          ],
+          [
+            201.212,
+            49.695
+          ],
+          [
+            199.464,
+            46.934
+          ],
+          [
+            197.715,
+            44.173
+          ],
+          [
+            195.966,
+            41.411
+          ],
+          [
+            194.217,
+            38.65
+          ]
+        ],
+        "frontage": "main-route"
+      }
+    ],
+    "pads": [
+      {
+        "id": "wb-building-depot.p1",
+        "settlement": "depot",
+        "polygon": [
+          [
+            -172.419,
+            -46.641
+          ],
+          [
+            -158.116,
+            -56.176
+          ],
+          [
+            -149.651,
+            -43.479
+          ],
+          [
+            -163.954,
+            -33.944
+          ]
+        ],
+        "height": 9.25
+      },
+      {
+        "id": "wb-building-depot.p2",
+        "settlement": "depot",
+        "polygon": [
+          [
+            -155.054,
+            -58.218
+          ],
+          [
+            -144.67,
+            -65.14
+          ],
+          [
+            -138.408,
+            -55.746
+          ],
+          [
+            -148.792,
+            -48.824
+          ]
+        ],
+        "height": 9.73
+      },
+      {
+        "id": "wb-building-delivery.p1",
+        "settlement": "delivery",
+        "polygon": [
+          [
+            167.248,
+            35.201
+          ],
+          [
+            175.287,
+            47.9
+          ],
+          [
+            188.325,
+            39.647
+          ],
+          [
+            180.285,
+            26.947
+          ]
+        ],
+        "height": 14.1
+      }
+    ]
+  },
+  "generation": {
+    "preserveManualOverrides": true,
+    "stages": [
+      "roads",
+      "settlementSites",
+      "streets",
+      "parcels",
+      "landUse",
+      "buildings",
+      "furniture",
+      "fences"
+    ]
+  },
+  "ownership": {
+    "placements": {
+      "wb-building-delivery.p1": {
+        "stage": "buildings",
+        "outputHash": "828ca3aec9e0e1e4"
+      },
+      "wb-building-depot.p1": {
+        "stage": "buildings",
+        "outputHash": "6444c6dae7e14f30"
+      },
+      "wb-building-depot.p2": {
+        "stage": "buildings",
+        "outputHash": "5157ef499285ef8f"
+      },
+      "wb-furniture-delivery-prop.sign.settlementName-1": {
+        "stage": "furniture",
+        "outputHash": "816255a37a1d231d"
+      },
+      "wb-furniture-delivery-prop.sign.settlementName-2": {
+        "stage": "furniture",
+        "outputHash": "b6aaecea17ea7e34"
+      },
+      "wb-furniture-depot-prop.sign.settlementName-1": {
+        "stage": "furniture",
+        "outputHash": "61c9037f7a30a6e5"
+      },
+      "wb-furniture-depot-prop.sign.settlementName-2": {
+        "stage": "furniture",
+        "outputHash": "216432c1de7ab667"
+      },
+      "wb-parcel-delivery.p1": {
+        "stage": "parcels",
+        "outputHash": "75ed61936c99cc85"
+      },
+      "wb-parcel-delivery.p2": {
+        "stage": "parcels",
+        "outputHash": "8a42489f22d7c441"
+      },
+      "wb-parcel-depot.p1": {
+        "stage": "parcels",
+        "outputHash": "0b2d0a77e50a1c9d"
+      },
+      "wb-parcel-depot.p2": {
+        "stage": "parcels",
+        "outputHash": "85a47f2ee3fad6fc"
+      },
+      "wb-parcel-depot.p3": {
+        "stage": "parcels",
+        "outputHash": "57cf2700ecd0faa2"
+      },
+      "wb-parcel-depot.p4": {
+        "stage": "parcels",
+        "outputHash": "63ee01039402a965"
+      },
+      "wb-parcel-depot.p5": {
+        "stage": "parcels",
+        "outputHash": "c1642f2ebf689fc4"
+      }
+    },
+    "splines": {
+      "wb-road-main-route": {
+        "stage": "roads",
+        "outputHash": "4c87fa4f6770ac25",
+        "edge": "main-route"
+      },
+      "wb-road-short-route": {
+        "stage": "roads",
+        "outputHash": "7d8e12af2aa2cb19",
+        "edge": "short-route"
+      }
+    },
+    "foliageRules": {},
+    "protectedRegions": []
+  },
+  "regionProfile": "assets/Maps/Landscape.regionprofile.json"
+}

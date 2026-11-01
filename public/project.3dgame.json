@@ -10,7 +10,7 @@
     "editorCatalog": "src/game/editorCatalog.ts"
   },
   "editor": {
-    "defaultScene": "layouts/Prototype.level.json",
+    "defaultScene": "assets/Maps/Landscape.level.json",
     "assetManifest": "assets/manifest.json",
     "gridSize": 0.5,
     "gridEnabled": true

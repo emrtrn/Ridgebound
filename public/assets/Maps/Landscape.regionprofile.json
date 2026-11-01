@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "ridgebound-m0",
+  "label": "Ridgebound M0 graybox",
+  "traffic": {
+    "side": "right"
+  },
+  "roads": {
+    "local": {
+      "width": 8,
+      "shoulder": 1,
+      "maxSlopeDeg": 12,
+      "minTurnRadius": 14,
+      "surfaceLayer": "earth"
+    },
+    "track": {
+      "width": 5,
+      "shoulder": 0.5,
+      "maxSlopeDeg": 18,
+      "minTurnRadius": 10,
+      "surfaceLayer": "earth"
+    }
+  },
+  "streetPattern": {
+    "linear": 0,
+    "grid": 0,
+    "organic": 1,
+    "radial": 0,
+    "contourFollow": 0,
+    "blockSize": [
+      35,
+      60
+    ]
+  },
+  "parcels": {
+    "residential": {
+      "frontage": [
+        16,
+        24
+      ],
+      "depth": [
+        22,
+        32
+      ],
+      "setback": 3,
+      "coverage": 0.45
+    },
+    "industrial": {
+      "frontage": [
+        24,
+        30
+      ],
+      "depth": [
+        30,
+        38
+      ],
+      "setback": 3,
+      "coverage": 0.45
+    }
+  },
+  "zoning": {
+    "mode": "mixed",
+    "compatibility": {}
+  },
+  "household": {
+    "personsPerDwelling": 3
+  },
+  "program": [],
+  "roles": {
+    "building.residential.detached": {
+      "landUse": "residential",
+      "footprint": {
+        "width": [
+          8,
+          11
+        ],
+        "depth": [
+          8,
+          11
+        ]
+      },
+      "storeys": [
+        1,
+        1
+      ],
+      "storeyHeight": 4,
+      "entrance": "street",
+      "placeholderColor": "#a8adb0"
+    },
+    "building.transport.depot": {
+      "landUse": "industrial",
+      "footprint": {
+        "width": [
+          14,
+          18
+        ],
+        "depth": [
+          12,
+          16
+        ]
+      },
+      "storeys": [
+        1,
+        1
+      ],
+      "storeyHeight": 6,
+      "entrance": "street",
+      "placeholderColor": "#a8adb0"
+    },
+    "building.transport.delivery": {
+      "landUse": "industrial",
+      "footprint": {
+        "width": [
+          12,
+          16
+        ],
+        "depth": [
+          10,
+          14
+        ]
+      },
+      "storeys": [
+        1,
+        1
+      ],
+      "storeyHeight": 5,
+      "entrance": "street",
+      "placeholderColor": "#a8adb0"
+    }
+  },
+  "streetFurniture": [
+    {
+      "role": "prop.sign.settlementName",
+      "roadClasses": [
+        "local",
+        "track"
+      ],
+      "placement": "gate",
+      "size": [
+        1.8,
+        2.8,
+        0.2
+      ],
+      "placeholderColor": "#9a9fa2"
+    }
+  ]
+}
