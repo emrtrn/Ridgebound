@@ -44,7 +44,8 @@ export function createTransportPersistence(native: GameplaySaveState, blocked: (
       const payload = native.capture();
       if (!payload) return null;
       const error = transportRestoreError({ levelPath: payload.activeLevelPath, player: payload.player,
-        persistentState: payload.flags, vehicles: payload.vehicles ?? [], drivingVehicleId: payload.drivingVehicleId ?? null }, bindings);
+        persistentState: payload.flags, vehicles: payload.vehicles ?? [], drivingVehicleId: payload.drivingVehicleId ?? null,
+        destructibles: payload.destructibles ?? [], deformables: payload.deformables ?? [] }, bindings);
       if (error) { ready = false; blocked(error); return null; }
       return payload;
     },

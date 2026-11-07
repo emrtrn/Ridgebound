@@ -1,0 +1,530 @@
+{
+  "builtFrom": {
+    "master": "RIDGEBOUND_SPATIAL_MASTER_v0.3.json",
+    "masterSha256": "04bf826f5a11724ee15995c482e45abdc3928564f52b2f91d6361c6db9b2c80a",
+    "frame": {
+      "CX": 3795,
+      "CY": 1250
+    }
+  },
+  "level": "assets/Maps/Derekavak.level.json",
+  "terrain": {
+    "tiles": 64,
+    "spacingM": 1,
+    "sizeM": [
+      2048,
+      2048
+    ]
+  },
+  "bridge": {
+    "deckZ": 215.32,
+    "lengthM": 41.8
+  },
+  "relief": {
+    "seed": 20261107,
+    "lift": 40,
+    "amplitude": 300,
+    "wavelength": 650,
+    "octaves": 5,
+    "gain": 0.42,
+    "spurStretch": 0.55,
+    "warp": 160,
+    "maskStep": 8,
+    "sites": {
+      "inner": 60,
+      "falloff": 320
+    },
+    "sitesRaw": {
+      "inner": 45,
+      "falloff": 40
+    },
+    "siteBlurCells": 6,
+    "roads": {
+      "inner": 18,
+      "falloff": 220
+    },
+    "river": {
+      "inner": 22,
+      "falloff": 260
+    },
+    "peakZ": 733.1
+  },
+  "placements": 105,
+  "copiedAssets": [],
+  "connectors": [
+    {
+      "road": "konut-terasi",
+      "to": "R01",
+      "lengthM": 31.6,
+      "at": [
+        3730,
+        1290
+      ]
+    },
+    {
+      "road": "merkez-erisimi",
+      "to": "isletme-kolu",
+      "lengthM": 10,
+      "at": [
+        3890,
+        1300
+      ]
+    }
+  ],
+  "roads": [
+    {
+      "id": "R01",
+      "widthM": 6,
+      "targetGradePercent": 10,
+      "maxGradePercent": 10,
+      "maxCutM": 8.2,
+      "maxFillM": 4.5,
+      "lengthM": 1192,
+      "meetsTarget": true
+    },
+    {
+      "id": "R03",
+      "widthM": 5,
+      "targetGradePercent": 12,
+      "maxGradePercent": 12,
+      "maxCutM": 5.5,
+      "maxFillM": 0.1,
+      "lengthM": 1113,
+      "meetsTarget": true
+    },
+    {
+      "id": "konut-terasi",
+      "widthM": 4.5,
+      "targetGradePercent": 12,
+      "maxGradePercent": 12,
+      "maxCutM": 6.2,
+      "maxFillM": 0.1,
+      "lengthM": 514,
+      "meetsTarget": true
+    },
+    {
+      "id": "merkez-erisimi",
+      "widthM": 4.5,
+      "targetGradePercent": 12,
+      "maxGradePercent": 11.9,
+      "maxCutM": 0.3,
+      "maxFillM": 0.6,
+      "lengthM": 164,
+      "meetsTarget": true
+    },
+    {
+      "id": "isletme-kolu",
+      "widthM": 5,
+      "targetGradePercent": 10,
+      "maxGradePercent": 10,
+      "maxCutM": 7.6,
+      "maxFillM": 0,
+      "lengthM": 257,
+      "meetsTarget": true
+    },
+    {
+      "id": "depo-girisi",
+      "widthM": 5,
+      "targetGradePercent": 10,
+      "maxGradePercent": 9.4,
+      "maxCutM": 0.2,
+      "maxFillM": 0.1,
+      "lengthM": 128,
+      "meetsTarget": true
+    },
+    {
+      "id": "dis-baglanti",
+      "widthM": 5,
+      "targetGradePercent": 12,
+      "maxGradePercent": 8.7,
+      "maxCutM": 0.2,
+      "maxFillM": 0.2,
+      "lengthM": 475,
+      "meetsTarget": true
+    }
+  ],
+  "pads": [
+    {
+      "id": "POI-01",
+      "kind": "ev",
+      "levels": [
+        256.43
+      ],
+      "maxFillM": 2.24,
+      "maxCutM": 2.02
+    },
+    {
+      "id": "POI-02",
+      "kind": "depo",
+      "levels": [
+        253.6
+      ],
+      "maxFillM": 3.5,
+      "maxCutM": 3.52
+    },
+    {
+      "id": "POI-03",
+      "kind": "tamir",
+      "levels": [
+        287.65
+      ],
+      "maxFillM": 2.96,
+      "maxCutM": 2.95
+    },
+    {
+      "id": "POI-04",
+      "kind": "kahve",
+      "levels": [
+        243.34
+      ],
+      "maxFillM": 1.54,
+      "maxCutM": 2.18
+    },
+    {
+      "id": "POI-05",
+      "kind": "okul",
+      "levels": [
+        294.95
+      ],
+      "maxFillM": 2.44,
+      "maxCutM": 3.17
+    },
+    {
+      "id": "POI-06",
+      "kind": "meydan",
+      "levels": [
+        257.57,
+        254.39,
+        251.33
+      ],
+      "maxFillM": 1.73,
+      "maxCutM": 1.98
+    },
+    {
+      "id": "RES-001",
+      "kind": "house",
+      "levels": [
+        236.82
+      ],
+      "maxFillM": 0.79,
+      "maxCutM": 0.8
+    },
+    {
+      "id": "RES-002",
+      "kind": "house",
+      "levels": [
+        241.48
+      ],
+      "maxFillM": 0.8,
+      "maxCutM": 0.81
+    },
+    {
+      "id": "RES-003",
+      "kind": "house",
+      "levels": [
+        247.64
+      ],
+      "maxFillM": 0.9,
+      "maxCutM": 0.91
+    },
+    {
+      "id": "RES-004",
+      "kind": "house",
+      "levels": [
+        263.24
+      ],
+      "maxFillM": 0.97,
+      "maxCutM": 0.97
+    },
+    {
+      "id": "RES-005",
+      "kind": "house",
+      "levels": [
+        265.7
+      ],
+      "maxFillM": 1,
+      "maxCutM": 1.01
+    },
+    {
+      "id": "RES-006",
+      "kind": "house",
+      "levels": [
+        254.85
+      ],
+      "maxFillM": 0.95,
+      "maxCutM": 0.96
+    },
+    {
+      "id": "RES-007",
+      "kind": "house",
+      "levels": [
+        282.56
+      ],
+      "maxFillM": 1.07,
+      "maxCutM": 1.07
+    },
+    {
+      "id": "RES-008",
+      "kind": "house",
+      "levels": [
+        287.43
+      ],
+      "maxFillM": 1.1,
+      "maxCutM": 1.1
+    },
+    {
+      "id": "RES-009",
+      "kind": "house",
+      "levels": [
+        303.18
+      ],
+      "maxFillM": 1.21,
+      "maxCutM": 1.21
+    },
+    {
+      "id": "RES-010",
+      "kind": "house",
+      "levels": [
+        318.22
+      ],
+      "maxFillM": 1.12,
+      "maxCutM": 1.12
+    },
+    {
+      "id": "RES-011",
+      "kind": "house",
+      "levels": [
+        317.05
+      ],
+      "maxFillM": 1.12,
+      "maxCutM": 1.12
+    },
+    {
+      "id": "RES-012",
+      "kind": "house",
+      "levels": [
+        279.3
+      ],
+      "maxFillM": 1.18,
+      "maxCutM": 1.18
+    },
+    {
+      "id": "RES-013",
+      "kind": "house",
+      "levels": [
+        235.01
+      ],
+      "maxFillM": 0.8,
+      "maxCutM": 0.81
+    },
+    {
+      "id": "RES-014",
+      "kind": "house",
+      "levels": [
+        229.45
+      ],
+      "maxFillM": 0.8,
+      "maxCutM": 0.8
+    },
+    {
+      "id": "RES-015",
+      "kind": "house",
+      "levels": [
+        233.87
+      ],
+      "maxFillM": 0.96,
+      "maxCutM": 0.97
+    },
+    {
+      "id": "RES-016",
+      "kind": "house",
+      "levels": [
+        262.43
+      ],
+      "maxFillM": 1.03,
+      "maxCutM": 1.03
+    },
+    {
+      "id": "RES-017",
+      "kind": "house",
+      "levels": [
+        251.66
+      ],
+      "maxFillM": 1.3,
+      "maxCutM": 1.05
+    },
+    {
+      "id": "RES-018",
+      "kind": "house",
+      "levels": [
+        238.34
+      ],
+      "maxFillM": 1.02,
+      "maxCutM": 1.03
+    },
+    {
+      "id": "RES-019",
+      "kind": "house",
+      "levels": [
+        249.11
+      ],
+      "maxFillM": 1.07,
+      "maxCutM": 1.08
+    },
+    {
+      "id": "RES-020",
+      "kind": "house",
+      "levels": [
+        263.65
+      ],
+      "maxFillM": 1.1,
+      "maxCutM": 1.1
+    },
+    {
+      "id": "RES-021",
+      "kind": "house",
+      "levels": [
+        254.18
+      ],
+      "maxFillM": 1.17,
+      "maxCutM": 1.17
+    },
+    {
+      "id": "RES-022",
+      "kind": "house",
+      "levels": [
+        265.12
+      ],
+      "maxFillM": 1.09,
+      "maxCutM": 1.09
+    },
+    {
+      "id": "RES-023",
+      "kind": "house",
+      "levels": [
+        254.11
+      ],
+      "maxFillM": 1.07,
+      "maxCutM": 1.08
+    },
+    {
+      "id": "RES-024",
+      "kind": "house",
+      "levels": [
+        268.46
+      ],
+      "maxFillM": 1.16,
+      "maxCutM": 1.16
+    },
+    {
+      "id": "OUT-001",
+      "kind": "outbuilding",
+      "levels": [
+        238.61
+      ],
+      "maxFillM": 0.57,
+      "maxCutM": 0.57
+    },
+    {
+      "id": "OUT-002",
+      "kind": "outbuilding",
+      "levels": [
+        243.33
+      ],
+      "maxFillM": 0.57,
+      "maxCutM": 0.58
+    },
+    {
+      "id": "OUT-003",
+      "kind": "outbuilding",
+      "levels": [
+        249.61
+      ],
+      "maxFillM": 0.6,
+      "maxCutM": 0.6
+    },
+    {
+      "id": "OUT-004",
+      "kind": "outbuilding",
+      "levels": [
+        285.24
+      ],
+      "maxFillM": 0.75,
+      "maxCutM": 0.75
+    },
+    {
+      "id": "OUT-005",
+      "kind": "outbuilding",
+      "levels": [
+        290.16
+      ],
+      "maxFillM": 0.76,
+      "maxCutM": 0.76
+    },
+    {
+      "id": "OUT-006",
+      "kind": "outbuilding",
+      "levels": [
+        300.39
+      ],
+      "maxFillM": 0.78,
+      "maxCutM": 0.78
+    },
+    {
+      "id": "OUT-007",
+      "kind": "outbuilding",
+      "levels": [
+        236.83
+      ],
+      "maxFillM": 0.57,
+      "maxCutM": 0.58
+    },
+    {
+      "id": "OUT-008",
+      "kind": "outbuilding",
+      "levels": [
+        231.23
+      ],
+      "maxFillM": 0.57,
+      "maxCutM": 0.57
+    },
+    {
+      "id": "OUT-009",
+      "kind": "outbuilding",
+      "levels": [
+        235.93
+      ],
+      "maxFillM": 0.64,
+      "maxCutM": 0.64
+    },
+    {
+      "id": "OUT-010",
+      "kind": "outbuilding",
+      "levels": [
+        251.67
+      ],
+      "maxFillM": 0.75,
+      "maxCutM": 0.75
+    },
+    {
+      "id": "OUT-011",
+      "kind": "outbuilding",
+      "levels": [
+        266.27
+      ],
+      "maxFillM": 0.76,
+      "maxCutM": 0.76
+    },
+    {
+      "id": "OUT-012",
+      "kind": "outbuilding",
+      "levels": [
+        251.59
+      ],
+      "maxFillM": 0.75,
+      "maxCutM": 0.75
+    }
+  ],
+  "walls": 61,
+  "warnings": []
+}

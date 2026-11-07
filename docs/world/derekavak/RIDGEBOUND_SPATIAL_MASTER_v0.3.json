@@ -1,0 +1,1416 @@
+{
+  "project": "Ridgebound",
+  "version": "0.3",
+  "status": "SETTLEMENT_FABRIC_PROPOSAL_NOT_GREYBOX_TESTED",
+  "supersedes": "RIDGEBOUND_SPATIAL_MASTER_v0.2.json",
+  "scope": "Add candidate residential/ancillary structures only; all legacy spatial sources unchanged and not reapproved.",
+  "decision_trace": {
+    "SP-DEC-001": "NOT_REOPENED; v0.1 all-POI east-bank working layout retained",
+    "RD-013": "6km extent remains unapproved working scale",
+    "NO_NEW_BRIDGE": "R04/H02 crossing flagged, not auto-built"
+  },
+  "axes": {
+    "X": "east_m",
+    "Y": "north_m",
+    "Z": "up_m_local_non_georeferenced"
+  },
+  "world_extent_m": [
+    0,
+    6000,
+    0,
+    6000
+  ],
+  "terrain": {
+    "type": "synthetic_terrain_v0.2",
+    "main_valley_coefficient_m_per_m": 0.0525,
+    "main_river_bed_start_m": 140.0,
+    "main_river_carve_quad": 0.002,
+    "side_river_slope": 0.05,
+    "side_river_carve_quad": 0.003,
+    "u16_min_m": 100.0,
+    "u16_max_m": 850.0,
+    "macro_samples": 1001,
+    "macro_contour_m": 25,
+    "local_contour_m": 10,
+    "status": "HYDRO_CONDITIONED_MACRO; road/bridge and foundation surfaces not physically baked"
+  },
+  "hydrology": {
+    "H-01": {
+      "name": "Ana Dere",
+      "flow": "north_to_south",
+      "riverx": "3430+125*sin(2*pi*Y/3100+0.8)+0.03*(Y-1000)",
+      "y_range_m": [
+        6000,
+        0
+      ],
+      "bed_profile": "Z=140+0.0525*Y",
+      "water_depth_reference_m": 1.2,
+      "status": "CONCEPT_NOT_FLOOD_SIMULATION"
+    },
+    "H-02": {
+      "name": "Doğu Yan Kolu",
+      "flow": "polyline_order_upstream_to_downstream",
+      "pts": [
+        [
+          5280,
+          4890
+        ],
+        [
+          5030,
+          4730
+        ],
+        [
+          4850,
+          4540
+        ],
+        [
+          4640,
+          4340
+        ],
+        [
+          4420,
+          4110
+        ],
+        [
+          4220,
+          3890
+        ],
+        [
+          3980,
+          3670
+        ],
+        [
+          3780,
+          3490
+        ],
+        [
+          3600,
+          3300
+        ],
+        [
+          3601.364724889,
+          3200
+        ]
+      ],
+      "confluence_with": "H-01",
+      "confluence_y_m": 3200,
+      "bed_profile": "Z=(140+0.0525*3200)+0.05*remaining_path_length_to_confluence",
+      "water_depth_reference_m": 1.2,
+      "status": "CONCEPT_NOT_FLOOD_SIMULATION"
+    }
+  },
+  "nodes": {
+    "V0": {
+      "name": "Derekavak",
+      "xy": [
+        3925,
+        1200
+      ],
+      "kind": "settlement"
+    },
+    "V1": {
+      "name": "Aşağıgürgen",
+      "xy": [
+        1700,
+        1650
+      ],
+      "kind": "settlement"
+    },
+    "V2": {
+      "name": "Taşyaka",
+      "xy": [
+        1280,
+        4460
+      ],
+      "kind": "settlement"
+    },
+    "J1": {
+      "name": "Köprüdibi",
+      "xy": [
+        3840,
+        3390
+      ],
+      "kind": "junction"
+    },
+    "V3": {
+      "name": "Çamlıgeçit",
+      "xy": [
+        5090,
+        4610
+      ],
+      "kind": "settlement"
+    },
+    "V4": {
+      "name": "Sırtoba",
+      "xy": [
+        640,
+        5620
+      ],
+      "kind": "future"
+    },
+    "B1": {
+      "name": "Aşağı Köprü",
+      "xy": [
+        3397,
+        1330
+      ],
+      "kind": "bridge"
+    },
+    "B2": {
+      "name": "Köprüdibi Köprüsü",
+      "xy": [
+        3627,
+        3650
+      ],
+      "kind": "bridge"
+    }
+  },
+  "routes": {
+    "R01": {
+      "link": "V0—V1",
+      "status": "P0",
+      "style": "stabilize",
+      "pts": [
+        [
+          3925,
+          1200
+        ],
+        [
+          3820,
+          1260
+        ],
+        [
+          3640,
+          1320
+        ],
+        [
+          3397,
+          1330
+        ],
+        [
+          3100,
+          1390
+        ],
+        [
+          2800,
+          1480
+        ],
+        [
+          2420,
+          1510
+        ],
+        [
+          2080,
+          1560
+        ],
+        [
+          1700,
+          1650
+        ]
+      ],
+      "design_width_m": 6.0,
+      "target_max_abs_grade_percent": 10.0,
+      "road_surface_status": "PROPOSED_PROFILE_NOT_BAKED_IN_TERRAIN"
+    },
+    "R02": {
+      "link": "V1—V2",
+      "status": "P1",
+      "style": "bakımlı mıcır",
+      "pts": [
+        [
+          1700,
+          1650
+        ],
+        [
+          1400,
+          1950
+        ],
+        [
+          1200,
+          2280
+        ],
+        [
+          950,
+          2650
+        ],
+        [
+          1250,
+          2930
+        ],
+        [
+          1750,
+          2980
+        ],
+        [
+          2300,
+          3200
+        ],
+        [
+          1900,
+          3460
+        ],
+        [
+          1100,
+          3610
+        ],
+        [
+          1000,
+          3970
+        ],
+        [
+          1610,
+          4140
+        ],
+        [
+          1280,
+          4460
+        ]
+      ],
+      "design_width_m": 5.0,
+      "target_max_abs_grade_percent": 10.0,
+      "road_surface_status": "PROPOSED_PROFILE_NOT_BAKED_IN_TERRAIN"
+    },
+    "R03": {
+      "link": "V0—J1",
+      "status": "P1",
+      "style": "sıkışmış toprak",
+      "pts": [
+        [
+          3925,
+          1200
+        ],
+        [
+          4035,
+          1420
+        ],
+        [
+          4120,
+          1750
+        ],
+        [
+          4080,
+          2130
+        ],
+        [
+          3930,
+          2590
+        ],
+        [
+          3840,
+          3020
+        ],
+        [
+          3840,
+          3390
+        ]
+      ],
+      "design_width_m": 5.0,
+      "target_max_abs_grade_percent": 12.0,
+      "road_surface_status": "PROPOSED_PROFILE_NOT_BAKED_IN_TERRAIN"
+    },
+    "R04": {
+      "link": "J1—V2",
+      "status": "P1/M2",
+      "style": "kısa, gölgeli",
+      "pts": [
+        [
+          3840,
+          3390
+        ],
+        [
+          3720,
+          3510
+        ],
+        [
+          3627,
+          3650
+        ],
+        [
+          3310,
+          3800
+        ],
+        [
+          2910,
+          4010
+        ],
+        [
+          2500,
+          4170
+        ],
+        [
+          2020,
+          4300
+        ],
+        [
+          1660,
+          4350
+        ],
+        [
+          1280,
+          4460
+        ]
+      ],
+      "design_width_m": 4.0,
+      "target_max_abs_grade_percent": 12.0,
+      "road_surface_status": "PROPOSED_PROFILE_NOT_BAKED_IN_TERRAIN"
+    },
+    "R05": {
+      "link": "J1—V3",
+      "status": "P2",
+      "style": "orman servis",
+      "pts": [
+        [
+          3840,
+          3390
+        ],
+        [
+          4040,
+          3620
+        ],
+        [
+          4270,
+          3810
+        ],
+        [
+          4500,
+          4070
+        ],
+        [
+          4760,
+          4300
+        ],
+        [
+          5090,
+          4610
+        ]
+      ],
+      "design_width_m": 5.0,
+      "target_max_abs_grade_percent": 12.0,
+      "road_surface_status": "PROPOSED_PROFILE_NOT_BAKED_IN_TERRAIN"
+    },
+    "R06": {
+      "link": "V2—V4",
+      "status": "ERTELENDİ",
+      "style": "sırt yolu",
+      "pts": [
+        [
+          1280,
+          4460
+        ],
+        [
+          1070,
+          4890
+        ],
+        [
+          880,
+          5160
+        ],
+        [
+          640,
+          5620
+        ]
+      ],
+      "design_width_m": 3.5,
+      "target_max_abs_grade_percent": 12.0,
+      "road_surface_status": "PROPOSED_PROFILE_NOT_BAKED_IN_TERRAIN"
+    }
+  },
+  "poi": {
+    "POI-01": {
+      "name": "Aile evi",
+      "xy": [
+        3775,
+        1520
+      ],
+      "kind": "ev",
+      "parcel_wh_m": [
+        34,
+        25
+      ],
+      "building_footprint_candidate_wh_m": [
+        16,
+        12
+      ],
+      "site_type": "building_in_parcel",
+      "status": "FOOTPRINT_PARCEL_CANDIDATE_NOT_APPROVED"
+    },
+    "POI-02": {
+      "name": "Depo",
+      "xy": [
+        4020,
+        1080
+      ],
+      "kind": "depo",
+      "parcel_wh_m": [
+        83,
+        42
+      ],
+      "building_footprint_candidate_wh_m": [
+        34,
+        18
+      ],
+      "site_type": "building_in_parcel",
+      "status": "FOOTPRINT_PARCEL_CANDIDATE_NOT_APPROVED"
+    },
+    "POI-03": {
+      "name": "Tamirhane",
+      "xy": [
+        4155,
+        1240
+      ],
+      "kind": "tamir",
+      "parcel_wh_m": [
+        55,
+        34
+      ],
+      "building_footprint_candidate_wh_m": [
+        24,
+        13
+      ],
+      "site_type": "building_in_parcel",
+      "status": "FOOTPRINT_PARCEL_CANDIDATE_NOT_APPROVED"
+    },
+    "POI-04": {
+      "name": "Kahvehane",
+      "xy": [
+        3760,
+        1368
+      ],
+      "kind": "kahve",
+      "parcel_wh_m": [
+        36,
+        22
+      ],
+      "building_footprint_candidate_wh_m": [
+        18,
+        12
+      ],
+      "site_type": "building_in_parcel",
+      "status": "FOOTPRINT_PARCEL_CANDIDATE_NOT_APPROVED"
+    },
+    "POI-05": {
+      "name": "Okul",
+      "xy": [
+        4040,
+        1530
+      ],
+      "kind": "okul",
+      "parcel_wh_m": [
+        50,
+        32
+      ],
+      "building_footprint_candidate_wh_m": [
+        30,
+        16
+      ],
+      "site_type": "building_in_parcel",
+      "status": "FOOTPRINT_PARCEL_CANDIDATE_NOT_APPROVED"
+    },
+    "POI-06": {
+      "name": "Pazar / meydan",
+      "xy": [
+        3865,
+        1342
+      ],
+      "kind": "meydan",
+      "parcel_wh_m": [
+        95,
+        60
+      ],
+      "building_footprint_candidate_wh_m": null,
+      "site_type": "public_open_space",
+      "status": "FOOTPRINT_PARCEL_CANDIDATE_NOT_APPROVED"
+    }
+  },
+  "local_roads": {
+    "R01 Köprü yaklaşımı": [
+      [
+        3397,
+        1330
+      ],
+      [
+        3640,
+        1320
+      ],
+      [
+        3820,
+        1260
+      ],
+      [
+        3925,
+        1200
+      ]
+    ],
+    "Konut terası": [
+      [
+        3740,
+        1320
+      ],
+      [
+        3710,
+        1400
+      ],
+      [
+        3740,
+        1480
+      ],
+      [
+        3770,
+        1520
+      ],
+      [
+        3930,
+        1570
+      ],
+      [
+        4015,
+        1530
+      ]
+    ],
+    "Merkez erişimi": [
+      [
+        3880,
+        1300
+      ],
+      [
+        3850,
+        1370
+      ],
+      [
+        3790,
+        1380
+      ],
+      [
+        3778,
+        1368
+      ]
+    ],
+    "İşletme kolu": [
+      [
+        3890,
+        1300
+      ],
+      [
+        3980,
+        1240
+      ],
+      [
+        4090,
+        1250
+      ],
+      [
+        4127,
+        1240
+      ]
+    ],
+    "Depo girişi": [
+      [
+        3925,
+        1200
+      ],
+      [
+        3980,
+        1150
+      ],
+      [
+        4000,
+        1100
+      ]
+    ],
+    "R03 → J1": [
+      [
+        3925,
+        1200
+      ],
+      [
+        4035,
+        1420
+      ],
+      [
+        4110,
+        1710
+      ]
+    ],
+    "Dış bağlantı": [
+      [
+        3925,
+        1200
+      ],
+      [
+        4060,
+        1030
+      ],
+      [
+        4210,
+        820
+      ]
+    ]
+  },
+  "site_extent_m": [
+    3290,
+    4300,
+    790,
+    1710
+  ],
+  "bridges": {
+    "B1": {
+      "node_id": "B1",
+      "road_id": "R01",
+      "crosses": "H-01",
+      "deck_above_bed_candidate_m": 5.5,
+      "status": "CANDIDATE_DECK_Z_NOT_STRUCTURALLY_VERIFIED"
+    },
+    "B2": {
+      "node_id": "B2",
+      "road_id": "R04",
+      "crosses": "H-01",
+      "deck_above_bed_candidate_m": 6.5,
+      "status": "CANDIDATE_DECK_Z_NOT_STRUCTURALLY_VERIFIED"
+    }
+  },
+  "crossing_reviews": [
+    {
+      "id": "X-H02-R04",
+      "road_id": "R04",
+      "river_id": "H-02",
+      "status": "REQUIRES_APPROVAL_OF_CULVERT_OR_ROUTE_VARIANT",
+      "new_bridge_authorized": false
+    }
+  ],
+  "qa_requirements": {
+    "river_flow_monotonic": true,
+    "road_grade_profile_proposed_not_Forge_tested": true,
+    "no_relocated_nodes": true,
+    "no_new_bridge": true
+  },
+  "site_access_candidates": {
+    "POI-01": {
+      "pedestrian_entrance_xy": [
+        3775,
+        1502
+      ],
+      "road_access_review": "konut_terasi"
+    },
+    "POI-02": {
+      "vehicle_entrance_xy": [
+        4000,
+        1100
+      ],
+      "yard_kind": "truck_loading"
+    },
+    "POI-03": {
+      "vehicle_entrance_xy": [
+        4127,
+        1240
+      ],
+      "yard_kind": "workshop_turn"
+    },
+    "POI-04": {
+      "pedestrian_entrance_xy": [
+        3778,
+        1368
+      ]
+    },
+    "POI-05": {
+      "pedestrian_entrance_xy": [
+        4015,
+        1530
+      ],
+      "crossing_review": "separate_pedestrian_path_from_depot"
+    },
+    "POI-06": {
+      "pedestrian_entrance_xy": [
+        3865,
+        1342
+      ],
+      "yard_kind": "public_market"
+    }
+  },
+  "source_v0_2_master_sha256": "72afa23b7264b2e6e419ca700511e1b61cbdb6178bdf18fe53eb91e8e5e7f09b",
+  "source_v0_2_site_svg_sha256": "cee82c24b0c6573f2ff567406a7a934dbfdc7e9086e0acdaa99ed21bc7f0bc10",
+  "settlement_fabric": {
+    "status": "UNAPPROVED_DESIGN_PROPOSAL",
+    "authority": "Candidate art/site layer; no new POI, road, bridge, water or parcel acceptance",
+    "quarter_count": 4,
+    "additional_residences_count": 24,
+    "outbuilding_count": 12,
+    "existing_poi_01_family_home_count": 1,
+    "total_household_buildings_including_poi_01": 25,
+    "neighborhoods": [
+      {
+        "id": "NB-A",
+        "name": "Konut terası / batı",
+        "residence_count": 6,
+        "building_ids": [
+          "RES-001",
+          "RES-002",
+          "RES-003",
+          "RES-004",
+          "RES-005",
+          "RES-006"
+        ]
+      },
+      {
+        "id": "NB-B",
+        "name": "Okul üst terası / doğu",
+        "residence_count": 6,
+        "building_ids": [
+          "RES-007",
+          "RES-008",
+          "RES-009",
+          "RES-010",
+          "RES-011",
+          "RES-012"
+        ]
+      },
+      {
+        "id": "NB-C",
+        "name": "Merkez çevresi / konut",
+        "residence_count": 6,
+        "building_ids": [
+          "RES-013",
+          "RES-014",
+          "RES-015",
+          "RES-016",
+          "RES-017",
+          "RES-018"
+        ]
+      },
+      {
+        "id": "NB-D",
+        "name": "Alt yol / güneydoğu",
+        "residence_count": 6,
+        "building_ids": [
+          "RES-019",
+          "RES-020",
+          "RES-021",
+          "RES-022",
+          "RES-023",
+          "RES-024"
+        ]
+      }
+    ],
+    "residences": [
+      {
+        "id": "RES-001",
+        "quarter_id": "NB-A",
+        "xy_m": [
+          3680,
+          1395
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 24.0,
+        "local_terrain_grade_percent": 12.1,
+        "center_terrain_z_m": 236.8,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-002",
+        "quarter_id": "NB-A",
+        "xy_m": [
+          3680,
+          1460
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 42.0,
+        "local_terrain_grade_percent": 12.3,
+        "center_terrain_z_m": 241.5,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-003",
+        "quarter_id": "NB-A",
+        "xy_m": [
+          3695,
+          1525
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          13,
+          10
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 54.8,
+        "local_terrain_grade_percent": 12.8,
+        "center_terrain_z_m": 247.6,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-004",
+        "quarter_id": "NB-A",
+        "xy_m": [
+          3790,
+          1585
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 50.0,
+        "local_terrain_grade_percent": 14.8,
+        "center_terrain_z_m": 263.2,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-005",
+        "quarter_id": "NB-A",
+        "xy_m": [
+          3825,
+          1555
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 10.9,
+        "local_terrain_grade_percent": 15.4,
+        "center_terrain_z_m": 265.7,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-006",
+        "quarter_id": "NB-A",
+        "xy_m": [
+          3725,
+          1580
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          13,
+          10
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 67.1,
+        "local_terrain_grade_percent": 13.6,
+        "center_terrain_z_m": 254.8,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-007",
+        "quarter_id": "NB-B",
+        "xy_m": [
+          3910,
+          1620
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 47.6,
+        "local_terrain_grade_percent": 16.5,
+        "center_terrain_z_m": 282.6,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-008",
+        "quarter_id": "NB-B",
+        "xy_m": [
+          3950,
+          1605
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 33.6,
+        "local_terrain_grade_percent": 16.8,
+        "center_terrain_z_m": 287.4,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-009",
+        "quarter_id": "NB-B",
+        "xy_m": [
+          4060,
+          1590
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          13,
+          10
+        ],
+        "nearest_existing_road": "R03 → J1",
+        "distance_to_existing_road_edge_m": 10.8,
+        "local_terrain_grade_percent": 17.3,
+        "center_terrain_z_m": 303.2,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-010",
+        "quarter_id": "NB-B",
+        "xy_m": [
+          4125,
+          1655
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "R03 → J1",
+        "distance_to_existing_road_edge_m": 21.4,
+        "local_terrain_grade_percent": 17.2,
+        "center_terrain_z_m": 318.2,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-011",
+        "quarter_id": "NB-B",
+        "xy_m": [
+          4150,
+          1590
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "R03 → J1",
+        "distance_to_existing_road_edge_m": 61.8,
+        "local_terrain_grade_percent": 17.2,
+        "center_terrain_z_m": 317.1,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-012",
+        "quarter_id": "NB-B",
+        "xy_m": [
+          3950,
+          1500
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          13,
+          10
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 47.5,
+        "local_terrain_grade_percent": 16.9,
+        "center_terrain_z_m": 279.3,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-013",
+        "quarter_id": "NB-C",
+        "xy_m": [
+          3695,
+          1350
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Konut terası",
+        "distance_to_existing_road_edge_m": 24.4,
+        "local_terrain_grade_percent": 12.3,
+        "center_terrain_z_m": 235.0,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-014",
+        "quarter_id": "NB-C",
+        "xy_m": [
+          3710,
+          1255
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "R01 Köprü yaklaşımı",
+        "distance_to_existing_road_edge_m": 33.4,
+        "local_terrain_grade_percent": 12.2,
+        "center_terrain_z_m": 229.4,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-015",
+        "quarter_id": "NB-C",
+        "xy_m": [
+          3785,
+          1210
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          13,
+          10
+        ],
+        "nearest_existing_road": "R01 Köprü yaklaşımı",
+        "distance_to_existing_road_edge_m": 51.7,
+        "local_terrain_grade_percent": 13.7,
+        "center_terrain_z_m": 233.9,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-016",
+        "quarter_id": "NB-C",
+        "xy_m": [
+          3860,
+          1450
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Merkez erişimi",
+        "distance_to_existing_road_edge_m": 75.1,
+        "local_terrain_grade_percent": 15.8,
+        "center_terrain_z_m": 262.4,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-017",
+        "quarter_id": "NB-C",
+        "xy_m": [
+          3920,
+          1220
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "R03 → J1",
+        "distance_to_existing_road_edge_m": 6.0,
+        "local_terrain_grade_percent": 16.1,
+        "center_terrain_z_m": 251.7,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-018",
+        "quarter_id": "NB-C",
+        "xy_m": [
+          3830,
+          1200
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          13,
+          10
+        ],
+        "nearest_existing_road": "R01 Köprü yaklaşımı",
+        "distance_to_existing_road_edge_m": 39.6,
+        "local_terrain_grade_percent": 14.6,
+        "center_terrain_z_m": 238.3,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-019",
+        "quarter_id": "NB-D",
+        "xy_m": [
+          4055,
+          970
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Dış bağlantı",
+        "distance_to_existing_road_edge_m": 31.4,
+        "local_terrain_grade_percent": 16.5,
+        "center_terrain_z_m": 249.1,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-020",
+        "quarter_id": "NB-D",
+        "xy_m": [
+          4135,
+          1005
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Dış bağlantı",
+        "distance_to_existing_road_edge_m": 39.0,
+        "local_terrain_grade_percent": 17.0,
+        "center_terrain_z_m": 263.7,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-021",
+        "quarter_id": "NB-D",
+        "xy_m": [
+          4120,
+          920
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          13,
+          10
+        ],
+        "nearest_existing_road": "Dış bağlantı",
+        "distance_to_existing_road_edge_m": 6.9,
+        "local_terrain_grade_percent": 16.7,
+        "center_terrain_z_m": 254.2,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-022",
+        "quarter_id": "NB-D",
+        "xy_m": [
+          4190,
+          930
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Dış bağlantı",
+        "distance_to_existing_road_edge_m": 40.2,
+        "local_terrain_grade_percent": 16.8,
+        "center_terrain_z_m": 265.1,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-023",
+        "quarter_id": "NB-D",
+        "xy_m": [
+          4160,
+          850
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          12,
+          9
+        ],
+        "nearest_existing_road": "Dış bağlantı",
+        "distance_to_existing_road_edge_m": 15.8,
+        "local_terrain_grade_percent": 16.5,
+        "center_terrain_z_m": 254.1,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      },
+      {
+        "id": "RES-024",
+        "quarter_id": "NB-D",
+        "xy_m": [
+          4240,
+          885
+        ],
+        "kind": "candidate_residential_house",
+        "building_footprint_candidate_wh_m": [
+          13,
+          10
+        ],
+        "nearest_existing_road": "Dış bağlantı",
+        "distance_to_existing_road_edge_m": 54.0,
+        "local_terrain_grade_percent": 16.5,
+        "center_terrain_z_m": 268.5,
+        "status": "DESIGN_CANDIDATE_NEEDS_PAD_AND_ACCESS_REVIEW"
+      }
+    ],
+    "outbuildings": [
+      {
+        "id": "OUT-001",
+        "residence_id": "RES-001",
+        "quarter_id": "NB-A",
+        "xy_m": [
+          3698,
+          1395
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-002",
+        "residence_id": "RES-002",
+        "quarter_id": "NB-A",
+        "xy_m": [
+          3698,
+          1460
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-003",
+        "residence_id": "RES-003",
+        "quarter_id": "NB-A",
+        "xy_m": [
+          3713,
+          1525
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-004",
+        "residence_id": "RES-007",
+        "quarter_id": "NB-B",
+        "xy_m": [
+          3928,
+          1620
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-005",
+        "residence_id": "RES-008",
+        "quarter_id": "NB-B",
+        "xy_m": [
+          3968,
+          1605
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-006",
+        "residence_id": "RES-009",
+        "quarter_id": "NB-B",
+        "xy_m": [
+          4042,
+          1590
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-007",
+        "residence_id": "RES-013",
+        "quarter_id": "NB-C",
+        "xy_m": [
+          3713,
+          1350
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-008",
+        "residence_id": "RES-014",
+        "quarter_id": "NB-C",
+        "xy_m": [
+          3728,
+          1255
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-009",
+        "residence_id": "RES-015",
+        "quarter_id": "NB-C",
+        "xy_m": [
+          3803,
+          1210
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-010",
+        "residence_id": "RES-019",
+        "quarter_id": "NB-D",
+        "xy_m": [
+          4073,
+          970
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-011",
+        "residence_id": "RES-020",
+        "quarter_id": "NB-D",
+        "xy_m": [
+          4153,
+          1005
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      },
+      {
+        "id": "OUT-012",
+        "residence_id": "RES-021",
+        "quarter_id": "NB-D",
+        "xy_m": [
+          4102,
+          920
+        ],
+        "kind": "candidate_outbuilding",
+        "building_footprint_candidate_wh_m": [
+          6,
+          5
+        ],
+        "status": "DESIGN_CANDIDATE_TYPE_NOT_FIXED"
+      }
+    ],
+    "notes": [
+      "New residences are ordinary environment buildings, NOT gameplay POIs.",
+      "No new roads/pathways are authored. Access is candidate proximity to existing recorded road centerlines, not legal/safe drive access.",
+      "Local parcel/pad layout and final vehicle/pedestrian access must be user-reviewed and Forge-tested.",
+      "Four clusters and counts are game-design assumptions; not measured Turkish village census or architectural typology."
+    ]
+  }
+}

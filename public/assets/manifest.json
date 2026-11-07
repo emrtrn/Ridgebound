@@ -670,6 +670,943 @@
         "allowRotation": false,
         "allowScale": false
       }
+    },
+    {
+      "id": "lt-meadow",
+      "name": "LT Alpine Meadow",
+      "assetType": "material",
+      "category": "Materials",
+      "path": "assets/starter-content/Materials/lt-meadow.material.json",
+      "tags": [
+        "landscape-test",
+        "terrain",
+        "material"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Materials",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 624
+      },
+      "source": {
+        "origin": "forge",
+        "pack": "Forge Starter Content"
+      },
+      "license": "Project-local material; texture source metadata retained"
+    },
+    {
+      "id": "lt-meadow-bc",
+      "name": "LT Meadow Base Color",
+      "assetType": "texture",
+      "category": "Textures",
+      "path": "assets/starter-content/Textures/LT_Meadow_BC.webp",
+      "thumbnail": "assets/starter-content/Textures/LT_Meadow_BC.webp",
+      "tags": [
+        "landscape-test",
+        "terrain",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Textures",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 137462
+      },
+      "license": "Project-local Imagen candidate A, accepted by user 2026-08-07",
+      "source": {
+        "origin": "ThreeAges",
+        "path": "assets/ThreeAges/Textures/T_TA_Grass_Meadow_BC.webp"
+      }
+    },
+    {
+      "id": "wp-conifer-a-type",
+      "name": "WP Conifer A",
+      "assetType": "foliageType",
+      "category": "world-pilot",
+      "path": "assets/world-pilot/foliage/wp-conifer-a.foliagetype.json",
+      "tags": [
+        "world-pilot",
+        "foliage"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "foliage",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 526
+      },
+      "license": "Project-local pilot data",
+      "source": {
+        "origin": "forge",
+        "pack": "World Builder pilot"
+      }
+    },
+    {
+      "id": "forest-tree-01",
+      "name": "Forest Tree 01",
+      "assetType": "staticMesh",
+      "category": "Environment",
+      "path": "assets/starter-content/StaticMeshes/Environment/Forest_Tree_01.glb",
+      "tags": [
+        "forest",
+        "environment",
+        "tree"
+      ],
+      "placeable": true,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": true,
+        "allowScale": true
+      },
+      "runtime": {
+        "loadGroup": "Environment",
+        "castShadow": true,
+        "receiveShadow": true,
+        "collision": true,
+        "bytes": 80576
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "wp-conifer-b-type",
+      "name": "WP Conifer B",
+      "assetType": "foliageType",
+      "category": "world-pilot",
+      "path": "assets/world-pilot/foliage/wp-conifer-b.foliagetype.json",
+      "tags": [
+        "world-pilot",
+        "foliage"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "foliage",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 539
+      },
+      "license": "Project-local pilot data",
+      "source": {
+        "origin": "forge",
+        "pack": "World Builder pilot"
+      }
+    },
+    {
+      "id": "forest-tree-02",
+      "name": "Forest Tree 02",
+      "assetType": "staticMesh",
+      "category": "Environment",
+      "path": "assets/starter-content/StaticMeshes/Environment/Forest_Tree_02.glb",
+      "tags": [
+        "forest",
+        "environment",
+        "tree"
+      ],
+      "placeable": true,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": true,
+        "allowScale": true
+      },
+      "runtime": {
+        "loadGroup": "Environment",
+        "castShadow": true,
+        "receiveShadow": true,
+        "collision": true,
+        "bytes": 85220
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "wp-conifer-c-type",
+      "name": "WP Conifer C",
+      "assetType": "foliageType",
+      "category": "world-pilot",
+      "path": "assets/world-pilot/foliage/wp-conifer-c.foliagetype.json",
+      "tags": [
+        "world-pilot",
+        "foliage"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "foliage",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 534
+      },
+      "license": "Project-local pilot data",
+      "source": {
+        "origin": "forge",
+        "pack": "World Builder pilot"
+      }
+    },
+    {
+      "id": "forest-tree-04",
+      "name": "Forest Tree 04",
+      "assetType": "staticMesh",
+      "category": "Environment",
+      "path": "assets/starter-content/StaticMeshes/Environment/Forest_Tree_04.glb",
+      "tags": [
+        "forest",
+        "environment",
+        "tree"
+      ],
+      "placeable": true,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": true,
+        "allowScale": true
+      },
+      "runtime": {
+        "loadGroup": "Environment",
+        "castShadow": true,
+        "receiveShadow": true,
+        "collision": true,
+        "bytes": 72952
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "wp-bush-a-type",
+      "name": "WP Bush A",
+      "assetType": "foliageType",
+      "category": "world-pilot",
+      "path": "assets/world-pilot/foliage/wp-bush-a.foliagetype.json",
+      "tags": [
+        "world-pilot",
+        "foliage"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "foliage",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 541
+      },
+      "license": "Project-local pilot data",
+      "source": {
+        "origin": "forge",
+        "pack": "World Builder pilot"
+      }
+    },
+    {
+      "id": "forest-lowpolyprop-03",
+      "name": "Forest Low Poly Prop 03",
+      "assetType": "staticMesh",
+      "category": "Environment",
+      "path": "assets/starter-content/StaticMeshes/Environment/Forest_LowPolyProp_03.glb",
+      "tags": [
+        "forest",
+        "environment",
+        "prop"
+      ],
+      "placeable": true,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": true,
+        "allowScale": true
+      },
+      "runtime": {
+        "loadGroup": "Environment",
+        "castShadow": true,
+        "receiveShadow": true,
+        "collision": true,
+        "bytes": 4988
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "wp-bush-b-type",
+      "name": "WP Bush B",
+      "assetType": "foliageType",
+      "category": "world-pilot",
+      "path": "assets/world-pilot/foliage/wp-bush-b.foliagetype.json",
+      "tags": [
+        "world-pilot",
+        "foliage"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "foliage",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 544
+      },
+      "license": "Project-local pilot data",
+      "source": {
+        "origin": "forge",
+        "pack": "World Builder pilot"
+      }
+    },
+    {
+      "id": "forest-lowpolyprop-05",
+      "name": "Forest Low Poly Prop 05",
+      "assetType": "staticMesh",
+      "category": "Environment",
+      "path": "assets/starter-content/StaticMeshes/Environment/Forest_LowPolyProp_05.glb",
+      "tags": [
+        "forest",
+        "environment",
+        "prop"
+      ],
+      "placeable": true,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": true,
+        "allowScale": true
+      },
+      "runtime": {
+        "loadGroup": "Environment",
+        "castShadow": true,
+        "receiveShadow": true,
+        "collision": true,
+        "bytes": 3844
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "wp-grass-a-type",
+      "name": "WP Grass A",
+      "assetType": "foliageType",
+      "category": "world-pilot",
+      "path": "assets/world-pilot/foliage/wp-grass-a.foliagetype.json",
+      "tags": [
+        "world-pilot",
+        "foliage"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "foliage",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 539
+      },
+      "license": "Project-local pilot data",
+      "source": {
+        "origin": "forge",
+        "pack": "World Builder pilot"
+      }
+    },
+    {
+      "id": "forest-lowpolyprop-01",
+      "name": "Forest Low Poly Prop 01",
+      "assetType": "staticMesh",
+      "category": "Environment",
+      "path": "assets/starter-content/StaticMeshes/Environment/Forest_LowPolyProp_01.glb",
+      "tags": [
+        "forest",
+        "environment",
+        "prop"
+      ],
+      "placeable": true,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": true,
+        "allowScale": true
+      },
+      "runtime": {
+        "loadGroup": "Environment",
+        "castShadow": true,
+        "receiveShadow": true,
+        "collision": true,
+        "bytes": 1576
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "derekavak-level",
+      "name": "Derekavak.Level",
+      "assetType": "level",
+      "category": "Maps",
+      "path": "assets/Maps/Derekavak.level.json",
+      "tags": [],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Maps",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 46823
+      },
+      "license": "Unknown"
+    },
+    {
+      "id": "lt-wet-mud-base-normal",
+      "name": "LT Wet Mud Base Normal",
+      "assetType": "texture",
+      "category": "Textures",
+      "path": "assets/starter-content/Textures/LT_Wet_Mud_Base_Normal.png",
+      "thumbnail": "assets/starter-content/Textures/LT_Wet_Mud_Base_Normal.png",
+      "tags": [
+        "terrain",
+        "mud",
+        "wet",
+        "normal"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Textures",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 3937482
+      },
+      "source": {
+        "origin": "OpenAI image_gen",
+        "pack": "Forge Starter Content",
+        "packVersion": "0.1"
+      },
+      "license": "AI-generated project asset"
+    },
+    {
+      "id": "lt-wet-mud-track-atlas",
+      "name": "LT Wet Mud Track Variants",
+      "assetType": "texture",
+      "category": "Textures",
+      "path": "assets/starter-content/Textures/LT_Wet_Mud_Track_Atlas.png",
+      "thumbnail": "assets/starter-content/Textures/LT_Wet_Mud_Track_Atlas.png",
+      "tags": [
+        "terrain",
+        "mud",
+        "wet",
+        "normal"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Textures",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 1586245
+      },
+      "source": {
+        "origin": "OpenAI image_gen",
+        "pack": "Forge Starter Content",
+        "packVersion": "0.1"
+      },
+      "license": "AI-generated project asset"
+    },
+    {
+      "id": "m-forest-trunk-01",
+      "name": "M_Forest_Trunk_01",
+      "assetType": "material",
+      "category": "Materials",
+      "path": "assets/starter-content/Materials/M_Forest_Trunk_01.material.json",
+      "tags": [
+        "forest"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Materials",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 683
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-trunk-01-d",
+      "name": "T_Forest_Trunk_01_D",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_Trunk_01_D.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 65304
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-trunk-01-n",
+      "name": "T_Forest_Trunk_01_N",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_Trunk_01_N.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 216288
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-trunk-01-r",
+      "name": "T_Forest_Trunk_01_R",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_Trunk_01_R.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 86910
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "m-forest-branches-01",
+      "name": "M_Forest_Branches_01",
+      "assetType": "material",
+      "category": "Materials",
+      "path": "assets/starter-content/Materials/M_Forest_Branches_01.material.json",
+      "tags": [
+        "forest"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Materials",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 710
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-branches-01-d",
+      "name": "T_Forest_Branches_01_D",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_Branches_01_D.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 40772
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-branches-n",
+      "name": "T_Forest_Branches_N",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_Branches_N.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 1570762
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-branches-r",
+      "name": "T_Forest_Branches_R",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_Branches_R.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 88
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-branches-01-o",
+      "name": "T_Forest_Branches_01_O",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_Branches_01_O.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 70020
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "m-forest-lowpolytree",
+      "name": "M_Forest_LowPolyTree",
+      "assetType": "material",
+      "category": "Materials",
+      "path": "assets/starter-content/Materials/M_Forest_LowPolyTree.material.json",
+      "tags": [
+        "forest"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Materials",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 716
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-lowpolytree-d",
+      "name": "T_Forest_LowPolyTree_D",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_LowPolyTree_D.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 614702
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-lowpolytree-n",
+      "name": "T_Forest_LowPolyTree_N",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_LowPolyTree_N.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 1496610
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-lowpolytree-r",
+      "name": "T_Forest_LowPolyTree_R",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_LowPolyTree_R.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 58926
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "forest-tex-lowpolytree-o",
+      "name": "T_Forest_LowPolyTree_O",
+      "assetType": "texture",
+      "category": "Forest",
+      "path": "assets/starter-content/Textures/Forest/T_Forest_LowPolyTree_O.webp",
+      "tags": [
+        "forest",
+        "texture"
+      ],
+      "placeable": false,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": false,
+        "allowScale": false
+      },
+      "runtime": {
+        "loadGroup": "Forest",
+        "castShadow": false,
+        "receiveShadow": false,
+        "collision": false,
+        "bytes": 715592
+      },
+      "license": "Unknown",
+      "source": {
+        "origin": "Low Poly Forest Tree Pack",
+        "path": "Tree_Pack.blend"
+      }
     }
   ]
 }

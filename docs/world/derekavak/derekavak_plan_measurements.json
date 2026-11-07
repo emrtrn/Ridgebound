@@ -1,0 +1,760 @@
+{
+  "source_master_sha256": "04bf826f5a11724ee15995c482e45abdc3928564f52b2f91d6361c6db9b2c80a",
+  "assumptions": {
+    "river_water_width_m": 10.0,
+    "local_road_width_m": {
+      "Konut terası": 4.5,
+      "Merkez erişimi": 4.5,
+      "İşletme kolu": 5.0,
+      "Depo girişi": 5.0,
+      "R03 → J1": 5.0,
+      "Dış bağlantı": 5.0,
+      "R01 Köprü yaklaşımı": 6.0
+    },
+    "poi01_footprint_m": [
+      12.0,
+      7.5
+    ],
+    "pad_margin_m": 2.0
+  },
+  "roads": [
+    {
+      "id": "R01",
+      "width_m": 6.0,
+      "limit_percent": 10.0,
+      "length_in_site_m": 663,
+      "max_grade_percent": 24.3,
+      "over_limit_m": 92,
+      "width_source": "master"
+    },
+    {
+      "id": "R03",
+      "width_m": 5.0,
+      "limit_percent": 12.0,
+      "length_in_site_m": 545,
+      "max_grade_percent": 14.4,
+      "over_limit_m": 246,
+      "width_source": "master"
+    },
+    {
+      "id": "Konut terası",
+      "width_m": 4.5,
+      "limit_percent": 12.0,
+      "length_in_site_m": 482,
+      "max_grade_percent": 16.4,
+      "over_limit_m": 218,
+      "width_source": "master line, ASSUMPTION width"
+    },
+    {
+      "id": "Merkez erişimi",
+      "width_m": 4.5,
+      "limit_percent": 12.0,
+      "length_in_site_m": 154,
+      "max_grade_percent": 14.1,
+      "over_limit_m": 14,
+      "width_source": "master line, ASSUMPTION width"
+    },
+    {
+      "id": "İşletme kolu",
+      "width_m": 5.0,
+      "limit_percent": 10.0,
+      "length_in_site_m": 257,
+      "max_grade_percent": 15.6,
+      "over_limit_m": 146,
+      "width_source": "master line, ASSUMPTION width"
+    },
+    {
+      "id": "Depo girişi",
+      "width_m": 5.0,
+      "limit_percent": 10.0,
+      "length_in_site_m": 128,
+      "max_grade_percent": 4.6,
+      "over_limit_m": 0,
+      "width_source": "master line, ASSUMPTION width"
+    },
+    {
+      "id": "Dış bağlantı",
+      "width_m": 5.0,
+      "limit_percent": 12.0,
+      "length_in_site_m": 475,
+      "max_grade_percent": 2.1,
+      "over_limit_m": 0,
+      "width_source": "master line, ASSUMPTION width"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "POI-01",
+      "kind": "poi",
+      "xy": [
+        3775,
+        1520
+      ],
+      "footprint": [
+        12.0,
+        7.5
+      ],
+      "pad_z": 256.59,
+      "cut_m": 1.41,
+      "fill_m": 1.4,
+      "level_diff_m": 2.81
+    },
+    {
+      "id": "POI-02",
+      "kind": "poi",
+      "xy": [
+        4020,
+        1080
+      ],
+      "footprint": [
+        34,
+        18
+      ],
+      "pad_z": 253.59,
+      "cut_m": 3.67,
+      "fill_m": 3.64,
+      "level_diff_m": 7.32
+    },
+    {
+      "id": "POI-03",
+      "kind": "poi",
+      "xy": [
+        4155,
+        1240
+      ],
+      "footprint": [
+        24,
+        13
+      ],
+      "pad_z": 287.65,
+      "cut_m": 2.84,
+      "fill_m": 2.84,
+      "level_diff_m": 5.69
+    },
+    {
+      "id": "POI-04",
+      "kind": "poi",
+      "xy": [
+        3760,
+        1368
+      ],
+      "footprint": [
+        18,
+        12
+      ],
+      "pad_z": 243.34,
+      "cut_m": 1.89,
+      "fill_m": 1.87,
+      "level_diff_m": 3.76
+    },
+    {
+      "id": "POI-05",
+      "kind": "poi",
+      "xy": [
+        4040,
+        1530
+      ],
+      "footprint": [
+        30,
+        16
+      ],
+      "pad_z": 295.34,
+      "cut_m": 3.42,
+      "fill_m": 3.41,
+      "level_diff_m": 6.83
+    },
+    {
+      "id": "POI-06",
+      "kind": "poi",
+      "xy": [
+        3865,
+        1342
+      ],
+      "footprint": null,
+      "pad_z": 254.46,
+      "cut_m": 8.95,
+      "fill_m": 8.62,
+      "level_diff_m": 17.58
+    },
+    {
+      "id": "RES-001",
+      "kind": "house",
+      "xy": [
+        3680,
+        1395
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 236.82,
+      "cut_m": 1.25,
+      "fill_m": 1.24,
+      "level_diff_m": 2.49
+    },
+    {
+      "id": "RES-002",
+      "kind": "house",
+      "xy": [
+        3680,
+        1460
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 241.48,
+      "cut_m": 1.28,
+      "fill_m": 1.26,
+      "level_diff_m": 2.54
+    },
+    {
+      "id": "RES-003",
+      "kind": "house",
+      "xy": [
+        3695,
+        1525
+      ],
+      "footprint": [
+        13,
+        10
+      ],
+      "pad_z": 247.64,
+      "cut_m": 1.41,
+      "fill_m": 1.4,
+      "level_diff_m": 2.81
+    },
+    {
+      "id": "RES-004",
+      "kind": "house",
+      "xy": [
+        3790,
+        1585
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 263.24,
+      "cut_m": 1.51,
+      "fill_m": 1.5,
+      "level_diff_m": 3.01
+    },
+    {
+      "id": "RES-005",
+      "kind": "house",
+      "xy": [
+        3825,
+        1555
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 265.7,
+      "cut_m": 1.57,
+      "fill_m": 1.56,
+      "level_diff_m": 3.12
+    },
+    {
+      "id": "RES-006",
+      "kind": "house",
+      "xy": [
+        3725,
+        1580
+      ],
+      "footprint": [
+        13,
+        10
+      ],
+      "pad_z": 254.85,
+      "cut_m": 1.49,
+      "fill_m": 1.47,
+      "level_diff_m": 2.96
+    },
+    {
+      "id": "RES-007",
+      "kind": "house",
+      "xy": [
+        3910,
+        1620
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 282.56,
+      "cut_m": 1.66,
+      "fill_m": 1.66,
+      "level_diff_m": 3.32
+    },
+    {
+      "id": "RES-008",
+      "kind": "house",
+      "xy": [
+        3950,
+        1605
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 287.43,
+      "cut_m": 1.7,
+      "fill_m": 1.69,
+      "level_diff_m": 3.39
+    },
+    {
+      "id": "RES-009",
+      "kind": "house",
+      "xy": [
+        4060,
+        1590
+      ],
+      "footprint": [
+        13,
+        10
+      ],
+      "pad_z": 303.18,
+      "cut_m": 1.86,
+      "fill_m": 1.86,
+      "level_diff_m": 3.72
+    },
+    {
+      "id": "RES-010",
+      "kind": "house",
+      "xy": [
+        4125,
+        1655
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 318.22,
+      "cut_m": 1.73,
+      "fill_m": 1.73,
+      "level_diff_m": 3.45
+    },
+    {
+      "id": "RES-011",
+      "kind": "house",
+      "xy": [
+        4150,
+        1590
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 317.05,
+      "cut_m": 1.74,
+      "fill_m": 1.74,
+      "level_diff_m": 3.47
+    },
+    {
+      "id": "RES-012",
+      "kind": "house",
+      "xy": [
+        3950,
+        1500
+      ],
+      "footprint": [
+        13,
+        10
+      ],
+      "pad_z": 279.3,
+      "cut_m": 1.82,
+      "fill_m": 1.82,
+      "level_diff_m": 3.64
+    },
+    {
+      "id": "RES-013",
+      "kind": "house",
+      "xy": [
+        3695,
+        1350
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 235.01,
+      "cut_m": 1.27,
+      "fill_m": 1.26,
+      "level_diff_m": 2.53
+    },
+    {
+      "id": "RES-014",
+      "kind": "house",
+      "xy": [
+        3710,
+        1255
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 229.45,
+      "cut_m": 1.27,
+      "fill_m": 1.25,
+      "level_diff_m": 2.52
+    },
+    {
+      "id": "RES-015",
+      "kind": "house",
+      "xy": [
+        3785,
+        1210
+      ],
+      "footprint": [
+        13,
+        10
+      ],
+      "pad_z": 233.87,
+      "cut_m": 1.52,
+      "fill_m": 1.5,
+      "level_diff_m": 3.01
+    },
+    {
+      "id": "RES-016",
+      "kind": "house",
+      "xy": [
+        3860,
+        1450
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 262.43,
+      "cut_m": 1.61,
+      "fill_m": 1.61,
+      "level_diff_m": 3.22
+    },
+    {
+      "id": "RES-017",
+      "kind": "house",
+      "xy": [
+        3920,
+        1220
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 251.66,
+      "cut_m": 1.65,
+      "fill_m": 1.64,
+      "level_diff_m": 3.29
+    },
+    {
+      "id": "RES-018",
+      "kind": "house",
+      "xy": [
+        3830,
+        1200
+      ],
+      "footprint": [
+        13,
+        10
+      ],
+      "pad_z": 238.34,
+      "cut_m": 1.61,
+      "fill_m": 1.59,
+      "level_diff_m": 3.2
+    },
+    {
+      "id": "RES-019",
+      "kind": "house",
+      "xy": [
+        4055,
+        970
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 249.11,
+      "cut_m": 1.69,
+      "fill_m": 1.68,
+      "level_diff_m": 3.37
+    },
+    {
+      "id": "RES-020",
+      "kind": "house",
+      "xy": [
+        4135,
+        1005
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 263.65,
+      "cut_m": 1.73,
+      "fill_m": 1.73,
+      "level_diff_m": 3.46
+    },
+    {
+      "id": "RES-021",
+      "kind": "house",
+      "xy": [
+        4120,
+        920
+      ],
+      "footprint": [
+        13,
+        10
+      ],
+      "pad_z": 254.18,
+      "cut_m": 1.81,
+      "fill_m": 1.81,
+      "level_diff_m": 3.63
+    },
+    {
+      "id": "RES-022",
+      "kind": "house",
+      "xy": [
+        4190,
+        930
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 265.12,
+      "cut_m": 1.71,
+      "fill_m": 1.71,
+      "level_diff_m": 3.42
+    },
+    {
+      "id": "RES-023",
+      "kind": "house",
+      "xy": [
+        4160,
+        850
+      ],
+      "footprint": [
+        12,
+        9
+      ],
+      "pad_z": 254.1,
+      "cut_m": 1.68,
+      "fill_m": 1.68,
+      "level_diff_m": 3.36
+    },
+    {
+      "id": "RES-024",
+      "kind": "house",
+      "xy": [
+        4240,
+        885
+      ],
+      "footprint": [
+        13,
+        10
+      ],
+      "pad_z": 268.46,
+      "cut_m": 1.8,
+      "fill_m": 1.8,
+      "level_diff_m": 3.59
+    },
+    {
+      "id": "OUT-001",
+      "kind": "outbuilding",
+      "xy": [
+        3698,
+        1395
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 238.61,
+      "cut_m": 0.84,
+      "fill_m": 0.84,
+      "level_diff_m": 1.68
+    },
+    {
+      "id": "OUT-002",
+      "kind": "outbuilding",
+      "xy": [
+        3698,
+        1460
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 243.33,
+      "cut_m": 0.85,
+      "fill_m": 0.85,
+      "level_diff_m": 1.7
+    },
+    {
+      "id": "OUT-003",
+      "kind": "outbuilding",
+      "xy": [
+        3713,
+        1525
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 249.61,
+      "cut_m": 0.88,
+      "fill_m": 0.88,
+      "level_diff_m": 1.76
+    },
+    {
+      "id": "OUT-004",
+      "kind": "outbuilding",
+      "xy": [
+        3928,
+        1620
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 285.24,
+      "cut_m": 1.08,
+      "fill_m": 1.08,
+      "level_diff_m": 2.16
+    },
+    {
+      "id": "OUT-005",
+      "kind": "outbuilding",
+      "xy": [
+        3968,
+        1605
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 290.16,
+      "cut_m": 1.1,
+      "fill_m": 1.1,
+      "level_diff_m": 2.2
+    },
+    {
+      "id": "OUT-006",
+      "kind": "outbuilding",
+      "xy": [
+        4042,
+        1590
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 300.39,
+      "cut_m": 1.12,
+      "fill_m": 1.12,
+      "level_diff_m": 2.24
+    },
+    {
+      "id": "OUT-007",
+      "kind": "outbuilding",
+      "xy": [
+        3713,
+        1350
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 236.83,
+      "cut_m": 0.85,
+      "fill_m": 0.85,
+      "level_diff_m": 1.7
+    },
+    {
+      "id": "OUT-008",
+      "kind": "outbuilding",
+      "xy": [
+        3728,
+        1255
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 231.23,
+      "cut_m": 0.85,
+      "fill_m": 0.84,
+      "level_diff_m": 1.7
+    },
+    {
+      "id": "OUT-009",
+      "kind": "outbuilding",
+      "xy": [
+        3803,
+        1210
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 235.93,
+      "cut_m": 0.94,
+      "fill_m": 0.94,
+      "level_diff_m": 1.88
+    },
+    {
+      "id": "OUT-010",
+      "kind": "outbuilding",
+      "xy": [
+        4073,
+        970
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 251.67,
+      "cut_m": 1.1,
+      "fill_m": 1.1,
+      "level_diff_m": 2.2
+    },
+    {
+      "id": "OUT-011",
+      "kind": "outbuilding",
+      "xy": [
+        4153,
+        1005
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 266.27,
+      "cut_m": 1.12,
+      "fill_m": 1.12,
+      "level_diff_m": 2.24
+    },
+    {
+      "id": "OUT-012",
+      "kind": "outbuilding",
+      "xy": [
+        4102,
+        920
+      ],
+      "footprint": [
+        6,
+        5
+      ],
+      "pad_z": 251.59,
+      "cut_m": 1.1,
+      "fill_m": 1.09,
+      "level_diff_m": 2.19
+    }
+  ],
+  "terrain_z_range_m": [
+    181.5,
+    348.5
+  ]
+}
