@@ -49,7 +49,7 @@
     },
     "peakZ": 733.1
   },
-  "placements": 105,
+  "placements": 108,
   "copiedAssets": [],
   "connectors": [
     {
@@ -97,48 +97,48 @@
       "widthM": 4.5,
       "targetGradePercent": 12,
       "maxGradePercent": 12,
-      "maxCutM": 6.2,
-      "maxFillM": 0.1,
-      "lengthM": 514,
+      "maxCutM": 0.1,
+      "maxFillM": 7.6,
+      "lengthM": 511,
       "meetsTarget": true
     },
     {
       "id": "merkez-erisimi",
       "widthM": 4.5,
       "targetGradePercent": 12,
-      "maxGradePercent": 11.9,
-      "maxCutM": 0.3,
-      "maxFillM": 0.6,
-      "lengthM": 164,
-      "meetsTarget": true
+      "maxGradePercent": 14.1,
+      "maxCutM": 1.5,
+      "maxFillM": 0,
+      "lengthM": 57,
+      "meetsTarget": false
     },
     {
       "id": "isletme-kolu",
       "widthM": 5,
       "targetGradePercent": 10,
-      "maxGradePercent": 10,
-      "maxCutM": 7.6,
-      "maxFillM": 0,
-      "lengthM": 257,
-      "meetsTarget": true
+      "maxGradePercent": 15.8,
+      "maxCutM": 1.5,
+      "maxFillM": 3.1,
+      "lengthM": 265,
+      "meetsTarget": false
     },
     {
       "id": "depo-girisi",
       "widthM": 5,
       "targetGradePercent": 10,
-      "maxGradePercent": 9.4,
-      "maxCutM": 0.2,
-      "maxFillM": 0.1,
-      "lengthM": 128,
+      "maxGradePercent": 10,
+      "maxCutM": 3.5,
+      "maxFillM": 0,
+      "lengthM": 122,
       "meetsTarget": true
     },
     {
       "id": "dis-baglanti",
       "widthM": 5,
       "targetGradePercent": 12,
-      "maxGradePercent": 8.7,
-      "maxCutM": 0.2,
-      "maxFillM": 0.2,
+      "maxGradePercent": 12,
+      "maxCutM": 3.1,
+      "maxFillM": 0.1,
       "lengthM": 475,
       "meetsTarget": true
     }
@@ -148,19 +148,19 @@
       "id": "POI-01",
       "kind": "ev",
       "levels": [
-        256.43
+        256.81
       ],
-      "maxFillM": 2.24,
-      "maxCutM": 2.02
+      "maxFillM": 1.85,
+      "maxCutM": 3.16
     },
     {
       "id": "POI-02",
       "kind": "depo",
       "levels": [
-        253.6
+        248.61
       ],
-      "maxFillM": 3.5,
-      "maxCutM": 3.52
+      "maxFillM": 3.45,
+      "maxCutM": 3.46
     },
     {
       "id": "POI-03",
@@ -177,28 +177,28 @@
       "levels": [
         243.34
       ],
-      "maxFillM": 1.54,
-      "maxCutM": 2.18
+      "maxFillM": 1.53,
+      "maxCutM": 1.55
     },
     {
       "id": "POI-05",
       "kind": "okul",
       "levels": [
-        294.95
+        294.06
       ],
-      "maxFillM": 2.44,
-      "maxCutM": 3.17
+      "maxFillM": 2.78,
+      "maxCutM": 2.78
     },
     {
       "id": "POI-06",
       "kind": "meydan",
       "levels": [
         257.57,
-        254.39,
-        251.33
+        254.41,
+        251.3
       ],
-      "maxFillM": 1.73,
-      "maxCutM": 1.98
+      "maxFillM": 1.62,
+      "maxCutM": 1.67
     },
     {
       "id": "RES-001",
@@ -350,7 +350,7 @@
       "levels": [
         251.66
       ],
-      "maxFillM": 1.3,
+      "maxFillM": 1.31,
       "maxCutM": 1.05
     },
     {
@@ -513,7 +513,7 @@
         266.27
       ],
       "maxFillM": 0.76,
-      "maxCutM": 0.76
+      "maxCutM": 0.77
     },
     {
       "id": "OUT-012",
@@ -525,6 +525,102 @@
       "maxCutM": 0.75
     }
   ],
-  "walls": 61,
-  "warnings": []
+  "walls": 64,
+  "warnings": [
+    "merkez-erisimi: anchors force 14.1% (target 12%)",
+    "isletme-kolu: anchors force 15.8% (target 10%)"
+  ],
+  "siteMoves": [
+    {
+      "id": "POI-01",
+      "name": "Aile evi",
+      "shiftM": 24,
+      "accessRoads": []
+    },
+    {
+      "id": "POI-02",
+      "name": "Depo",
+      "shiftM": 31,
+      "accessRoads": [
+        "depo-girisi"
+      ]
+    },
+    {
+      "id": "POI-03",
+      "name": "Tamirhane",
+      "shiftM": 0,
+      "accessRoads": [
+        "isletme-kolu"
+      ]
+    },
+    {
+      "id": "POI-04",
+      "name": "Kahvehane",
+      "shiftM": 0,
+      "accessRoads": [
+        "merkez-erisimi"
+      ]
+    },
+    {
+      "id": "POI-05",
+      "name": "Okul",
+      "shiftM": 11.5,
+      "accessRoads": [
+        "konut-terasi"
+      ]
+    },
+    {
+      "id": "POI-06",
+      "name": "Pazar / meydan",
+      "shiftM": 0,
+      "accessRoads": [
+        "merkez-erisimi",
+        "isletme-kolu"
+      ]
+    }
+  ],
+  "entrances": [
+    {
+      "site": "POI-02",
+      "road": "depo-girisi",
+      "edge": "side",
+      "wallOpening": false,
+      "stepM": 0
+    },
+    {
+      "site": "POI-03",
+      "road": "isletme-kolu",
+      "edge": "front",
+      "wallOpening": true,
+      "stepM": 0
+    },
+    {
+      "site": "POI-04",
+      "road": "merkez-erisimi",
+      "edge": "back",
+      "wallOpening": true,
+      "stepM": 0
+    },
+    {
+      "site": "POI-05",
+      "road": "konut-terasi",
+      "edge": "front",
+      "wallOpening": true,
+      "stepM": 0
+    },
+    {
+      "site": "POI-06",
+      "road": "merkez-erisimi",
+      "edge": "side",
+      "wallOpening": false,
+      "stepM": 0
+    },
+    {
+      "site": "POI-06",
+      "road": "isletme-kolu",
+      "edge": "side",
+      "wallOpening": false,
+      "stepM": 0
+    }
+  ]
 }

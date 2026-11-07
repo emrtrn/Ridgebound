@@ -102,7 +102,28 @@ vadiye doğru doğu-batı uzanır. Parametreler üreticideki `RELIEF` sabitinde.
   (dereden kuzeye), `greybox-07-koyden.png` (köyden doğuya); 01–04 yeni araziyle yeniden alındı.
 - Sis ve ışık ayarına girilmedi (kullanıcının işi).
 
-## Onay 3: Blender greybox modeller (örnekler, onay bekliyor)
+## Yapı–yol çakışması düzeltmesi (7 Kasım 2026, kullanıcı incelemesi)
+
+Ana plandaki POI parselleri yolların içinden geçiyordu (aile evi gövdesinin %36'sı Konut
+terasında, depo %17'si Dış bağlantıda; okul ve meydan avlusu da yolda). Kararlar: yollar ana
+plan çizgisinde kalır, parseller kaydırılır; bir parsele giden yol parsel kenarında biter.
+
+- Kayan parseller (yön korunur, yoldan en az 2 m açıklık): aile evi 24 m, depo 31 m, okul
+  11,5 m. Kahvehane, tamirhane, meydan yerinde; konutlarda çakışma yoktu.
+- Parsele giden yollar (Depo girişi, İşletme kolu, Merkez erişimi, Konut terasının okul ucu)
+  parsel kenarında, set kotunda biter; duvarlı kenarda yol için duvar boşluğu açılır. Önceden
+  yollar parsele 2–11 m kot farkıyla, duvarın arkasında varıyordu.
+- Set kotu artık yollar kazılmadan önceki zeminin ortalaması.
+- Hedef eğim aşılan iki yol (iki ucun kotu bunu zorunlu kılıyor): Merkez erişimi %14,1
+  (hedef %12, kahvehane avlusu → meydan), İşletme kolu %15,8 (hedef %10, R03 kavşağı →
+  tamirhane avlusu). Hedefler yerel yollar için benim varsayımımdı (ana planda yok).
+- Konut terası okul girişine çıkmak için 7,6 m dolgu yapıyor.
+- Üretici artık her kurulumda denetler: yol bir seti kesiyor mu, yol parsele set kotunda mı
+  varıyor (rapor: `siteMoves`, `entrances`, `warnings`).
+- Görüntüler: `greybox-08-ust.png` (kuşbakışı), `greybox-09-depo.png`,
+  `greybox-10-tamirhane.png`, `greybox-11-depo-giris.png`; diğerleri yeniden alındı.
+
+## Onay 3: Blender greybox modeller (köy evi + depo onaylandı 7 Kasım, sahnede)
 
 Üretici: `tools/world/derekavak_greybox.py` (Blender 5.2,
 `blender --background --factory-startup --python tools/world/derekavak_greybox.py [-- house|depot]`).
@@ -116,5 +137,7 @@ zemin 0, ön cephe -Y (Forge'da +Z, vadiye bakan yüz). Her modelin önizlemesi
 | Depo (POI-02) | `public/assets/derekavak/structures/dk-depot.glb` | ayak izi 34 × 18 m, mahya 8 m | 1,2 m taş kaide, ahşap kaplama, oluklu sac beşik çatı, önde üç araç kapısı (4,5 × 4,5 m) ve sürgülü kanatlar, 6 m beton önlük, sağ uçta 7 m sundurma |
 
 Not: 6,5 m mahya iki katı ancak ~15° çatıyla taşıyor; konseptteki çatı biraz daha dik.
-Masterda konutların bir kısmı 13 × 10 m; o ölçü için aynı model ölçeklenir ya da ikinci
-varyant yapılır. Modeller onaydan sonra sahnedeki kutuların yerine konacak.
+Onaydan sonra sahneye kondu (üreticide `MODELS`): 24 konut `dk-house` (13 × 10 m olanlar
+planda 1,083 × 1,111 ölçekli), depo `dk-depot`; manifestte `derekavak` kategorisi. Depo kapıları
+greybox'ta boyalı açıklık, içeri girilemez. Görüntü: `greybox-12-ev.png`. Sırada kalan aileler:
+aile evi, tamirhane, kahvehane, okul, müştemilat, köprü, istinat duvarı.

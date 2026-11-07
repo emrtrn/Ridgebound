@@ -1119,7 +1119,7 @@
         "castShadow": false,
         "receiveShadow": false,
         "collision": false,
-        "bytes": 46823
+        "bytes": 47544
       },
       "license": "Unknown"
     },
@@ -1606,6 +1606,68 @@
       "source": {
         "origin": "Low Poly Forest Tree Pack",
         "path": "Tree_Pack.blend"
+      }
+    },
+    {
+      "id": "dk-house",
+      "name": "DK House",
+      "assetType": "staticMesh",
+      "category": "derekavak",
+      "path": "assets/derekavak/structures/dk-house.glb",
+      "tags": [
+        "derekavak",
+        "greybox"
+      ],
+      "placeable": true,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": true,
+        "allowScale": true
+      },
+      "runtime": {
+        "loadGroup": "derekavak",
+        "castShadow": true,
+        "receiveShadow": true,
+        "collision": true,
+        "bytes": 75916
+      },
+      "license": "Project-local greybox",
+      "source": {
+        "origin": "ridgebound",
+        "pack": "Derekavak greybox",
+        "path": "tools/world/derekavak_greybox.py"
+      }
+    },
+    {
+      "id": "dk-depot",
+      "name": "DK Depot",
+      "assetType": "staticMesh",
+      "category": "derekavak",
+      "path": "assets/derekavak/structures/dk-depot.glb",
+      "tags": [
+        "derekavak",
+        "greybox"
+      ],
+      "placeable": true,
+      "placement": {
+        "surface": "floor",
+        "snapToWall": false,
+        "allowRotation": true,
+        "allowScale": true
+      },
+      "runtime": {
+        "loadGroup": "derekavak",
+        "castShadow": true,
+        "receiveShadow": true,
+        "collision": true,
+        "bytes": 55132
+      },
+      "license": "Project-local greybox",
+      "source": {
+        "origin": "ridgebound",
+        "pack": "Derekavak greybox",
+        "path": "tools/world/derekavak_greybox.py"
       }
     }
   ]

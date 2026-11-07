@@ -8,9 +8,9 @@
       "placements": [
         {
           "position": [
-            214.755,
-            255.6,
-            176.249
+            192.835,
+            250.614,
+            198.169
           ],
           "name": "Player Start",
           "collision": false,
@@ -26,9 +26,9 @@
           "id": "POI-01-wall-front",
           "role": "structure.retainingWall",
           "position": [
-            -30.773,
-            255.256,
-            -263.66
+            -17.439,
+            255.832,
+            -243.705
           ],
           "name": "POI-01 wall",
           "rotation": [
@@ -38,7 +38,7 @@
           ],
           "scale": [
             68,
-            6.286,
+            5.504,
             1.2
           ],
           "color": "#9a978e"
@@ -47,9 +47,9 @@
           "id": "POI-01-wall-back",
           "role": "structure.retainingWall",
           "position": [
-            -9.227,
-            257.288,
-            -276.34
+            4.106,
+            258.24,
+            -256.385
           ],
           "name": "POI-01 wall",
           "rotation": [
@@ -59,7 +59,7 @@
           ],
           "scale": [
             68,
-            4.639,
+            6.927,
             1.2
           ],
           "color": "#9a978e"
@@ -68,9 +68,9 @@
           "id": "POI-01",
           "role": "poi.ev",
           "position": [
-            -15.045,
-            259.928,
-            -272.916
+            -1.711,
+            260.308,
+            -252.961
           ],
           "name": "Aile evi",
           "rotation": [
@@ -89,9 +89,9 @@
           "id": "POI-02-wall-front",
           "role": "structure.retainingWall",
           "position": [
-            207.072,
-            251.801,
-            180.935
+            185.151,
+            246.838,
+            202.855
           ],
           "name": "POI-02 wall",
           "rotation": [
@@ -101,7 +101,7 @@
           ],
           "scale": [
             166,
-            8.797,
+            8.703,
             1.2
           ],
           "color": "#9a978e"
@@ -110,9 +110,9 @@
           "id": "POI-02-wall-back",
           "role": "structure.retainingWall",
           "position": [
-            242.928,
-            255.212,
-            159.065
+            221.008,
+            250.196,
+            180.985
           ],
           "name": "POI-02 wall",
           "rotation": [
@@ -122,39 +122,18 @@
           ],
           "scale": [
             166,
-            7.647,
+            7.528,
             1.2
           ],
           "color": "#9a978e"
         },
         {
-          "id": "POI-02",
-          "role": "poi.depo",
-          "position": [
-            232.684,
-            257.35,
-            165.314
-          ],
-          "name": "Depo",
-          "rotation": [
-            0,
-            -58.6,
-            0
-          ],
-          "scale": [
-            68,
-            17,
-            36
-          ],
-          "color": "#6f7f8f"
-        },
-        {
-          "id": "POI-03-wall-front",
+          "id": "POI-03-wall-front-0",
           "role": "structure.retainingWall",
           "position": [
-            345.484,
+            333.625,
             286.121,
-            18.847
+            -0.61
           ],
           "name": "POI-03 wall",
           "rotation": [
@@ -163,8 +142,29 @@
             0
           ],
           "scale": [
-            110,
-            7.726,
+            18.856,
+            7.727,
+            1.2
+          ],
+          "color": "#9a978e"
+        },
+        {
+          "id": "POI-03-wall-front-1",
+          "role": "structure.retainingWall",
+          "position": [
+            349.758,
+            286.121,
+            25.861
+          ],
+          "name": "POI-03 wall",
+          "rotation": [
+            0,
+            -58.6,
+            0
+          ],
+          "scale": [
+            77.144,
+            7.727,
             1.2
           ],
           "color": "#9a978e"
@@ -216,7 +216,7 @@
           "role": "structure.retainingWall",
           "position": [
             -44.158,
-            242.524,
+            242.521,
             -111.907
           ],
           "name": "POI-04 wall",
@@ -227,18 +227,18 @@
           ],
           "scale": [
             72,
-            4.877,
+            4.864,
             1.2
           ],
           "color": "#9a978e"
         },
         {
-          "id": "POI-04-wall-back",
+          "id": "POI-04-wall-back-0",
           "role": "structure.retainingWall",
           "position": [
-            -25.842,
-            244.283,
-            -124.093
+            -28.966,
+            243.962,
+            -128.789
           ],
           "name": "POI-04 wall",
           "rotation": [
@@ -247,8 +247,29 @@
             0
           ],
           "scale": [
-            72,
-            4.959,
+            49.442,
+            3.698,
+            1.2
+          ],
+          "color": "#9a978e"
+        },
+        {
+          "id": "POI-04-wall-back-1",
+          "role": "structure.retainingWall",
+          "position": [
+            -17.195,
+            243.962,
+            -111.097
+          ],
+          "name": "POI-04 wall",
+          "rotation": [
+            0,
+            -56.4,
+            0
+          ],
+          "scale": [
+            9.558,
+            3.698,
             1.2
           ],
           "color": "#9a978e"
@@ -258,7 +279,7 @@
           "role": "poi.kahve",
           "position": [
             -33.335,
-            245.343,
+            245.337,
             -119.108
           ],
           "name": "Kahvehane",
@@ -275,12 +296,12 @@
           "color": "#b08050"
         },
         {
-          "id": "POI-05-wall-front",
+          "id": "POI-05-wall-front-0",
           "role": "structure.retainingWall",
           "position": [
-            230.828,
-            293.681,
-            -272.573
+            212.264,
+            292.626,
+            -292.125
           ],
           "name": "POI-05 wall",
           "rotation": [
@@ -289,8 +310,29 @@
             0
           ],
           "scale": [
-            100,
-            6.69,
+            31.578,
+            7.35,
+            1.2
+          ],
+          "color": "#9a978e"
+        },
+        {
+          "id": "POI-05-wall-front-1",
+          "role": "structure.retainingWall",
+          "position": [
+            225.376,
+            292.626,
+            -267.103
+          ],
+          "name": "POI-05 wall",
+          "rotation": [
+            0,
+            -62.3,
+            0
+          ],
+          "scale": [
+            55.422,
+            7.35,
             1.2
           ],
           "color": "#9a978e"
@@ -299,9 +341,9 @@
           "id": "POI-05-wall-back",
           "role": "structure.retainingWall",
           "position": [
-            259.172,
-            296.387,
-            -287.427
+            248.547,
+            295.302,
+            -291.828
           ],
           "name": "POI-05 wall",
           "rotation": [
@@ -311,7 +353,7 @@
           ],
           "scale": [
             100,
-            6.932,
+            6.156,
             1.2
           ],
           "color": "#9a978e"
@@ -320,9 +362,9 @@
           "id": "POI-05",
           "role": "poi.okul",
           "position": [
-            249.429,
-            298.204,
-            -282.321
+            238.804,
+            297.313,
+            -286.722
           ],
           "name": "Okul",
           "rotation": [
@@ -384,7 +426,7 @@
           "role": "structure.retainingWall",
           "position": [
             61.468,
-            253.475,
+            253.56,
             -86.783
           ],
           "name": "POI-06 wall",
@@ -395,7 +437,7 @@
           ],
           "scale": [
             190,
-            5.258,
+            4.985,
             1.2
           ],
           "color": "#a29d92"
@@ -405,7 +447,7 @@
           "role": "structure.retainingWall",
           "position": [
             78.532,
-            255.045,
+            255.053,
             -97.217
           ],
           "name": "POI-06 wall",
@@ -416,7 +458,7 @@
           ],
           "scale": [
             190,
-            3.821,
+            3.787,
             1.2
           ],
           "color": "#a29d92"
@@ -426,7 +468,7 @@
           "role": "structure.retainingWall",
           "position": [
             44.405,
-            250.458,
+            250.442,
             -76.35
           ],
           "name": "POI-06 wall",
@@ -437,7 +479,7 @@
           ],
           "scale": [
             190,
-            5.1,
+            5.036,
             1.2
           ],
           "color": "#a29d92"
@@ -447,7 +489,7 @@
           "role": "structure.retainingWall",
           "position": [
             61.468,
-            252.174,
+            251.934,
             -86.783
           ],
           "name": "POI-06 wall",
@@ -458,31 +500,10 @@
           ],
           "scale": [
             190,
-            4.563,
+            3.734,
             1.2
           ],
           "color": "#a29d92"
-        },
-        {
-          "id": "RES-001",
-          "role": "building.residential.house",
-          "position": [
-            -115,
-            239.82,
-            -145
-          ],
-          "name": "RES-001",
-          "rotation": [
-            0,
-            -53.4,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-002-wall-front",
@@ -527,27 +548,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-002",
-          "role": "building.residential.house",
-          "position": [
-            -115,
-            244.48,
-            -210
-          ],
-          "name": "RES-002",
-          "rotation": [
-            0,
-            -54.8,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-003-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -563,7 +563,7 @@
           ],
           "scale": [
             34,
-            3.604,
+            3.603,
             1.2
           ],
           "color": "#9a978e"
@@ -588,27 +588,6 @@
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-003",
-          "role": "building.residential.house",
-          "position": [
-            -100,
-            250.639,
-            -275
-          ],
-          "name": "RES-003",
-          "rotation": [
-            0,
-            -56.9,
-            0
-          ],
-          "scale": [
-            26,
-            14,
-            20
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-004-wall-front",
@@ -653,27 +632,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-004",
-          "role": "building.residential.house",
-          "position": [
-            -5,
-            266.239,
-            -335
-          ],
-          "name": "RES-004",
-          "rotation": [
-            0,
-            -61.2,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-005-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -710,31 +668,10 @@
           ],
           "scale": [
             32,
-            2.612,
+            2.613,
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-005",
-          "role": "building.residential.house",
-          "position": [
-            30,
-            268.703,
-            -305
-          ],
-          "name": "RES-005",
-          "rotation": [
-            0,
-            -61.3,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-006-wall-front",
@@ -779,27 +716,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-006",
-          "role": "building.residential.house",
-          "position": [
-            -70,
-            257.85,
-            -330
-          ],
-          "name": "RES-006",
-          "rotation": [
-            0,
-            -59.2,
-            0
-          ],
-          "scale": [
-            26,
-            14,
-            20
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-007-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -840,27 +756,6 @@
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-007",
-          "role": "building.residential.house",
-          "position": [
-            115,
-            285.557,
-            -370
-          ],
-          "name": "RES-007",
-          "rotation": [
-            0,
-            -63.7,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-008-wall-front",
@@ -905,27 +800,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-008",
-          "role": "building.residential.house",
-          "position": [
-            155,
-            290.431,
-            -355
-          ],
-          "name": "RES-008",
-          "rotation": [
-            0,
-            -63.7,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-009-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -966,27 +840,6 @@
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-009",
-          "role": "building.residential.house",
-          "position": [
-            265,
-            306.175,
-            -340
-          ],
-          "name": "RES-009",
-          "rotation": [
-            0,
-            -63.3,
-            0
-          ],
-          "scale": [
-            26,
-            14,
-            20
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-010-wall-front",
@@ -1031,27 +884,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-010",
-          "role": "building.residential.house",
-          "position": [
-            330,
-            321.225,
-            -405
-          ],
-          "name": "RES-010",
-          "rotation": [
-            0,
-            -64.1,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-011-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -1092,27 +924,6 @@
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-011",
-          "role": "building.residential.house",
-          "position": [
-            355,
-            320.049,
-            -340
-          ],
-          "name": "RES-011",
-          "rotation": [
-            0,
-            -62.6,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-012-wall-front",
@@ -1157,27 +968,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-012",
-          "role": "building.residential.house",
-          "position": [
-            155,
-            282.304,
-            -250
-          ],
-          "name": "RES-012",
-          "rotation": [
-            0,
-            -61.7,
-            0
-          ],
-          "scale": [
-            26,
-            14,
-            20
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-013-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -1220,27 +1010,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-013",
-          "role": "building.residential.house",
-          "position": [
-            -100,
-            238.013,
-            -100
-          ],
-          "name": "RES-013",
-          "rotation": [
-            0,
-            -53.3,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-014-wall-back",
           "role": "structure.retainingWall",
           "position": [
@@ -1260,27 +1029,6 @@
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-014",
-          "role": "building.residential.house",
-          "position": [
-            -85,
-            232.446,
-            -5
-          ],
-          "name": "RES-014",
-          "rotation": [
-            0,
-            -52.5,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-015-wall-front",
@@ -1325,27 +1073,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-015",
-          "role": "building.residential.house",
-          "position": [
-            -10,
-            236.871,
-            40
-          ],
-          "name": "RES-015",
-          "rotation": [
-            0,
-            -55.1,
-            0
-          ],
-          "scale": [
-            26,
-            14,
-            20
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-016-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -1388,32 +1115,11 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-016",
-          "role": "building.residential.house",
-          "position": [
-            65,
-            265.428,
-            -200
-          ],
-          "name": "RES-016",
-          "rotation": [
-            0,
-            -60,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-017-wall-front",
           "role": "structure.retainingWall",
           "position": [
             119.477,
-            250.955,
+            250.958,
             33.428
           ],
           "name": "RES-017 wall",
@@ -1424,7 +1130,7 @@
           ],
           "scale": [
             32,
-            4.408,
+            4.419,
             1.2
           ],
           "color": "#9a978e"
@@ -1434,7 +1140,7 @@
           "role": "structure.retainingWall",
           "position": [
             130.523,
-            252.034,
+            252.037,
             26.572
           ],
           "name": "RES-017 wall",
@@ -1445,31 +1151,10 @@
           ],
           "scale": [
             32,
-            2.71,
+            2.698,
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-017",
-          "role": "building.residential.house",
-          "position": [
-            125,
-            254.657,
-            30
-          ],
-          "name": "RES-017",
-          "rotation": [
-            0,
-            -58.2,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-018-wall-front",
@@ -1514,32 +1199,11 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-018",
-          "role": "building.residential.house",
-          "position": [
-            35,
-            241.34,
-            50
-          ],
-          "name": "RES-018",
-          "rotation": [
-            0,
-            -56.3,
-            0
-          ],
-          "scale": [
-            26,
-            14,
-            20
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-019-wall-front",
           "role": "structure.retainingWall",
           "position": [
             254.42,
-            248.52,
+            248.519,
             283.334
           ],
           "name": "RES-019 wall",
@@ -1575,27 +1239,6 @@
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-019",
-          "role": "building.residential.house",
-          "position": [
-            260,
-            252.107,
-            280
-          ],
-          "name": "RES-019",
-          "rotation": [
-            0,
-            -59.1,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-020-wall-front",
@@ -1640,27 +1283,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-020",
-          "role": "building.residential.house",
-          "position": [
-            340,
-            266.654,
-            245
-          ],
-          "name": "RES-020",
-          "rotation": [
-            0,
-            -59,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-021-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -1701,27 +1323,6 @@
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-021",
-          "role": "building.residential.house",
-          "position": [
-            325,
-            257.175,
-            330
-          ],
-          "name": "RES-021",
-          "rotation": [
-            0,
-            -59.6,
-            0
-          ],
-          "scale": [
-            26,
-            14,
-            20
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "RES-022-wall-front",
@@ -1766,27 +1367,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-022",
-          "role": "building.residential.house",
-          "position": [
-            395,
-            268.122,
-            320
-          ],
-          "name": "RES-022",
-          "rotation": [
-            0,
-            -59.3,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-023-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -1829,27 +1409,6 @@
           "color": "#9a978e"
         },
         {
-          "id": "RES-023",
-          "role": "building.residential.house",
-          "position": [
-            365,
-            257.105,
-            400
-          ],
-          "name": "RES-023",
-          "rotation": [
-            0,
-            -60.3,
-            0
-          ],
-          "scale": [
-            24,
-            14,
-            18
-          ],
-          "color": "#b9a58b"
-        },
-        {
           "id": "RES-024-wall-front",
           "role": "structure.retainingWall",
           "position": [
@@ -1890,27 +1449,6 @@
             1.2
           ],
           "color": "#9a978e"
-        },
-        {
-          "id": "RES-024",
-          "role": "building.residential.house",
-          "position": [
-            445,
-            271.459,
-            365
-          ],
-          "name": "RES-024",
-          "rotation": [
-            0,
-            -59.4,
-            0
-          ],
-          "scale": [
-            26,
-            14,
-            20
-          ],
-          "color": "#b9a58b"
         },
         {
           "id": "OUT-001",
@@ -2228,6 +1766,516 @@
           "color": "#8c8c88"
         }
       ]
+    },
+    {
+      "assetId": "dk-depot",
+      "placements": [
+        {
+          "id": "POI-02",
+          "role": "poi.depo",
+          "position": [
+            210.763,
+            248.614,
+            187.234
+          ],
+          "name": "Depo",
+          "rotation": [
+            0,
+            -58.6,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "assetId": "dk-house",
+      "placements": [
+        {
+          "id": "RES-001",
+          "role": "building.residential.house",
+          "position": [
+            -115,
+            236.82,
+            -145
+          ],
+          "name": "RES-001",
+          "rotation": [
+            0,
+            -53.4,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-002",
+          "role": "building.residential.house",
+          "position": [
+            -115,
+            241.48,
+            -210
+          ],
+          "name": "RES-002",
+          "rotation": [
+            0,
+            -54.8,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-003",
+          "role": "building.residential.house",
+          "position": [
+            -100,
+            247.639,
+            -275
+          ],
+          "name": "RES-003",
+          "rotation": [
+            0,
+            -56.9,
+            0
+          ],
+          "scale": [
+            1.083,
+            1,
+            1.111
+          ]
+        },
+        {
+          "id": "RES-004",
+          "role": "building.residential.house",
+          "position": [
+            -5,
+            263.239,
+            -335
+          ],
+          "name": "RES-004",
+          "rotation": [
+            0,
+            -61.2,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-005",
+          "role": "building.residential.house",
+          "position": [
+            30,
+            265.703,
+            -305
+          ],
+          "name": "RES-005",
+          "rotation": [
+            0,
+            -61.3,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-006",
+          "role": "building.residential.house",
+          "position": [
+            -70,
+            254.85,
+            -330
+          ],
+          "name": "RES-006",
+          "rotation": [
+            0,
+            -59.2,
+            0
+          ],
+          "scale": [
+            1.083,
+            1,
+            1.111
+          ]
+        },
+        {
+          "id": "RES-007",
+          "role": "building.residential.house",
+          "position": [
+            115,
+            282.557,
+            -370
+          ],
+          "name": "RES-007",
+          "rotation": [
+            0,
+            -63.7,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-008",
+          "role": "building.residential.house",
+          "position": [
+            155,
+            287.431,
+            -355
+          ],
+          "name": "RES-008",
+          "rotation": [
+            0,
+            -63.7,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-009",
+          "role": "building.residential.house",
+          "position": [
+            265,
+            303.175,
+            -340
+          ],
+          "name": "RES-009",
+          "rotation": [
+            0,
+            -63.3,
+            0
+          ],
+          "scale": [
+            1.083,
+            1,
+            1.111
+          ]
+        },
+        {
+          "id": "RES-010",
+          "role": "building.residential.house",
+          "position": [
+            330,
+            318.225,
+            -405
+          ],
+          "name": "RES-010",
+          "rotation": [
+            0,
+            -64.1,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-011",
+          "role": "building.residential.house",
+          "position": [
+            355,
+            317.049,
+            -340
+          ],
+          "name": "RES-011",
+          "rotation": [
+            0,
+            -62.6,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-012",
+          "role": "building.residential.house",
+          "position": [
+            155,
+            279.304,
+            -250
+          ],
+          "name": "RES-012",
+          "rotation": [
+            0,
+            -61.7,
+            0
+          ],
+          "scale": [
+            1.083,
+            1,
+            1.111
+          ]
+        },
+        {
+          "id": "RES-013",
+          "role": "building.residential.house",
+          "position": [
+            -100,
+            235.013,
+            -100
+          ],
+          "name": "RES-013",
+          "rotation": [
+            0,
+            -53.3,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-014",
+          "role": "building.residential.house",
+          "position": [
+            -85,
+            229.446,
+            -5
+          ],
+          "name": "RES-014",
+          "rotation": [
+            0,
+            -52.5,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-015",
+          "role": "building.residential.house",
+          "position": [
+            -10,
+            233.871,
+            40
+          ],
+          "name": "RES-015",
+          "rotation": [
+            0,
+            -55.1,
+            0
+          ],
+          "scale": [
+            1.083,
+            1,
+            1.111
+          ]
+        },
+        {
+          "id": "RES-016",
+          "role": "building.residential.house",
+          "position": [
+            65,
+            262.428,
+            -200
+          ],
+          "name": "RES-016",
+          "rotation": [
+            0,
+            -60,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-017",
+          "role": "building.residential.house",
+          "position": [
+            125,
+            251.662,
+            30
+          ],
+          "name": "RES-017",
+          "rotation": [
+            0,
+            -58.2,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-018",
+          "role": "building.residential.house",
+          "position": [
+            35,
+            238.34,
+            50
+          ],
+          "name": "RES-018",
+          "rotation": [
+            0,
+            -56.3,
+            0
+          ],
+          "scale": [
+            1.083,
+            1,
+            1.111
+          ]
+        },
+        {
+          "id": "RES-019",
+          "role": "building.residential.house",
+          "position": [
+            260,
+            249.107,
+            280
+          ],
+          "name": "RES-019",
+          "rotation": [
+            0,
+            -59.1,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-020",
+          "role": "building.residential.house",
+          "position": [
+            340,
+            263.654,
+            245
+          ],
+          "name": "RES-020",
+          "rotation": [
+            0,
+            -59,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-021",
+          "role": "building.residential.house",
+          "position": [
+            325,
+            254.175,
+            330
+          ],
+          "name": "RES-021",
+          "rotation": [
+            0,
+            -59.6,
+            0
+          ],
+          "scale": [
+            1.083,
+            1,
+            1.111
+          ]
+        },
+        {
+          "id": "RES-022",
+          "role": "building.residential.house",
+          "position": [
+            395,
+            265.122,
+            320
+          ],
+          "name": "RES-022",
+          "rotation": [
+            0,
+            -59.3,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-023",
+          "role": "building.residential.house",
+          "position": [
+            365,
+            254.105,
+            400
+          ],
+          "name": "RES-023",
+          "rotation": [
+            0,
+            -60.3,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "id": "RES-024",
+          "role": "building.residential.house",
+          "position": [
+            445,
+            268.459,
+            365
+          ],
+          "name": "RES-024",
+          "rotation": [
+            0,
+            -59.4,
+            0
+          ],
+          "scale": [
+            1.083,
+            1,
+            1.111
+          ]
+        }
+      ]
     }
   ],
   "characters": [],
@@ -2323,11 +2371,10 @@
     {
       "classRef": "assets/vehicles/gaz52/Script_Gaz52.actor.json",
       "position": [
-        220.755,
-        254.8,
-        176.249
+        198.835,
+        249.814,
+        198.169
       ],
-      "id": "act-mw6l9lir-85vv",
       "name": "Gaz52",
       "rotationYDeg": 31.4,
       "scale": 1

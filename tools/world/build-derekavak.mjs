@@ -110,6 +110,12 @@ const KINDS = {
   house: { height: 6.5, color: "#b9a58b" }, outbuilding: { height: 3.5, color: "#8f7b61" },
 };
 const POI01_FOOTPRINT = [12, 7.5];
+// Approved greybox models (approval 3, tools/world/derekavak_greybox.py): origin at the footprint
+// centre on the ground, front +Z. A footprint that differs from the model's is scaled in plan only.
+const MODELS = {
+  house: { id: "dk-house", name: "DK House", path: "assets/derekavak/structures/dk-house.glb", footprint: [12, 9] },
+  depo: { id: "dk-depot", name: "DK Depot", path: "assets/derekavak/structures/dk-depot.glb", footprint: [34, 18] },
+};
 const COLORS = { wall: "#9a978e", bridge: "#8c8c88", terraceWall: "#a29d92" };
 // Mountain relief around the village (approval 2 decision: the master's single slope gets
 // steep ridges outside the village; the village, its roads and the river stay as planned).
@@ -216,15 +222,165 @@ for (const road of ROADS) {
     report.connectors.push({ road: road.id, to: best.other.id, lengthM: round(best.hit.dist, 1), at: q.map((v) => round(v, 1)) });
   }
 }
+// ---- buildings: sites, room for the roads, pads ---------------------------------------------------------------
+function downhillYaw(X, Y) {
+  // World gradient: d/dx = dZ/dX, d/dz = -dZ/dY. Local +Z (front) faces downhill.
+  const gx = (masterZ(X + 2, Y) - masterZ(X - 2, Y)) / 4, gz = -(masterZ(X, Y + 2) - masterZ(X, Y - 2)) / 4;
+  return Math.atan2(-gx, -gz) * 180 / Math.PI;
+}
+function frame(center, yawDeg) {
+  const r = yawDeg * Math.PI / 180, ux = [Math.cos(r), -Math.sin(r)], uz = [Math.sin(r), Math.cos(r)];
+  return (a, b) => [center[0] + ux[0] * a + uz[0] * b, center[1] + ux[1] * a + uz[1] * b];
+}
+const rect = (at, w, d) => [at(-w / 2, -d / 2), at(w / 2, -d / 2), at(w / 2, d / 2), at(-w / 2, d / 2)];
+const sites = []; // { id, role, kind, center(world), yaw, padW, padD, building: {w,d,offsetZ} | null, terraces }
+for (const [id, poi] of Object.entries(master.poi)) {
+  const yaw = downhillYaw(...poi.xy);
+  const [pw, pd] = [Math.max(...poi.parcel_wh_m), Math.min(...poi.parcel_wh_m)];
+  const fp = id === "POI-01" ? POI01_FOOTPRINT : poi.building_footprint_candidate_wh_m;
+  const building = fp ? { w: Math.max(...fp), d: Math.min(...fp) } : null;
+  if (building) building.offsetZ = -(pd - building.d) / 2 + 3; // against the uphill edge, yard in front
+  sites.push({ id, name: poi.name, role: `poi.${poi.kind}`, kind: poi.kind, center: toWorld(poi.xy), yaw, padW: pw, padD: pd, building, terraces: poi.kind === "meydan" ? 3 : 1 });
+}
+for (const h of master.settlement_fabric.residences) {
+  const [w, d] = h.building_footprint_candidate_wh_m;
+  sites.push({ id: h.id, name: h.id, role: "building.residential.house", kind: "house", center: toWorld(h.xy_m), yaw: downhillYaw(...h.xy_m), padW: w + 2 * PAD.margin, padD: d + 2 * PAD.margin, building: { w, d, offsetZ: 0 }, terraces: 1 });
+}
+for (const o of master.settlement_fabric.outbuildings) {
+  const [w, d] = o.building_footprint_candidate_wh_m;
+  sites.push({ id: o.id, name: o.id, role: "building.outbuilding", kind: "outbuilding", center: toWorld(o.xy_m), yaw: downhillYaw(...o.xy_m), padW: w + 2 * PAD.margin, padD: d + 2 * PAD.margin, building: { w, d, offsetZ: 0 }, terraces: 1 });
+}
+// POI parcels the master draws across a road move off it (user decision, 7 Nov 2026): roads keep
+// their master line; each parcel keeps its orientation and slides the shortest way until it clears
+// every road by ROAD_CLEARANCE. A road that leads to a parcel (an end inside it or at its entrance)
+// is cut back and ends at the parcel edge instead (the square's access road included).
+const ROAD_CLEARANCE = 2;
+const SHIFT_MAX = 80;
+function siteLocal(site, center, p) {
+  const r = site.yaw * Math.PI / 180, dx = p[0] - center[0], dz = p[1] - center[1];
+  return [dx * Math.cos(r) - dz * Math.sin(r), dx * Math.sin(r) + dz * Math.cos(r)];
+}
+function inSite(site, center, p, grow = 0) {
+  const [a, b] = siteLocal(site, center, p);
+  return Math.abs(a) <= site.padW / 2 + grow && Math.abs(b) <= site.padD / 2 + grow;
+}
+function siteEdgePoint(site, center, p) {
+  let [a, b] = siteLocal(site, center, p);
+  const hw = site.padW / 2, hd = site.padD / 2;
+  if (Math.abs(a) <= hw && Math.abs(b) <= hd) {
+    if (hw - Math.abs(a) < hd - Math.abs(b)) a = Math.sign(a || 1) * hw; else b = Math.sign(b || 1) * hd;
+  } else { a = Math.max(-hw, Math.min(hw, a)); b = Math.max(-hd, Math.min(hd, b)); }
+  return frame(center, site.yaw)(a, b);
+}
+const entranceOf = (id) => {
+  const entry = master.site_access_candidates[id];
+  const xy = entry?.vehicle_entrance_xy ?? entry?.pedestrian_entrance_xy;
+  return xy ? toWorld(xy) : null;
+};
+// With `end`, the access end of a road comes last; the result goes back in road order.
+const withEndLast = (road, end, edit) => {
+  const line = end ? [...road.line] : [...road.line].reverse();
+  const out = edit(line);
+  road.line = end ? out : out.reverse();
+};
+const accessTails = new Map(); // road -> Set of ends (0|1) that lead to a parcel
+const tailFree = (road, i, n) => {
+  const ends = accessTails.get(road);
+  return !ends || !((ends.has(0) && i < 4) || (ends.has(1) && i >= n - 5));
+};
+report.siteMoves = [];
+const fixedSites = sites.filter((site) => !site.id.startsWith("POI-"));
+for (const site of sites.filter((s) => s.id.startsWith("POI-"))) {
+  const entrance = entranceOf(site.id);
+  const access = [];
+  for (const road of ROADS) {
+    for (const end of [0, 1]) {
+      const p = toWorld(end ? road.line[road.line.length - 1] : road.line[0]);
+      if (inSite(site, site.center, p, ROAD_CLEARANCE) || (entrance && Math.hypot(p[0] - entrance[0], p[1] - entrance[1]) < 6)) access.push({ road, end });
+    }
+  }
+  for (const { road, end } of access) {
+    withEndLast(road, end, (line) => {
+      while (line.length > 2 && inSite(site, site.center, toWorld(line[line.length - 1]), ROAD_CLEARANCE)) line.pop();
+      return line;
+    });
+    accessTails.set(road, new Set([...(accessTails.get(road) ?? []), end]));
+  }
+  // Road segments near enough to matter, without the tails that lead into a parcel.
+  const reach = Math.hypot(site.padW, site.padD) / 2 + SHIFT_MAX + 12;
+  const segs = ROADS.flatMap((road) => road.line.slice(1).flatMap((b, i) => {
+    if (!tailFree(road, i, road.line.length - 1)) return [];
+    const a = toWorld(road.line[i]), bw = toWorld(b);
+    return Math.hypot(a[0] - site.center[0], a[1] - site.center[1]) < reach ? [[a, bw, road.width]] : [];
+  }));
+  const offsets = [];
+  const at = frame([0, 0], site.yaw);
+  for (let a = -site.padW / 2; a <= site.padW / 2 + 1e-6; a += site.padW / Math.ceil(site.padW / 2)) {
+    for (let b = -site.padD / 2; b <= site.padD / 2 + 1e-6; b += site.padD / Math.ceil(site.padD / 2)) offsets.push(at(a, b));
+  }
+  const neighbours = fixedSites.filter((other) => Math.hypot(other.center[0] - site.center[0], other.center[1] - site.center[1]) < reach + 20);
+  const fits = (c) => {
+    if (!inTerrain(toMaster(...c), Math.hypot(site.padW, site.padD) / 2 + 20)) return false;
+    for (const [ox, oz] of offsets) {
+      const p = [c[0] + ox, c[1] + oz];
+      for (const [a, b, w] of segs) if (seg2(p, a, b).dist < w / 2 + ROAD_CLEARANCE + 0.5) return false;
+      for (const other of neighbours) if (inSite(other, other.center, p, 1)) return false;
+    }
+    return true;
+  };
+  let moved = null;
+  for (let m = 0; m <= SHIFT_MAX && !moved; m += 0.5) {
+    for (let k = 0; k < (m ? 32 : 1); k++) {
+      const angle = 2 * Math.PI * k / 32, c = [site.center[0] + m * Math.cos(angle), site.center[1] + m * Math.sin(angle)];
+      if (fits(c)) { moved = c; break; }
+    }
+  }
+  if (!moved) report.warnings.push(`${site.id}: no room within ${SHIFT_MAX} m clears the roads; left on the master position`);
+  else {
+    report.siteMoves.push({ id: site.id, name: site.name, shiftM: round(Math.hypot(moved[0] - site.center[0], moved[1] - site.center[1]), 1), accessRoads: access.map(({ road }) => road.id) });
+    site.center = moved;
+  }
+  site.access = access;
+  // Each access road now ends at the parcel edge.
+  for (const { road, end } of access) {
+    withEndLast(road, end, (line) => {
+      while (line.length > 2 && inSite(site, site.center, toWorld(line[line.length - 1]), 0.3)) line.pop();
+      const tip = toWorld(line[line.length - 1]), edge = siteEdgePoint(site, site.center, tip);
+      const gap = Math.hypot(edge[0] - tip[0], edge[1] - tip[1]);
+      if (gap > 40) report.warnings.push(`${road.id}: ends ${round(gap, 1)} m from ${site.id}; not joined`);
+      else if (gap > 0.5) {
+        const n = Math.ceil(gap / 2);
+        for (let k = 1; k <= n; k++) line.push(toMaster(tip[0] + (edge[0] - tip[0]) * k / n, tip[1] + (edge[1] - tip[1]) * k / n));
+      }
+      return line;
+    });
+  }
+  fixedSites.push(site);
+}
+// No road may cross any pad (beyond the ends that lead into a parcel).
+for (const site of sites) {
+  const crossing = new Set();
+  for (const road of ROADS) {
+    road.line.forEach((p, i) => {
+      if (tailFree(road, Math.min(i, road.line.length - 2), road.line.length - 1) && inSite(site, site.center, toWorld(p), road.width / 2 - 0.5)) crossing.add(road.id);
+    });
+  }
+  if (crossing.size) report.warnings.push(`${site.id}: road crosses its pad (${[...crossing].join(", ")})`);
+}
+// Each site's terraces (one, or strips across the slope for the square).
+for (const site of sites) {
+  const at = frame(site.center, site.yaw);
+  site.parts = Array.from({ length: site.terraces }, (_, k) => {
+    const depth = site.padD / site.terraces, offset = -site.padD / 2 + depth * (k + 0.5);
+    const sub = (a, b) => at(a, b + offset);
+    return { at: sub, w: site.padW, d: depth, polygon: rect(sub, site.padW, depth) };
+  });
+}
 // ---- mountain relief: protection mask on a coarse grid, then seeded ridges -----------------
 const reliefStats = { maxM: 0, peakZ: 0 };
 {
   const mountains = createMountains(RELIEF);
-  const discs = [
-    ...Object.values(master.poi).map((poi) => [...toWorld(poi.xy), Math.hypot(...poi.parcel_wh_m) / 2]),
-    ...[...master.settlement_fabric.residences, ...master.settlement_fabric.outbuildings]
-      .map((b) => [...toWorld(b.xy_m), Math.hypot(...b.building_footprint_candidate_wh_m.map((v) => v + 2 * PAD.margin)) / 2]),
-  ];
+  const discs = sites.map((site) => [...site.center, Math.hypot(site.padW, site.padD) / 2]);
   const segs = ROADS.flatMap((road) => {
     const pts = road.line.filter((_, i) => i % 4 === 0 || i === road.line.length - 1).map(toWorld);
     return pts.slice(1).map((b, i) => [pts[i], b]);
@@ -273,6 +429,23 @@ const reliefStats = { maxM: 0, peakZ: 0 };
     return w > 0 ? w * (RELIEF.lift + RELIEF.amplitude * mountains(x, z)) : 0;
   };
 }
+// Pad levels from the ground before any road is cut, so a road that leads to a parcel can be
+// graded to arrive at its pad; the entry edge gets an opening in its retaining wall.
+for (const site of sites) {
+  for (const part of site.parts) {
+    let sum = 0, count = 0;
+    for (let a = -part.w / 2; a <= part.w / 2; a += 1) for (let b = -part.d / 2; b <= part.d / 2; b += 1) { sum += groundZ(...toMaster(...part.at(a, b))); count++; }
+    part.level = sum / count;
+  }
+  site.entries = (site.access ?? []).map(({ road, end }) => {
+    const i = end ? road.line.length - 1 : 0;
+    const [a, b] = siteLocal(site, site.center, toWorld(road.line[i]));
+    const edge = Math.abs(Math.abs(b) - site.padD / 2) < Math.abs(Math.abs(a) - site.padW / 2) ? (b > 0 ? "front" : "back") : "side";
+    const k = Math.max(0, Math.min(site.terraces - 1, Math.floor((b + site.padD / 2) / (site.padD / site.terraces))));
+    (road.endLevels ??= []).push([i, site.parts[k].level]);
+    return { road, i, a, edge, part: k };
+  });
+}
 // Anchors: crossings and joins share one height; the bridge ends sit at the deck. Roads are solved
 // in order (R01, R03, then local roads): the first road through a crossing sets its height.
 const anchors = []; // { at: [X,Y], z }
@@ -307,11 +480,20 @@ function designProfile(road) {
   }
   const bridge = road === r01 ? new Set(pts.map((p, i) => i).filter((i) => Math.abs(s[i] - s[bridgeIndex]) <= BRIDGE.halfSpan)) : new Set();
   for (const i of bridge) fixed.set(i, BRIDGE.deck);
-  const g = road.grade / 100;
+  for (const [i, z] of road.endLevels ?? []) fixed.set(i, z);
+  // gs[i] limits the step from i-1 to i: the target grade, or, between two fixed heights the
+  // target cannot join, the grade they need, spread evenly instead of piled on one step.
+  const gs = new Array(n).fill(road.grade / 100);
+  const pinned = [...fixed.keys()].sort((a, b) => a - b);
+  for (let k = 1; k < pinned.length; k++) {
+    const [i0, i1] = [pinned[k - 1], pinned[k]];
+    const need = Math.abs(fixed.get(i1) - fixed.get(i0)) / Math.max(1e-6, s[i1] - s[i0]) * 1.001;
+    for (let i = i0 + 1; i <= i1; i++) gs[i] = Math.max(gs[i], need);
+  }
   let z = raw.map((v, i) => fixed.get(i) ?? v);
   const pass = () => {
-    for (let i = 1; i < n; i++) if (!fixed.has(i)) z[i] = Math.max(z[i - 1] - g * (s[i] - s[i - 1]), Math.min(z[i - 1] + g * (s[i] - s[i - 1]), z[i]));
-    for (let i = n - 2; i >= 0; i--) if (!fixed.has(i)) z[i] = Math.max(z[i + 1] - g * (s[i + 1] - s[i]), Math.min(z[i + 1] + g * (s[i + 1] - s[i]), z[i]));
+    for (let i = 1; i < n; i++) if (!fixed.has(i)) z[i] = Math.max(z[i - 1] - gs[i] * (s[i] - s[i - 1]), Math.min(z[i - 1] + gs[i] * (s[i] - s[i - 1]), z[i]));
+    for (let i = n - 2; i >= 0; i--) if (!fixed.has(i)) z[i] = Math.max(z[i + 1] - gs[i + 1] * (s[i + 1] - s[i]), Math.min(z[i + 1] + gs[i + 1] * (s[i + 1] - s[i]), z[i]));
   };
   for (let k = 0; k < 6; k++) pass();
   for (let k = 0; k < 3; k++) { // soften the clamp corners over ~10 m
@@ -357,43 +539,6 @@ for (let Y = SY1 + 60; Y >= SY0 - 60; Y -= 40) {
 splines.push({ id: "h01", name: "H-01 Ana Dere", smooth: true, coordinateSpace: "world", points: riverPoints,
   segments: riverPoints.slice(1).map((p, k) => ({ id: `s${k}`, startPointId: riverPoints[k].id, endPointId: p.id })) });
 
-// ---- buildings, pads, walls --------------------------------------------------------------
-function downhillYaw(X, Y) {
-  // World gradient: d/dx = dZ/dX, d/dz = -dZ/dY. Local +Z (front) faces downhill.
-  const gx = (masterZ(X + 2, Y) - masterZ(X - 2, Y)) / 4, gz = -(masterZ(X, Y + 2) - masterZ(X, Y - 2)) / 4;
-  return Math.atan2(-gx, -gz) * 180 / Math.PI;
-}
-function frame(center, yawDeg) {
-  const r = yawDeg * Math.PI / 180, ux = [Math.cos(r), -Math.sin(r)], uz = [Math.sin(r), Math.cos(r)];
-  return (a, b) => [center[0] + ux[0] * a + uz[0] * b, center[1] + ux[1] * a + uz[1] * b];
-}
-const rect = (at, w, d) => [at(-w / 2, -d / 2), at(w / 2, -d / 2), at(w / 2, d / 2), at(-w / 2, d / 2)];
-const sites = []; // { id, role, kind, center(world), yaw, padW, padD, building: {w,d,offsetZ} | null, terraces }
-for (const [id, poi] of Object.entries(master.poi)) {
-  const yaw = downhillYaw(...poi.xy);
-  const [pw, pd] = [Math.max(...poi.parcel_wh_m), Math.min(...poi.parcel_wh_m)];
-  const fp = id === "POI-01" ? POI01_FOOTPRINT : poi.building_footprint_candidate_wh_m;
-  const building = fp ? { w: Math.max(...fp), d: Math.min(...fp) } : null;
-  if (building) building.offsetZ = -(pd - building.d) / 2 + 3; // against the uphill edge, yard in front
-  sites.push({ id, name: poi.name, role: `poi.${poi.kind}`, kind: poi.kind, center: toWorld(poi.xy), yaw, padW: pw, padD: pd, building, terraces: poi.kind === "meydan" ? 3 : 1 });
-}
-for (const h of master.settlement_fabric.residences) {
-  const [w, d] = h.building_footprint_candidate_wh_m;
-  sites.push({ id: h.id, name: h.id, role: "building.residential.house", kind: "house", center: toWorld(h.xy_m), yaw: downhillYaw(...h.xy_m), padW: w + 2 * PAD.margin, padD: d + 2 * PAD.margin, building: { w, d, offsetZ: 0 }, terraces: 1 });
-}
-for (const o of master.settlement_fabric.outbuildings) {
-  const [w, d] = o.building_footprint_candidate_wh_m;
-  sites.push({ id: o.id, name: o.id, role: "building.outbuilding", kind: "outbuilding", center: toWorld(o.xy_m), yaw: downhillYaw(...o.xy_m), padW: w + 2 * PAD.margin, padD: d + 2 * PAD.margin, building: { w, d, offsetZ: 0 }, terraces: 1 });
-}
-// Each site's terraces (one, or strips across the slope for the square).
-for (const site of sites) {
-  const at = frame(site.center, site.yaw);
-  site.parts = Array.from({ length: site.terraces }, (_, k) => {
-    const depth = site.padD / site.terraces, offset = -site.padD / 2 + depth * (k + 0.5);
-    const sub = (a, b) => at(a, b + offset);
-    return { at: sub, w: site.padW, d: depth, polygon: rect(sub, site.padW, depth) };
-  });
-}
 // The relief must leave every pad, road and the river exactly as planned.
 for (const site of sites) {
   for (const part of site.parts) {
@@ -499,7 +644,7 @@ for (const site of sites) {
   site.levels = site.parts.map((part) => {
     const samples = [];
     for (let a = -part.w / 2; a <= part.w / 2; a += 1) for (let b = -part.d / 2; b <= part.d / 2; b += 1) samples.push(height(...part.at(a, b)));
-    const level = samples.reduce((sum, v) => sum + v, 0) / samples.length;
+    const level = part.level;
     pads.push({ polygon: part.polygon, height: level, falloff: PAD.falloff });
     // Walls where the downhill (front, +Z) edge is filled or the uphill (back, -Z) edge is cut.
     const front = sampleEdge(part.at(-part.w / 2, part.d / 2), part.at(part.w / 2, part.d / 2));
@@ -513,20 +658,48 @@ api.applyTerrainUndoPatches(world, api.createTerrainPadPatches(world, pads));
 for (const site of sites) {
   site.levels.forEach(({ level, fill, cut, part }, k) => {
     const color = site.terraces > 1 ? COLORS.terraceWall : COLORS.wall;
-    if (fill > PAD.wallAt) {
-      box(`${site.id}-wall-front${site.terraces > 1 ? `-${k}` : ""}`, "structure.retainingWall", `${site.id} wall`, part.at(0, part.d / 2), site.yaw, part.w, PAD.wallThickness, level - fill - 0.5, level + 0.4, color);
+    // One wall per edge, split around the road openings on it.
+    const wallRuns = (edge) => {
+      let runs = [[-part.w / 2, part.w / 2]];
+      for (const entry of site.entries) {
+        if (entry.part !== k || entry.edge !== edge) continue;
+        const half = entry.road.width / 2 + 1;
+        runs = runs.flatMap(([a0, a1]) => [[a0, Math.min(a1, entry.a - half)], [Math.max(a0, entry.a + half), a1]]).filter(([a0, a1]) => a1 - a0 > 0.5);
+      }
+      return runs;
+    };
+    const wall = (edge, sign, bottom, top) => wallRuns(edge).forEach(([a0, a1], n, runs) => {
+      const suffix = `${site.terraces > 1 ? `-${k}` : ""}${runs.length > 1 ? `-${n}` : ""}`;
+      box(`${site.id}-wall-${edge}${suffix}`, "structure.retainingWall", `${site.id} wall`, part.at((a0 + a1) / 2, sign * part.d / 2), site.yaw, a1 - a0, PAD.wallThickness, bottom, top, color);
       report.walls++;
-    }
-    if (cut > PAD.wallAt) {
-      box(`${site.id}-wall-back${site.terraces > 1 ? `-${k}` : ""}`, "structure.retainingWall", `${site.id} wall`, part.at(0, -part.d / 2), site.yaw, part.w, PAD.wallThickness, level - 0.3, level + cut, color);
-      report.walls++;
-    }
+    });
+    if (fill > PAD.wallAt) wall("front", 1, level - fill - 0.5, level + 0.4);
+    if (cut > PAD.wallAt) wall("back", -1, level - 0.3, level + cut);
   });
   if (!site.building) continue;
   const { level } = site.levels[0];
   const spec = KINDS[site.kind];
   const at = frame(site.center, site.yaw);
-  box(site.id, site.role, site.name, at(0, site.building.offsetZ), site.yaw, site.building.w, site.building.d, level - 0.5, level + spec.height, spec.color);
+  const model = MODELS[site.kind];
+  if (model) {
+    const [x, z] = at(0, site.building.offsetZ);
+    placements.push({ assetId: model.id, placement: {
+      id: site.id, role: site.role, name: site.name, rotation: [0, round(site.yaw, 2), 0], position: [round(x), round(level), round(z)],
+      scale: [round(site.building.w / model.footprint[0]), 1, round(site.building.d / model.footprint[1])],
+    } });
+  } else box(site.id, site.role, site.name, at(0, site.building.offsetZ), site.yaw, site.building.w, site.building.d, level - 0.5, level + spec.height, spec.color);
+}
+// Where each road meets its parcel: which edge, whether that edge is walled, and the step
+// between the road end and the pad (a vehicle needs an open edge and a small step).
+report.entrances = [];
+for (const site of sites) {
+  for (const { road, i, edge, part } of site.entries) {
+    const { level, fill, cut } = site.levels[part];
+    const opening = (edge === "front" && fill > PAD.wallAt) || (edge === "back" && cut > PAD.wallAt);
+    const step = road.profile.z[i] - level;
+    report.entrances.push({ site: site.id, road: road.id, edge, wallOpening: opening, stepM: round(step, 2) });
+    if (Math.abs(step) > 0.3) report.warnings.push(`${site.id}: ${road.id} arrives ${round(step, 2)} m off the pad level`);
+  }
 }
 // B1 bridge: deck over the channel, two piers.
 {
@@ -583,6 +756,16 @@ function addAsset(id) {
 }
 for (const id of ["lt-meadow", "lt-earth", "lt-rock", "lt-wet-mud", "starter-mat-grass",
   "wp-conifer-a-type", "wp-conifer-b-type", "wp-conifer-c-type", "wp-bush-a-type", "wp-bush-b-type", "wp-grass-a-type"]) addAsset(id);
+for (const model of Object.values(MODELS)) {
+  const entry = {
+    id: model.id, name: model.name, assetType: "staticMesh", category: "derekavak", path: model.path, tags: ["derekavak", "greybox"], placeable: true,
+    placement: { surface: "floor", snapToWall: false, allowRotation: true, allowScale: true },
+    runtime: { loadGroup: "derekavak", castShadow: true, receiveShadow: true, collision: true, bytes: readFileSync(inside(model.path)).length },
+    license: "Project-local greybox", source: { origin: "ridgebound", pack: "Derekavak greybox", path: "tools/world/derekavak_greybox.py" },
+  };
+  const index = manifest.assets.findIndex((asset) => asset.id === model.id);
+  if (index >= 0) manifest.assets[index] = entry; else manifest.assets.push(entry);
+}
 const plantRules = [
   ["forest-conifer-a", "forest", "wp-conifer-a-type", 0.0025, 0.6, 101], ["forest-conifer-b", "forest", "wp-conifer-b-type", 0.002, 0.45, 102],
   ["forest-conifer-c", "forest", "wp-conifer-c-type", 0.0015, 0.35, 106], ["forest-bush", "forest", "wp-bush-a-type", 0.0015, 0.5, 103],
