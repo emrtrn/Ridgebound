@@ -10,7 +10,7 @@
     "editorCatalog": "src/game/editorCatalog.ts"
   },
   "editor": {
-    "defaultScene": "assets/Maps/Landscape.level.json",
+    "defaultScene": "assets/Maps/Derekavak.level.json",
     "assetManifest": "assets/manifest.json",
     "gridSize": 0.5,
     "gridEnabled": true,
